@@ -17,7 +17,7 @@ include_directories(
     ${AERON_SOURCE_DIR}             # Aeron C++ headers
     ${DROGON_INCLUDE_DIRS}
     external/concurrentqueue
-    external/aeron/aeron-client/src/main/cpp
+    aeron/aeron-client/src/main/cpp
 )
 
 # All source files
