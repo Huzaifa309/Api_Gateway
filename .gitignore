@@ -1,2 +1,3 @@
 # Ignore CMakeLists.txt file
 CMakeLists.txt
+external/aeron
