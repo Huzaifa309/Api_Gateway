@@ -37,13 +37,13 @@ This project is a multi-threaded API Gateway built in **C++** using the **Drogon
 
 ## 🛠️ Building the Project
 
-### 1. Clone the Repository
+ 1. Clone the Repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/api_gateway.git
+git clone apigateway
 cd api_gateway
 
 
-2.	Build Aeron (if not already)
+ 2.	Build Aeron (if not already)
 bash
 Copy
 Edit
