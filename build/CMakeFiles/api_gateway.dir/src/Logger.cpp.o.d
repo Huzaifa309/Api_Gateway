@@ -1,6 +1,8 @@
 CMakeFiles/api_gateway.dir/src/Logger.cpp.o: \
- /home/saad-saeed/Gateway/src/Logger.cpp /usr/include/stdc-predef.h \
- /home/saad-saeed/Gateway/src/Logger.h /usr/include/c++/11/string \
+ /home/it-admin/Desktop/Api_Gateway/src/Logger.cpp \
+ /usr/include/stdc-predef.h \
+ /home/it-admin/Desktop/Api_Gateway/src/Logger.h \
+ /usr/include/c++/11/string \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \

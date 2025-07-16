@@ -1,4 +1,4 @@
-# Install script for directory: /home/saad-saeed/Gateway
+# Install script for directory: /home/it-admin/Desktop/Api_Gateway
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,9 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
+<<<<<<< Updated upstream
 file(WRITE "/home/saad-saeed/Gateway/build/${CMAKE_INSTALL_MANIFEST}"
+=======
+  file(WRITE "/home/it-admin/Desktop/Api_Gateway/build/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>> Stashed changes
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -7,9 +7,9 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(Drogon REQUIRED CONFIG)
 find_package(nlohmann_json REQUIRED)
 
-# Aeron paths
-set(AERON_SOURCE_DIR ${CMAKE_SOURCE_DIR}/external/aeron/aeron-client/src/main/cpp)
-set(AERON_BUILD_DIR ${CMAKE_SOURCE_DIR}/external/aeron/build)
+# Aeron paths - Updated to point to the actual Aeron installation
+set(AERON_SOURCE_DIR /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp)
+set(AERON_BUILD_DIR /home/it-admin/aeron-sbe-setup/aeron/build)
 
 # Includes
 include_directories(
@@ -17,7 +17,10 @@ include_directories(
     ${AERON_SOURCE_DIR}             # Aeron C++ headers
     ${DROGON_INCLUDE_DIRS}
     external/concurrentqueue
+<<<<<<< Updated upstream
     aeron/aeron-client/src/main/cpp
+=======
+>>>>>>> Stashed changes
 )
 
 # All source files
@@ -29,12 +32,12 @@ add_executable(api_gateway ${SRC_FILES})
 # Link Aeron statically (preferred)
 target_link_libraries(api_gateway
     Drogon::Drogon
-    ${AERON_BUILD_DIR}/libaeron_client.a  # ✅ Use full path to the .a file
+    ${AERON_BUILD_DIR}/lib/libaeron_client.a  # ✅ Use correct path to the .a file
     pthread
     nlohmann_json::nlohmann_json
 )
 
 # Optional: set runtime path for shared libs if you ever use .so
 # set_target_properties(api_gateway PROPERTIES
-#     BUILD_RPATH ${AERON_BUILD_DIR}
+#     BUILD_RPATH ${AERON_BUILD_DIR}/lib
 # )

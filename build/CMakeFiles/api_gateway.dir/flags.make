@@ -4,7 +4,11 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DJSON_DIAGNOSTICS=0 -DJSON_USE_IMPLICIT_CONVERSIONS=1
 
+<<<<<<< Updated upstream
 CXX_INCLUDES = -I/home/saad-saeed/Gateway/src -I/home/saad-saeed/Gateway/external/aeron/aeron-client/src/main/cpp -I/home/saad-saeed/Gateway/external/concurrentqueue -I/home/saad-saeed/Gateway/aeron/aeron-client/src/main/cpp -isystem /usr/include/jsoncpp
+=======
+CXX_INCLUDES = -I/home/it-admin/Desktop/Api_Gateway/src -I/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp -I/home/it-admin/Desktop/Api_Gateway/external/concurrentqueue -isystem /usr/include/jsoncpp
+>>>>>>> Stashed changes
 
 CXX_FLAGS = 
 

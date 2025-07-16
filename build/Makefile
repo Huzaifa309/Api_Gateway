@@ -48,27 +48,39 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
+<<<<<<< Updated upstream
 CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
 RM = /usr/bin/cmake -E rm -f
+=======
+CMAKE_COMMAND = /usr/local/bin/cmake
+
+# The command to remove a file.
+RM = /usr/local/bin/cmake -E rm -f
+>>>>>>> Stashed changes
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/saad-saeed/Gateway
+CMAKE_SOURCE_DIR = /home/it-admin/Desktop/Api_Gateway
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/saad-saeed/Gateway/build
+CMAKE_BINARY_DIR = /home/it-admin/Desktop/Api_Gateway/build
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
+<<<<<<< Updated upstream
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
 	/home/saad-saeed/cmake-3.30.4-linux-x86_64/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+=======
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
+	/usr/local/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+>>>>>>> Stashed changes
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -77,8 +89,13 @@ edit_cache/fast: edit_cache
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
+<<<<<<< Updated upstream
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
 	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+=======
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake to regenerate build system..."
+	/usr/local/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+>>>>>>> Stashed changes
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -87,9 +104,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/saad-saeed/Gateway/build/CMakeFiles /home/saad-saeed/Gateway/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles /home/it-admin/Desktop/Api_Gateway/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/saad-saeed/Gateway/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

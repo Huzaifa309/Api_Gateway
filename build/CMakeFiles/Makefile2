@@ -45,19 +45,26 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
+<<<<<<< Updated upstream
 CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
 RM = /usr/bin/cmake -E rm -f
+=======
+CMAKE_COMMAND = /usr/local/bin/cmake
+
+# The command to remove a file.
+RM = /usr/local/bin/cmake -E rm -f
+>>>>>>> Stashed changes
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/saad-saeed/Gateway
+CMAKE_SOURCE_DIR = /home/it-admin/Desktop/Api_Gateway
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/saad-saeed/Gateway/build
+CMAKE_BINARY_DIR = /home/it-admin/Desktop/Api_Gateway/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -81,14 +88,18 @@ clean: CMakeFiles/api_gateway.dir/clean
 CMakeFiles/api_gateway.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/api_gateway.dir/build.make CMakeFiles/api_gateway.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/api_gateway.dir/build.make CMakeFiles/api_gateway.dir/build
+<<<<<<< Updated upstream
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/saad-saeed/Gateway/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target api_gateway"
+=======
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target api_gateway"
+>>>>>>> Stashed changes
 .PHONY : CMakeFiles/api_gateway.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/api_gateway.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/saad-saeed/Gateway/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/api_gateway.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/saad-saeed/Gateway/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
 .PHONY : CMakeFiles/api_gateway.dir/rule
 
 # Convenience name for target.
