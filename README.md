@@ -86,3 +86,59 @@ Edit
 │   ├── AeronReceiver.*       # T3 - Aeron subscriber
 │   ├── ResponseDispatcher.*  # T4 - Sends response
 
+
+// FLow Chart
+
+┌────────────────────────────┐
+│    HTTP POST Request       │
+│ (POST /api/data with JSON) │
+└────────────┬───────────────┘
+             │
+             ▼
+┌────────────────────────────┐
+│ Drogon HTTP Server (T1)    │
+│ - Handles POST request     │
+│ - Calls `RequestHandler`   │
+└────────────┬───────────────┘
+             │
+             ▼
+┌────────────────────────────┐
+│ RequestHandler::DataPass   │
+│ - Logs request details     │
+│ - Wraps into GatewayTask   │
+│ - Pushes to ReceiverQueue  │
+└────────────┬───────────────┘
+             │
+             ▼
+┌────────────────────────────┐
+│ JSON → Aeron Sender (T2)   │
+│ - Dequeues from ReceiverQ  │
+│ - Parses JSON              │
+│ - (Optionally sends to     │
+│    backend via Aeron pub)  │
+│ - Wraps into GatewayTask   │
+│ - Pushes to ResponseQueue  │
+└────────────┬───────────────┘
+             │
+             ▼
+┌────────────────────────────┐
+│ Aeron Receiver (T3)        │
+│ - Listens via Subscription │
+│ - Receives backend message │
+│ - Wraps into GatewayTask   │
+│ - Pushes to ResponseQueue  │
+└────────────┬───────────────┘
+             │
+             ▼
+┌────────────────────────────┐
+│ Response Dispatcher (T4)   │
+│ - Dequeues from ResponseQ  │
+│ - Creates HTTP response    │
+│ - Calls `task.callback()`  │
+└────────────┬───────────────┘
+             │
+             ▼
+┌────────────────────────────┐
+│   Final HTTP Response      │
+│ (Sent to original client)  │
+└────────────────────────────┘
