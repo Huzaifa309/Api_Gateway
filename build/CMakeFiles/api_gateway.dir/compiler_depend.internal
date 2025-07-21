@@ -4,6 +4,9 @@
 CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o
  /home/it-admin/Desktop/Api_Gateway/src/AeronReceiver.cpp
  /home/it-admin/Desktop/Api_Gateway/external/concurrentqueue/concurrentqueue.h
+ /home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/Char64str.h
+ /home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/IdentityMessage.h
+ /home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/MessageHeader.h
  /home/it-admin/Desktop/Api_Gateway/src/Logger.h
  /home/it-admin/Desktop/Api_Gateway/src/QueueManager.h
  /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/Aeron.h
@@ -252,6 +255,7 @@ CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o
  /usr/include/c++/11/limits
  /usr/include/c++/11/locale
  /usr/include/c++/11/map
+ /usr/include/c++/11/math.h
  /usr/include/c++/11/memory
  /usr/include/c++/11/mutex
  /usr/include/c++/11/new
@@ -511,6 +515,9 @@ CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o
 CMakeFiles/api_gateway.dir/src/JsonToSbeSender.cpp.o
  /home/it-admin/Desktop/Api_Gateway/src/JsonToSbeSender.cpp
  /home/it-admin/Desktop/Api_Gateway/external/concurrentqueue/concurrentqueue.h
+ /home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/Char64str.h
+ /home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/IdentityMessage.h
+ /home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/MessageHeader.h
  /home/it-admin/Desktop/Api_Gateway/src/JsonToSbeSender.h
  /home/it-admin/Desktop/Api_Gateway/src/Logger.h
  /home/it-admin/Desktop/Api_Gateway/src/QueueManager.h
@@ -756,6 +763,7 @@ CMakeFiles/api_gateway.dir/src/JsonToSbeSender.cpp.o
  /usr/include/c++/11/limits
  /usr/include/c++/11/locale
  /usr/include/c++/11/map
+ /usr/include/c++/11/math.h
  /usr/include/c++/11/memory
  /usr/include/c++/11/mutex
  /usr/include/c++/11/new

@@ -436,4 +436,9 @@ CMakeFiles/api_gateway.dir/src/JsonToSbeSender.cpp.o: \
  /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/HeartbeatTimestamp.h \
  /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/AeronVersion.h \
  /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/SleepingIdleStrategy.h \
- /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/AgentInvoker.h
+ /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/AgentInvoker.h \
+ /home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/IdentityMessage.h \
+ /usr/include/c++/11/math.h \
+ /home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/MessageHeader.h \
+ /home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/Char64str.h \
+ /home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/MessageHeader.h

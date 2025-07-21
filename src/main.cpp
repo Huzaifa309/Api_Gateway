@@ -111,6 +111,12 @@ int main() {
         drogon::app()
             .addListener("0.0.0.0", 8080)
             .setThreadNum(1)
+            .registerHandler("/api/identity", 
+                [](const drogon::HttpRequestPtr &req,
+                   std::function<void(const drogon::HttpResponsePtr &)> &&callback) {
+                    RequestHandler handler;
+                    handler.DataPass(req, std::move(callback));
+                })
             .registerPostHandlingAdvice([](const drogon::HttpRequestPtr&, const drogon::HttpResponsePtr&) {
                 // Keep alive check
                 if (!running) {

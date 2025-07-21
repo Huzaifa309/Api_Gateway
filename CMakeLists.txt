@@ -17,10 +17,8 @@ include_directories(
     ${AERON_SOURCE_DIR}             # Aeron C++ headers
     ${DROGON_INCLUDE_DIRS}
     external/concurrentqueue
-<<<<<<< Updated upstream
+    external/sbe/my_app_messages
     aeron/aeron-client/src/main/cpp
-=======
->>>>>>> Stashed changes
 )
 
 # All source files

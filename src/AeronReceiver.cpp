@@ -6,7 +6,8 @@
 #include <thread>
 #include <chrono>
 #include <nlohmann/json.hpp>
-
+#include "IdentityMessage.h"
+#include "MessageHeader.h"
 using namespace aeron;
 using json = nlohmann::json;
 
@@ -16,69 +17,32 @@ void aeronReceiverThread(std::shared_ptr<Subscription> subscription)
 
     fragment_handler_t handler = [&](AtomicBuffer &buffer, std::int32_t offset, std::int32_t length, const Header &header)
     {
+        using namespace my::app::messages;
         try {
-            // Extract the raw data from the buffer
-            std::string rawData(reinterpret_cast<const char *>(buffer.buffer() + offset), length);
-            Logger::getInstance().log("[T3] Received raw data from backend, length: " + std::to_string(length));
-            
-            // Try to parse as JSON
-            json receivedJson;
-            try {
-                receivedJson = json::parse(rawData);
-                Logger::getInstance().log("[T3] Successfully parsed JSON: " + receivedJson.dump());
-                
-                // Create a processed response with additional metadata
-                json processedResponse;
-                processedResponse["received_data"] = receivedJson;
-                processedResponse["processed"] = true;
-                processedResponse["status"] = "received";
-                processedResponse["timestamp"] = std::chrono::duration_cast<std::chrono::milliseconds>(
-                    std::chrono::system_clock::now().time_since_epoch()).count();
-                processedResponse["source"] = "aeron_backend";
-                
-                std::string responseJson = processedResponse.dump();
-                Logger::getInstance().log("[T3] Created processed response: " + responseJson);
-                
-                // Push to ResponseQueue
-                GatewayTask responseTask;
-                responseTask.json = responseJson;
-                ResponseQueue.enqueue(responseTask);
-                Logger::getInstance().log("[T3] Response enqueued for dispatch");
-                
-            } catch (const json::parse_error& e) {
-                Logger::getInstance().log("[T3] JSON parse error: " + std::string(e.what()));
-                Logger::getInstance().log("[T3] Raw data received: " + rawData);
-                
-                // Create error response for invalid JSON
-                json errorResponse;
-                errorResponse["error"] = "Invalid JSON received";
-                errorResponse["message"] = e.what();
-                errorResponse["raw_data"] = rawData;
-                errorResponse["status"] = "error";
-                errorResponse["timestamp"] = std::chrono::duration_cast<std::chrono::milliseconds>(
-                    std::chrono::system_clock::now().time_since_epoch()).count();
-                
-                GatewayTask errorTask;
-                errorTask.json = errorResponse.dump();
-                ResponseQueue.enqueue(errorTask);
-                Logger::getInstance().log("[T3] Error response enqueued for dispatch");
+            // 1. Wrap the header at the correct offset
+            MessageHeader msgHeader;
+            msgHeader.wrap(reinterpret_cast<char*>(buffer.buffer()), offset, 0, buffer.capacity());
+            offset += msgHeader.encodedLength();
+            // 2. Check template ID and decode the message
+            if (msgHeader.templateId() == IdentityMessage::sbeTemplateId()) {
+                IdentityMessage identity;
+                identity.wrapForDecode(reinterpret_cast<char*>(buffer.buffer()), offset, msgHeader.blockLength(), msgHeader.version(), buffer.capacity());
+                // 3. Extract fields
+                std::string msg = identity.msg().getCharValAsString();
+                std::string type = identity.type().getCharValAsString();
+                std::string id = identity.id().getCharValAsString();
+                std::string name = identity.name().getCharValAsString();
+                std::string dateOfIssue = identity.dateOfIssue().getCharValAsString();
+                std::string dateOfExpiry = identity.dateOfExpiry().getCharValAsString();
+                std::string address = identity.address().getCharValAsString();
+                std::string verified = identity.verified().getCharValAsString();
+                Logger::getInstance().log("[T3] SBE Decoded: msg=" + msg + ", type=" + type + ", id=" + id + ", name=" + name + ", dateOfIssue=" + dateOfIssue + ", dateOfExpiry=" + dateOfExpiry + ", address=" + address + ", verified=" + verified);
+                // You can now build a JSON response if you want, using these fields
+            } else {
+                Logger::getInstance().log("[T3] Unexpected template ID: " + std::to_string(msgHeader.templateId()));
             }
-            
         } catch (const std::exception &e) {
-            Logger::getInstance().log(std::string("[T3] Buffer processing error: ") + e.what());
-            
-            // Create error response for buffer processing issues
-            json errorResponse;
-            errorResponse["error"] = "Buffer processing error";
-            errorResponse["message"] = e.what();
-            errorResponse["status"] = "error";
-            errorResponse["timestamp"] = std::chrono::duration_cast<std::chrono::milliseconds>(
-                std::chrono::system_clock::now().time_since_epoch()).count();
-            
-            GatewayTask errorTask;
-            errorTask.json = errorResponse.dump();
-            ResponseQueue.enqueue(errorTask);
-            Logger::getInstance().log("[T3] Buffer error response enqueued for dispatch");
+            Logger::getInstance().log(std::string("[T3] SBE decode error: ") + e.what());
         }
     };
 

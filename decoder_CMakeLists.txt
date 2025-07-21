@@ -1,0 +1,26 @@
+cmake_minimum_required(VERSION 3.15)
+project(sbe_decoder)
+
+set(CMAKE_CXX_STANDARD 17)
+
+# Aeron paths - Updated to point to the actual Aeron installation
+set(AERON_SOURCE_DIR /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp)
+set(AERON_BUILD_DIR /home/it-admin/aeron-sbe-setup/aeron/build)
+
+# Includes
+include_directories(
+    ${AERON_SOURCE_DIR}             # Aeron C++ headers
+    external/sbe/my_app_messages    # SBE generated headers
+)
+
+# Source files
+set(SRC_FILES decoder.cpp)
+
+# Create executable
+add_executable(sbe_decoder ${SRC_FILES})
+
+# Link Aeron statically
+target_link_libraries(sbe_decoder
+    ${AERON_BUILD_DIR}/lib/libaeron_client.a
+    pthread
+) 

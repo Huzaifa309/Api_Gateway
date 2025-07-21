@@ -3,6 +3,9 @@
 
 CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o: /home/it-admin/Desktop/Api_Gateway/src/AeronReceiver.cpp \
   /home/it-admin/Desktop/Api_Gateway/external/concurrentqueue/concurrentqueue.h \
+  /home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/Char64str.h \
+  /home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/IdentityMessage.h \
+  /home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/MessageHeader.h \
   /home/it-admin/Desktop/Api_Gateway/src/Logger.h \
   /home/it-admin/Desktop/Api_Gateway/src/QueueManager.h \
   /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/Aeron.h \
@@ -251,6 +254,7 @@ CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o: /home/it-admin/Desktop/Api_G
   /usr/include/c++/11/limits \
   /usr/include/c++/11/locale \
   /usr/include/c++/11/map \
+  /usr/include/c++/11/math.h \
   /usr/include/c++/11/memory \
   /usr/include/c++/11/mutex \
   /usr/include/c++/11/new \
@@ -509,6 +513,9 @@ CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o: /home/it-admin/Desktop/Api_G
 
 CMakeFiles/api_gateway.dir/src/JsonToSbeSender.cpp.o: /home/it-admin/Desktop/Api_Gateway/src/JsonToSbeSender.cpp \
   /home/it-admin/Desktop/Api_Gateway/external/concurrentqueue/concurrentqueue.h \
+  /home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/Char64str.h \
+  /home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/IdentityMessage.h \
+  /home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/MessageHeader.h \
   /home/it-admin/Desktop/Api_Gateway/src/JsonToSbeSender.h \
   /home/it-admin/Desktop/Api_Gateway/src/Logger.h \
   /home/it-admin/Desktop/Api_Gateway/src/QueueManager.h \
@@ -754,6 +761,7 @@ CMakeFiles/api_gateway.dir/src/JsonToSbeSender.cpp.o: /home/it-admin/Desktop/Api
   /usr/include/c++/11/limits \
   /usr/include/c++/11/locale \
   /usr/include/c++/11/map \
+  /usr/include/c++/11/math.h \
   /usr/include/c++/11/memory \
   /usr/include/c++/11/mutex \
   /usr/include/c++/11/new \
@@ -2854,6 +2862,14 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/local/include/drogon/orm/Result.h:
 
+/usr/local/include/drogon/orm/Field.h:
+
+/usr/local/include/drogon/orm/Exception.h:
+
+/usr/local/include/drogon/orm/DbTypes.h:
+
+/usr/include/c++/11/math.h:
+
 /usr/include/c++/11/limits:
 
 /usr/include/c++/11/iosfwd:
@@ -2912,10 +2928,6 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/include/c++/11/bits/unordered_map.h:
 
-/usr/include/c++/11/ostream:
-
-/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/DriverProxy.h:
-
 /usr/include/c++/11/iterator:
 
 /usr/include/x86_64-linux-gnu/bits/floatn.h:
@@ -2963,12 +2975,6 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 /usr/include/x86_64-linux-gnu/sys/socket.h:
 
 /usr/include/c++/11/bits/stl_deque.h:
-
-/usr/include/c++/11/bits/this_thread_sleep.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
-
-/usr/include/c++/11/bits/shared_ptr.h:
 
 /usr/include/c++/11/bits/valarray_before.h:
 
@@ -3066,6 +3072,10 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/include/c++/11/bits/locale_facets_nonio.h:
 
+/usr/include/c++/11/bits/this_thread_sleep.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+
 /usr/include/c++/11/bits/locale_facets.h:
 
 /usr/include/c++/11/bits/locale_conv.h:
@@ -3088,7 +3098,27 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/include/c++/11/bits/hashtable_policy.h:
 
-/usr/include/asm-generic/posix_types.h:
+/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
+
+/usr/include/c++/11/bits/stl_iterator.h:
+
+/usr/include/c++/11/cstddef:
+
+/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/Publication.h:
+
+/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
+
+/usr/include/c++/11/bits/erase_if.h:
+
+/usr/include/c++/11/bits/cpp_type_traits.h:
+
+/usr/include/endian.h:
+
+/usr/include/stdint.h:
+
+/usr/include/c++/11/bits/gslice.h:
+
+/usr/include/c++/11/bits/functional_hash.h:
 
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/logbuffer/Header.h:
 
@@ -3110,13 +3140,9 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
 
-/usr/include/c++/11/cmath:
+/usr/include/c++/11/bits/shared_ptr.h:
 
-/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/logbuffer/TermBlockScanner.h:
-
-/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/util/MemoryMappedFile.h:
-
-/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
+/home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/Char64str.h:
 
 /usr/include/c++/11/istream:
 
@@ -3130,9 +3156,21 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/logbuffer/HeaderWriter.h:
 
+/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/logbuffer/BufferClaim.h:
+
+/usr/include/c++/11/bits/valarray_after.h:
+
+/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/SleepingIdleStrategy.h:
+
+/usr/include/x86_64-linux-gnu/sys/select.h:
+
 /usr/include/c++/11/bits/stl_heap.h:
 
 /usr/include/c++/11/bits/std_abs.h:
+
+/usr/include/c++/11/bits/invoke.h:
+
+/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/AeronVersion.h:
 
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/command/ImageMessageFlyweight.h:
 
@@ -3141,10 +3179,6 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
 
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/DriverListenerAdapter.h:
-
-/usr/include/c++/11/bits/invoke.h:
-
-/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/AeronVersion.h:
 
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/Atomic64.h:
 
@@ -3155,6 +3189,8 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/command/SubscriptionReadyFlyweight.h:
 
 /usr/include/x86_64-linux-gnu/bits/local_lim.h:
+
+/home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/MessageHeader.h:
 
 /usr/include/c++/11/utility:
 
@@ -3180,12 +3216,6 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /home/it-admin/Desktop/Api_Gateway/src/Logger.h:
 
-/usr/include/c++/11/bits/locale_facets.tcc:
-
-/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/logbuffer/LogBufferDescriptor.h:
-
-/usr/include/nlohmann/detail/input/binary_reader.hpp:
-
 /usr/include/c++/11/bits/uniform_int_dist.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h:
@@ -3200,6 +3230,18 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/logbuffer/DataFrameHeader.h:
 
+/usr/include/c++/11/bits/ptr_traits.h:
+
+/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/atomic/Atomic64_gcc_x86_64.h:
+
+/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/util/MemoryMappedFile.h:
+
+/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
+
+/usr/include/c++/11/cmath:
+
+/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/logbuffer/TermBlockScanner.h:
+
 /usr/include/c++/11/bits/fs_path.h:
 
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/LogBuffers.h:
@@ -3210,7 +3252,33 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /home/it-admin/Desktop/Api_Gateway/src/JsonToSbeSender.h:
 
+/usr/include/c++/11/bits/functexcept.h:
+
+/home/it-admin/Desktop/Api_Gateway/src/AeronReceiver.cpp:
+
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
+
+/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/ExclusivePublication.h:
+
+/usr/include/alloca.h:
+
+/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/util/BitUtil.h:
+
+/usr/include/c++/11/bits/vector.tcc:
+
+/usr/include/nlohmann/detail/string_escape.hpp:
+
+/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/status/ReadablePosition.h:
+
+/usr/include/c++/11/bits/localefwd.h:
+
+/usr/include/c++/11/bits/regex_executor.h:
+
+/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/broadcast/BroadcastReceiver.h:
+
+/usr/include/nlohmann/detail/input/parser.hpp:
+
+/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/FragmentAssembler.h:
 
 /usr/include/c++/11/bits/predefined_ops.h:
 
@@ -3226,39 +3294,9 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/include/x86_64-linux-gnu/bits/sched.h:
 
-/usr/include/c++/11/bits/functional_hash.h:
+/usr/local/include/drogon/orm/FunctionTraits.h:
 
-/usr/include/alloca.h:
-
-/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/ExclusivePublication.h:
-
-/usr/include/c++/11/bits/valarray_after.h:
-
-/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/SleepingIdleStrategy.h:
-
-/usr/include/x86_64-linux-gnu/sys/select.h:
-
-/usr/include/c++/11/bits/localefwd.h:
-
-/usr/include/c++/11/bits/regex_executor.h:
-
-/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/broadcast/BroadcastReceiver.h:
-
-/usr/include/nlohmann/detail/input/parser.hpp:
-
-/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/FragmentAssembler.h:
-
-/usr/include/c++/11/bits/vector.tcc:
-
-/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/util/BitUtil.h:
-
-/usr/include/nlohmann/detail/string_escape.hpp:
-
-/usr/include/c++/11/bits/std_thread.h:
-
-/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/AtomicArrayUpdater.h:
-
-/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/status/ReadablePosition.h:
+/usr/include/c++/11/ext/numeric_traits.h:
 
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/ringbuffer/RingBufferDescriptor.h:
 
@@ -3271,10 +3309,6 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 /usr/include/c++/11/bits/atomic_futex.h:
 
 /usr/include/c++/11/cstring:
-
-/usr/include/c++/11/numeric:
-
-/usr/include/x86_64-linux-gnu/asm/sockios.h:
 
 /usr/include/c++/11/bits/hashtable.h:
 
@@ -3294,19 +3328,7 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/local/include/drogon/Session.h:
 
-/usr/include/c++/11/cstddef:
-
-/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/Publication.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
-
-/usr/include/c++/11/bits/stl_iterator.h:
-
-/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h:
-
-/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/logbuffer/BufferClaim.h:
 
 /usr/include/c++/11/bits/regex_scanner.tcc:
 
@@ -3344,6 +3366,22 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/command/CounterUpdateFlyweight.h:
 
+/usr/include/c++/11/bits/locale_facets.tcc:
+
+/usr/include/nlohmann/detail/input/binary_reader.hpp:
+
+/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/logbuffer/LogBufferDescriptor.h:
+
+/usr/include/asm-generic/posix_types.h:
+
+/usr/include/c++/11/bits/std_thread.h:
+
+/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/AtomicArrayUpdater.h:
+
+/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/DriverProxy.h:
+
+/usr/include/c++/11/ostream:
+
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/ringbuffer/RecordDescriptor.h:
 
 /usr/include/jsoncpp/json/allocator.h:
@@ -3360,10 +3398,6 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/include/netinet/in.h:
 
-/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/command/PublicationMessageFlyweight.h:
-
-/usr/include/c++/11/pstl/execution_defs.h:
-
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/util/Export.h:
 
 /usr/include/c++/11/bitset:
@@ -3373,8 +3407,6 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 /usr/include/nlohmann/detail/macro_unscope.hpp:
 
 /usr/local/include/drogon/nosql/RedisClient.h:
-
-/usr/local/include/drogon/orm/DbTypes.h:
 
 /usr/include/c++/11/bits/stl_pair.h:
 
@@ -3409,20 +3441,6 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 /usr/include/c++/11/bits/stl_construct.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:
-
-/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/atomic/Atomic64_gcc_x86_64.h:
-
-/usr/include/c++/11/bits/ptr_traits.h:
-
-/usr/include/c++/11/bits/erase_if.h:
-
-/usr/include/c++/11/bits/cpp_type_traits.h:
-
-/usr/include/endian.h:
-
-/usr/include/stdint.h:
-
-/usr/include/c++/11/bits/gslice.h:
 
 /usr/include/c++/11/array:
 
@@ -3484,17 +3502,15 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/include/c++/11/bits/basic_string.tcc:
 
-/usr/include/c++/11/ctime:
-
 /usr/include/c++/11/functional:
 
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/command/Flyweight.h:
 
-/usr/local/include/drogon/orm/Exception.h:
+/usr/include/c++/11/ctime:
 
-/usr/include/c++/11/bits/algorithmfwd.h:
+/home/it-admin/Desktop/Api_Gateway/external/sbe/my_app_messages/IdentityMessage.h:
 
-/usr/include/c++/11/bits/cxxabi_forced.h:
+/usr/include/nlohmann/ordered_map.hpp:
 
 /usr/include/c++/11/bits/regex_error.h:
 
@@ -3510,9 +3526,17 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/include/c++/11/bits/fs_dir.h:
 
-/home/it-admin/Desktop/Api_Gateway/src/AeronReceiver.cpp:
+/usr/include/c++/11/bits/cxxabi_forced.h:
 
-/usr/include/c++/11/bits/functexcept.h:
+/usr/include/c++/11/bits/algorithmfwd.h:
+
+/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/command/PublicationMessageFlyweight.h:
+
+/usr/include/c++/11/pstl/execution_defs.h:
+
+/usr/include/x86_64-linux-gnu/asm/sockios.h:
+
+/usr/include/c++/11/numeric:
 
 /usr/include/c++/11/pstl/glue_algorithm_defs.h:
 
@@ -3658,8 +3682,6 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/local/include/drogon/nosql/RedisSubscriber.h:
 
-/usr/local/include/drogon/orm/Field.h:
-
 /usr/include/c++/11/bits/stl_iterator_base_types.h:
 
 /usr/include/nlohmann/detail/meta/type_traits.hpp:
@@ -3683,8 +3705,6 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h:
 
 /usr/include/nlohmann/json.hpp:
-
-/usr/include/nlohmann/ordered_map.hpp:
 
 /usr/include/nlohmann/thirdparty/hedley/hedley.hpp:
 
@@ -3957,7 +3977,3 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 /usr/local/include/trantor/utils/LogStream.h:
 
 /usr/local/include/drogon/orm/DbConfig.h:
-
-/usr/include/c++/11/ext/numeric_traits.h:
-
-/usr/local/include/drogon/orm/FunctionTraits.h:

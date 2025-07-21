@@ -7,8 +7,8 @@
 #include "Publication.h"
 #include <memory>
 #include <chrono>
-// #include "external/sbe/my_app_messages/IdentityMessage.h"
-// #include "external/sbe/my_app_messages/MessageHeader.h"
+#include "IdentityMessage.h"
+#include "MessageHeader.h"
 
 using json = nlohmann::json;
 
@@ -25,16 +25,70 @@ void jsonToSbeSenderThread(std::shared_ptr<aeron::Publication> publication) {
                             Logger::getInstance().log("[TestThread] Publication closed");
                             break;
                         }
-                        std::string testMsg= task.json;
-                        aeron::concurrent::AtomicBuffer buffer(
-                            const_cast<uint8_t*>(reinterpret_cast<const uint8_t*>(testMsg.c_str())),
-                            testMsg.size()
-                        );
-
-                        int64_t result = publication->offer(buffer, 0, testMsg.size());
                         
-                      
+                        // Parse JSON and convert to SBE
+                        auto parsed = json::parse(task.json);
+                        Logger::getInstance().log("[T2] JSON parsed successfully");
+
+                        // Create SBE buffer with proper size
+                        const size_t bufferSize = my::app::messages::MessageHeader::encodedLength() + 
+                                                my::app::messages::IdentityMessage::sbeBlockLength();
+                        std::vector<uint8_t> rawBuffer(bufferSize);
+                        
+                        // Create Aeron buffer
+                        aeron::concurrent::AtomicBuffer atomicBuffer(rawBuffer.data(), rawBuffer.size());
+                        
+                        // Encode the message header
+                        my::app::messages::MessageHeader headerEncoder;
+                        headerEncoder.wrap(reinterpret_cast<char*>(rawBuffer.data()), 0, 0, rawBuffer.size())
+                            .blockLength(my::app::messages::IdentityMessage::sbeBlockLength())
+                            .templateId(my::app::messages::IdentityMessage::sbeTemplateId())
+                            .schemaId(my::app::messages::IdentityMessage::sbeSchemaId())
+                            .version(my::app::messages::IdentityMessage::sbeSchemaVersion());
+                        
+                        // Encode the IdentityMessage
+                        my::app::messages::IdentityMessage identityEncoder;
+                        identityEncoder.wrapForEncode(
+                            reinterpret_cast<char*>(rawBuffer.data()), 
+                            my::app::messages::MessageHeader::encodedLength(), 
+                            rawBuffer.size()
+                        );
+                        
+                        // Set the fields from JSON
+                        if (parsed.contains("msg")) {
+                            identityEncoder.msg().putCharVal(parsed["msg"].get<std::string>());
+                        }
+                        if (parsed.contains("type")) {
+                            identityEncoder.type().putCharVal(parsed["type"].get<std::string>());
+                        }
+                        if (parsed.contains("id")) {
+                            identityEncoder.id().putCharVal(parsed["id"].get<std::string>());
+                        }
+                        if (parsed.contains("name")) {
+                            identityEncoder.name().putCharVal(parsed["name"].get<std::string>());
+                        }
+                        if (parsed.contains("dateOfIssue")) {
+                            identityEncoder.dateOfIssue().putCharVal(parsed["dateOfIssue"].get<std::string>());
+                        }
+                        if (parsed.contains("dateOfExpiry")) {
+                            identityEncoder.dateOfExpiry().putCharVal(parsed["dateOfExpiry"].get<std::string>());
+                        }
+                        if (parsed.contains("address")) {
+                            identityEncoder.address().putCharVal(parsed["address"].get<std::string>());
+                        }
+                        if (parsed.contains("verified")) {
+                            identityEncoder.verified().putCharVal(parsed["verified"].get<std::string>());
+                        }
+                        
+                        // Send the encoded message
+                        const size_t totalLength = headerEncoder.encodedLength() + identityEncoder.encodedLength();
+                        int64_t result = publication->offer(atomicBuffer, 0, totalLength);
+                        
+                        if (result < 0) {
                             Logger::getInstance().log("[TestThread] Failed to send: " + std::to_string(result));
+                        } else {
+                            Logger::getInstance().log("[TestThread] SBE message sent successfully, total length: " + std::to_string(totalLength));
+                        }
                         
                     } catch (const std::exception& e) {
                         Logger::getInstance().log(std::string("[TestThread] Error: ") + e.what());

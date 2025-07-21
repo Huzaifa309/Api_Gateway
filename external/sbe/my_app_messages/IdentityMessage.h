@@ -117,7 +117,6 @@ public:
     static const std::uint16_t SBE_TEMPLATE_ID = static_cast<std::uint16_t>(1);
     static const std::uint16_t SBE_SCHEMA_ID = static_cast<std::uint16_t>(1);
     static const std::uint16_t SBE_SCHEMA_VERSION = static_cast<std::uint16_t>(1);
-    static const char* SBE_SEMANTIC_VERSION;
 
     enum MetaAttribute
     {
@@ -687,8 +686,6 @@ SBE_NODISCARD static std::size_t computeLength()
 #endif
 }
 };
-
-const char* IdentityMessage::SBE_SEMANTIC_VERSION = "1.0.0";
 
 }
 }
