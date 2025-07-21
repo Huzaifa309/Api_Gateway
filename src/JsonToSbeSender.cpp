@@ -7,6 +7,8 @@
 #include "Publication.h"
 #include <memory>
 #include <chrono>
+// #include "external/sbe/my_app_messages/IdentityMessage.h"
+// #include "external/sbe/my_app_messages/MessageHeader.h"
 
 using json = nlohmann::json;
 
@@ -15,7 +17,32 @@ void jsonToSbeSenderThread(std::shared_ptr<aeron::Publication> publication) {
     while (true) {
         if (ReceiverQueue.try_dequeue(task)) {
             Logger::getInstance().log("[T2] Dequeued task for processing");
+           
+                std::this_thread::sleep_for(std::chrono::seconds(2));
+                
+                    try {
+                        if (publication->isClosed()) {
+                            Logger::getInstance().log("[TestThread] Publication closed");
+                            break;
+                        }
+                        std::string testMsg= task.json;
+                        aeron::concurrent::AtomicBuffer buffer(
+                            const_cast<uint8_t*>(reinterpret_cast<const uint8_t*>(testMsg.c_str())),
+                            testMsg.size()
+                        );
 
+                        int64_t result = publication->offer(buffer, 0, testMsg.size());
+                        
+                      
+                            Logger::getInstance().log("[TestThread] Failed to send: " + std::to_string(result));
+                        
+                    } catch (const std::exception& e) {
+                        Logger::getInstance().log(std::string("[TestThread] Error: ") + e.what());
+                    }
+                    std::this_thread::sleep_for(std::chrono::milliseconds(20));
+                
+           
+          
             try {
                 auto parsed = json::parse(task.json);
                 Logger::getInstance().log("[T2] JSON parsed successfully");

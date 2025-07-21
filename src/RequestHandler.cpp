@@ -20,6 +20,7 @@ void RequestHandler::DataPass(const drogon::HttpRequestPtr &req,
     Logger::getInstance().log("[T1] =======================================");
     
     GatewayTask task{requestBody, req, std::move(callback)};
+    std::cout<<task.json<<std::endl;
     ReceiverQueue.enqueue(task);
     Logger::getInstance().log("[T1] Request enqueued for processing");
 }
