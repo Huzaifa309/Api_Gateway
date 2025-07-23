@@ -406,14 +406,22 @@ CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o: /home/it-admin/Desktop/Api_G
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/sched.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/setjmp.h \
   /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
   /usr/include/x86_64-linux-gnu/bits/socket.h \
+  /usr/include/x86_64-linux-gnu/bits/socket2.h \
   /usr/include/x86_64-linux-gnu/bits/socket_type.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
@@ -454,6 +462,7 @@ CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o: /home/it-admin/Desktop/Api_G
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
@@ -913,14 +922,22 @@ CMakeFiles/api_gateway.dir/src/JsonToSbeSender.cpp.o: /home/it-admin/Desktop/Api
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/sched.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/setjmp.h \
   /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
   /usr/include/x86_64-linux-gnu/bits/socket.h \
+  /usr/include/x86_64-linux-gnu/bits/socket2.h \
   /usr/include/x86_64-linux-gnu/bits/socket_type.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
@@ -961,6 +978,7 @@ CMakeFiles/api_gateway.dir/src/JsonToSbeSender.cpp.o: /home/it-admin/Desktop/Api
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
@@ -1149,11 +1167,16 @@ CMakeFiles/api_gateway.dir/src/Logger.cpp.o: /home/it-admin/Desktop/Api_Gateway/
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/sched.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/setjmp.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
@@ -1191,6 +1214,7 @@ CMakeFiles/api_gateway.dir/src/Logger.cpp.o: /home/it-admin/Desktop/Api_Gateway/
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h \
@@ -1456,14 +1480,22 @@ CMakeFiles/api_gateway.dir/src/QueueManager.cpp.o: /home/it-admin/Desktop/Api_Ga
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/sched.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/setjmp.h \
   /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
   /usr/include/x86_64-linux-gnu/bits/socket.h \
+  /usr/include/x86_64-linux-gnu/bits/socket2.h \
   /usr/include/x86_64-linux-gnu/bits/socket_type.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
@@ -1504,6 +1536,7 @@ CMakeFiles/api_gateway.dir/src/QueueManager.cpp.o: /home/it-admin/Desktop/Api_Ga
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
@@ -1811,14 +1844,22 @@ CMakeFiles/api_gateway.dir/src/RequestHandler.cpp.o: /home/it-admin/Desktop/Api_
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/sched.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/setjmp.h \
   /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
   /usr/include/x86_64-linux-gnu/bits/socket.h \
+  /usr/include/x86_64-linux-gnu/bits/socket2.h \
   /usr/include/x86_64-linux-gnu/bits/socket_type.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
@@ -1859,6 +1900,7 @@ CMakeFiles/api_gateway.dir/src/RequestHandler.cpp.o: /home/it-admin/Desktop/Api_
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
@@ -2193,14 +2235,22 @@ CMakeFiles/api_gateway.dir/src/ResponseDispatcher.cpp.o: /home/it-admin/Desktop/
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/sched.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/setjmp.h \
   /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
   /usr/include/x86_64-linux-gnu/bits/socket.h \
+  /usr/include/x86_64-linux-gnu/bits/socket2.h \
   /usr/include/x86_64-linux-gnu/bits/socket_type.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
@@ -2241,6 +2291,7 @@ CMakeFiles/api_gateway.dir/src/ResponseDispatcher.cpp.o: /home/it-admin/Desktop/
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
@@ -2300,6 +2351,7 @@ CMakeFiles/api_gateway.dir/src/ResponseDispatcher.cpp.o: /home/it-admin/Desktop/
 
 CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/src/main.cpp \
   /home/it-admin/Desktop/Api_Gateway/external/concurrentqueue/concurrentqueue.h \
+  /home/it-admin/Desktop/Api_Gateway/external/wrapper/aeron_wrapper.h \
   /home/it-admin/Desktop/Api_Gateway/src/AeronReceiver.h \
   /home/it-admin/Desktop/Api_Gateway/src/JsonToSbeSender.h \
   /home/it-admin/Desktop/Api_Gateway/src/Logger.h \
@@ -2638,14 +2690,22 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/sched.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/setjmp.h \
   /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
   /usr/include/x86_64-linux-gnu/bits/socket.h \
+  /usr/include/x86_64-linux-gnu/bits/socket2.h \
   /usr/include/x86_64-linux-gnu/bits/socket_type.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
@@ -2686,6 +2746,7 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
@@ -2868,6 +2929,18 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/local/include/drogon/orm/DbTypes.h:
 
+/usr/local/include/drogon/orm/DbClient.h:
+
+/usr/local/include/drogon/orm/ArrayParser.h:
+
+/usr/local/include/drogon/nosql/RedisResult.h:
+
+/usr/local/include/drogon/nosql/RedisException.h:
+
+/usr/local/include/drogon/nosql/RedisClient.h:
+
+/usr/local/include/drogon/RequestStream.h:
+
 /usr/include/c++/11/math.h:
 
 /usr/include/c++/11/limits:
@@ -2988,13 +3061,13 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
 
+/usr/include/x86_64-linux-gnu/bits/select2.h:
+
 /usr/include/c++/11/bits/stl_algobase.h:
 
 /usr/include/c++/11/cassert:
 
 /usr/include/c++/11/bits/stl_algo.h:
-
-/usr/local/include/drogon/nosql/RedisResult.h:
 
 /usr/include/c++/11/bits/valarray_array.tcc:
 
@@ -3045,6 +3118,8 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 /usr/include/c++/11/bits/postypes.h:
 
 /usr/include/x86_64-linux-gnu/bits/in.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 
@@ -3184,6 +3259,8 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/include/nlohmann/detail/iterators/iterator_traits.hpp:
 
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:
+
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/logbuffer/FrameDescriptor.h:
 
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/command/SubscriptionReadyFlyweight.h:
@@ -3238,11 +3315,19 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/include/x86_64-linux-gnu/bits/fp-logb.h:
 
+/usr/include/x86_64-linux-gnu/bits/wchar2.h:
+
 /usr/include/c++/11/cmath:
 
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/logbuffer/TermBlockScanner.h:
 
 /usr/include/c++/11/bits/fs_path.h:
+
+/usr/local/include/drogon/nosql/RedisSubscriber.h:
+
+/usr/include/c++/11/bits/unique_ptr.h:
+
+/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/logbuffer/TermReader.h:
 
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/LogBuffers.h:
 
@@ -3251,10 +3336,6 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/command/TerminateDriverFlyweight.h:
 
 /home/it-admin/Desktop/Api_Gateway/src/JsonToSbeSender.h:
-
-/usr/include/c++/11/bits/functexcept.h:
-
-/home/it-admin/Desktop/Api_Gateway/src/AeronReceiver.cpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
 
@@ -3287,6 +3368,8 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/command/ImageBuffersReadyFlyweight.h:
 
 /usr/include/c++/11/memory:
+
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:
 
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/command/ErrorResponseFlyweight.h:
 
@@ -3340,6 +3423,8 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/include/c++/11/bits/stl_numeric.h:
 
+/usr/include/x86_64-linux-gnu/bits/socket2.h:
+
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/protocol/DataHeaderFlyweight.h:
 
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/status/StatusIndicatorReader.h:
@@ -3365,12 +3450,6 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 /usr/include/c++/11/tuple:
 
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/command/CounterUpdateFlyweight.h:
-
-/usr/include/c++/11/bits/locale_facets.tcc:
-
-/usr/include/nlohmann/detail/input/binary_reader.hpp:
-
-/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/logbuffer/LogBufferDescriptor.h:
 
 /usr/include/asm-generic/posix_types.h:
 
@@ -3406,7 +3485,9 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/include/nlohmann/detail/macro_unscope.hpp:
 
-/usr/local/include/drogon/nosql/RedisClient.h:
+/usr/local/include/drogon/drogon_callbacks.h:
+
+/usr/include/c++/11/ext/atomicity.h:
 
 /usr/include/c++/11/bits/stl_pair.h:
 
@@ -3564,6 +3645,8 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/include/c++/11/sstream:
 
+/home/it-admin/Desktop/Api_Gateway/external/wrapper/aeron_wrapper.h:
+
 /usr/include/c++/11/stack:
 
 /usr/include/c++/11/bits/stl_multiset.h:
@@ -3676,12 +3759,6 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/include/nlohmann/detail/meta/is_sax.hpp:
 
-/usr/include/c++/11/bits/unique_ptr.h:
-
-/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/logbuffer/TermReader.h:
-
-/usr/local/include/drogon/nosql/RedisSubscriber.h:
-
 /usr/include/c++/11/bits/stl_iterator_base_types.h:
 
 /usr/include/nlohmann/detail/meta/type_traits.hpp:
@@ -3738,8 +3815,6 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/include/wchar.h:
 
-/usr/local/include/drogon/orm/DbClient.h:
-
 /usr/include/x86_64-linux-gnu/asm/posix_types.h:
 
 /usr/include/x86_64-linux-gnu/asm/posix_types_64.h:
@@ -3759,8 +3834,6 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
 
 /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
-
-/usr/local/include/drogon/orm/ArrayParser.h:
 
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/broadcast/BroadcastBufferDescriptor.h:
 
@@ -3802,9 +3875,25 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
 
+/usr/include/c++/11/bits/locale_facets.tcc:
+
+/usr/include/nlohmann/detail/input/binary_reader.hpp:
+
+/home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/concurrent/logbuffer/LogBufferDescriptor.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio.h:
+
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
 
 /usr/include/x86_64-linux-gnu/bits/timex.h:
+
+/usr/include/c++/11/bits/functexcept.h:
+
+/home/it-admin/Desktop/Api_Gateway/src/AeronReceiver.cpp:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib.h:
+
+/usr/include/x86_64-linux-gnu/bits/strings_fortified.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
@@ -3856,6 +3945,10 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 
 /usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
 
+/usr/local/include/drogon/orm/DbConfig.h:
+
+/usr/local/include/trantor/utils/LogStream.h:
+
 /usr/include/c++/11/iostream:
 
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
@@ -3869,10 +3962,6 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp/Context.h:
 
 /usr/local/include/drogon/NotFound.h:
-
-/usr/include/c++/11/ext/atomicity.h:
-
-/usr/local/include/drogon/drogon_callbacks.h:
 
 /usr/include/nlohmann/detail/iterators/iteration_proxy.hpp:
 
@@ -3969,11 +4058,3 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/it-admin/Desktop/Api_Gateway/sr
 /usr/local/include/drogon/HttpAppFramework.h:
 
 /usr/local/include/drogon/HttpBinder.h:
-
-/usr/local/include/drogon/RequestStream.h:
-
-/usr/local/include/drogon/nosql/RedisException.h:
-
-/usr/local/include/trantor/utils/LogStream.h:
-
-/usr/local/include/drogon/orm/DbConfig.h:

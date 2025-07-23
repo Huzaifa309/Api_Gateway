@@ -64,15 +64,170 @@ CMAKE_BINARY_DIR = /home/it-admin/Desktop/Api_Gateway/build
 
 # The main recursive "all" target.
 all: CMakeFiles/api_gateway.dir/all
+all: _deps/aeron-build/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: _deps/aeron-build/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/api_gateway.dir/clean
+clean: _deps/aeron-build/clean
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory _deps/aeron-build
+
+# Recursive "all" directory target.
+_deps/aeron-build/all: _deps/aeron-build/aeron-client/src/main/cpp/all
+_deps/aeron-build/all: _deps/aeron-build/aeron-client/src/main/cpp_wrapper/all
+_deps/aeron-build/all: _deps/aeron-build/aeron-client/src/main/c/all
+_deps/aeron-build/all: _deps/aeron-build/aeron-driver/src/main/c/all
+_deps/aeron-build/all: _deps/aeron-build/aeron-archive/src/main/cpp/all
+_deps/aeron-build/all: _deps/aeron-build/aeron-archive/src/main/cpp_wrapper/all
+_deps/aeron-build/all: _deps/aeron-build/aeron-archive/src/main/c/all
+.PHONY : _deps/aeron-build/all
+
+# Recursive "preinstall" directory target.
+_deps/aeron-build/preinstall: _deps/aeron-build/aeron-client/src/main/cpp/preinstall
+_deps/aeron-build/preinstall: _deps/aeron-build/aeron-client/src/main/cpp_wrapper/preinstall
+_deps/aeron-build/preinstall: _deps/aeron-build/aeron-client/src/main/c/preinstall
+_deps/aeron-build/preinstall: _deps/aeron-build/aeron-driver/src/main/c/preinstall
+_deps/aeron-build/preinstall: _deps/aeron-build/aeron-archive/src/main/cpp/preinstall
+_deps/aeron-build/preinstall: _deps/aeron-build/aeron-archive/src/main/cpp_wrapper/preinstall
+_deps/aeron-build/preinstall: _deps/aeron-build/aeron-archive/src/main/c/preinstall
+.PHONY : _deps/aeron-build/preinstall
+
+# Recursive "clean" directory target.
+_deps/aeron-build/clean: _deps/aeron-build/CMakeFiles/aeron-all-jar.dir/clean
+_deps/aeron-build/clean: _deps/aeron-build/aeron-client/src/main/cpp/clean
+_deps/aeron-build/clean: _deps/aeron-build/aeron-client/src/main/cpp_wrapper/clean
+_deps/aeron-build/clean: _deps/aeron-build/aeron-client/src/main/c/clean
+_deps/aeron-build/clean: _deps/aeron-build/aeron-driver/src/main/c/clean
+_deps/aeron-build/clean: _deps/aeron-build/aeron-archive/src/main/cpp/clean
+_deps/aeron-build/clean: _deps/aeron-build/aeron-archive/src/main/cpp_wrapper/clean
+_deps/aeron-build/clean: _deps/aeron-build/aeron-archive/src/main/c/clean
+.PHONY : _deps/aeron-build/clean
+
+#=============================================================================
+# Directory level rules for directory _deps/aeron-build/aeron-archive/src/main/c
+
+# Recursive "all" directory target.
+_deps/aeron-build/aeron-archive/src/main/c/all: _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/all
+_deps/aeron-build/aeron-archive/src/main/c/all: _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/all
+.PHONY : _deps/aeron-build/aeron-archive/src/main/c/all
+
+# Recursive "preinstall" directory target.
+_deps/aeron-build/aeron-archive/src/main/c/preinstall:
+.PHONY : _deps/aeron-build/aeron-archive/src/main/c/preinstall
+
+# Recursive "clean" directory target.
+_deps/aeron-build/aeron-archive/src/main/c/clean: _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/clean
+_deps/aeron-build/aeron-archive/src/main/c/clean: _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/clean
+_deps/aeron-build/aeron-archive/src/main/c/clean: _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/clean
+.PHONY : _deps/aeron-build/aeron-archive/src/main/c/clean
+
+#=============================================================================
+# Directory level rules for directory _deps/aeron-build/aeron-archive/src/main/cpp
+
+# Recursive "all" directory target.
+_deps/aeron-build/aeron-archive/src/main/cpp/all: _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/all
+.PHONY : _deps/aeron-build/aeron-archive/src/main/cpp/all
+
+# Recursive "preinstall" directory target.
+_deps/aeron-build/aeron-archive/src/main/cpp/preinstall:
+.PHONY : _deps/aeron-build/aeron-archive/src/main/cpp/preinstall
+
+# Recursive "clean" directory target.
+_deps/aeron-build/aeron-archive/src/main/cpp/clean: _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir/clean
+_deps/aeron-build/aeron-archive/src/main/cpp/clean: _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/clean
+.PHONY : _deps/aeron-build/aeron-archive/src/main/cpp/clean
+
+#=============================================================================
+# Directory level rules for directory _deps/aeron-build/aeron-archive/src/main/cpp_wrapper
+
+# Recursive "all" directory target.
+_deps/aeron-build/aeron-archive/src/main/cpp_wrapper/all:
+.PHONY : _deps/aeron-build/aeron-archive/src/main/cpp_wrapper/all
+
+# Recursive "preinstall" directory target.
+_deps/aeron-build/aeron-archive/src/main/cpp_wrapper/preinstall:
+.PHONY : _deps/aeron-build/aeron-archive/src/main/cpp_wrapper/preinstall
+
+# Recursive "clean" directory target.
+_deps/aeron-build/aeron-archive/src/main/cpp_wrapper/clean:
+.PHONY : _deps/aeron-build/aeron-archive/src/main/cpp_wrapper/clean
+
+#=============================================================================
+# Directory level rules for directory _deps/aeron-build/aeron-client/src/main/c
+
+# Recursive "all" directory target.
+_deps/aeron-build/aeron-client/src/main/c/all: _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/all
+_deps/aeron-build/aeron-client/src/main/c/all: _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/all
+.PHONY : _deps/aeron-build/aeron-client/src/main/c/all
+
+# Recursive "preinstall" directory target.
+_deps/aeron-build/aeron-client/src/main/c/preinstall:
+.PHONY : _deps/aeron-build/aeron-client/src/main/c/preinstall
+
+# Recursive "clean" directory target.
+_deps/aeron-build/aeron-client/src/main/c/clean: _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/clean
+_deps/aeron-build/aeron-client/src/main/c/clean: _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/clean
+.PHONY : _deps/aeron-build/aeron-client/src/main/c/clean
+
+#=============================================================================
+# Directory level rules for directory _deps/aeron-build/aeron-client/src/main/cpp
+
+# Recursive "all" directory target.
+_deps/aeron-build/aeron-client/src/main/cpp/all: _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/all
+_deps/aeron-build/aeron-client/src/main/cpp/all: _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir/all
+.PHONY : _deps/aeron-build/aeron-client/src/main/cpp/all
+
+# Recursive "preinstall" directory target.
+_deps/aeron-build/aeron-client/src/main/cpp/preinstall:
+.PHONY : _deps/aeron-build/aeron-client/src/main/cpp/preinstall
+
+# Recursive "clean" directory target.
+_deps/aeron-build/aeron-client/src/main/cpp/clean: _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/clean
+_deps/aeron-build/aeron-client/src/main/cpp/clean: _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir/clean
+.PHONY : _deps/aeron-build/aeron-client/src/main/cpp/clean
+
+#=============================================================================
+# Directory level rules for directory _deps/aeron-build/aeron-client/src/main/cpp_wrapper
+
+# Recursive "all" directory target.
+_deps/aeron-build/aeron-client/src/main/cpp_wrapper/all:
+.PHONY : _deps/aeron-build/aeron-client/src/main/cpp_wrapper/all
+
+# Recursive "preinstall" directory target.
+_deps/aeron-build/aeron-client/src/main/cpp_wrapper/preinstall:
+.PHONY : _deps/aeron-build/aeron-client/src/main/cpp_wrapper/preinstall
+
+# Recursive "clean" directory target.
+_deps/aeron-build/aeron-client/src/main/cpp_wrapper/clean:
+.PHONY : _deps/aeron-build/aeron-client/src/main/cpp_wrapper/clean
+
+#=============================================================================
+# Directory level rules for directory _deps/aeron-build/aeron-driver/src/main/c
+
+# Recursive "all" directory target.
+_deps/aeron-build/aeron-driver/src/main/c/all: _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/all
+_deps/aeron-build/aeron-driver/src/main/c/all: _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/all
+_deps/aeron-build/aeron-driver/src/main/c/all: _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir/all
+_deps/aeron-build/aeron-driver/src/main/c/all: _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir/all
+.PHONY : _deps/aeron-build/aeron-driver/src/main/c/all
+
+# Recursive "preinstall" directory target.
+_deps/aeron-build/aeron-driver/src/main/c/preinstall:
+.PHONY : _deps/aeron-build/aeron-driver/src/main/c/preinstall
+
+# Recursive "clean" directory target.
+_deps/aeron-build/aeron-driver/src/main/c/clean: _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/clean
+_deps/aeron-build/aeron-driver/src/main/c/clean: _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/clean
+_deps/aeron-build/aeron-driver/src/main/c/clean: _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir/clean
+_deps/aeron-build/aeron-driver/src/main/c/clean: _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir/clean
+.PHONY : _deps/aeron-build/aeron-driver/src/main/c/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/api_gateway.dir
@@ -81,12 +236,12 @@ clean: CMakeFiles/api_gateway.dir/clean
 CMakeFiles/api_gateway.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/api_gateway.dir/build.make CMakeFiles/api_gateway.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/api_gateway.dir/build.make CMakeFiles/api_gateway.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target api_gateway"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles --progress-num=98,99 "Built target api_gateway"
 .PHONY : CMakeFiles/api_gateway.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/api_gateway.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/api_gateway.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
 .PHONY : CMakeFiles/api_gateway.dir/rule
@@ -99,6 +254,373 @@ api_gateway: CMakeFiles/api_gateway.dir/rule
 CMakeFiles/api_gateway.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/api_gateway.dir/build.make CMakeFiles/api_gateway.dir/clean
 .PHONY : CMakeFiles/api_gateway.dir/clean
+
+#=============================================================================
+# Target rules for target _deps/aeron-build/CMakeFiles/aeron-all-jar.dir
+
+# All Build rule for target.
+_deps/aeron-build/CMakeFiles/aeron-all-jar.dir/all:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/CMakeFiles/aeron-all-jar.dir/build.make _deps/aeron-build/CMakeFiles/aeron-all-jar.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/CMakeFiles/aeron-all-jar.dir/build.make _deps/aeron-build/CMakeFiles/aeron-all-jar.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles --progress-num= "Built target aeron-all-jar"
+.PHONY : _deps/aeron-build/CMakeFiles/aeron-all-jar.dir/all
+
+# Build rule for subdir invocation for target.
+_deps/aeron-build/CMakeFiles/aeron-all-jar.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/aeron-build/CMakeFiles/aeron-all-jar.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
+.PHONY : _deps/aeron-build/CMakeFiles/aeron-all-jar.dir/rule
+
+# Convenience name for target.
+aeron-all-jar: _deps/aeron-build/CMakeFiles/aeron-all-jar.dir/rule
+.PHONY : aeron-all-jar
+
+# clean rule for target.
+_deps/aeron-build/CMakeFiles/aeron-all-jar.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/CMakeFiles/aeron-all-jar.dir/build.make _deps/aeron-build/CMakeFiles/aeron-all-jar.dir/clean
+.PHONY : _deps/aeron-build/CMakeFiles/aeron-all-jar.dir/clean
+
+#=============================================================================
+# Target rules for target _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir
+
+# All Build rule for target.
+_deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/all:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/build.make _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/build.make _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles --progress-num=26,27,28 "Built target aeron_client"
+.PHONY : _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/all
+
+# Build rule for subdir invocation for target.
+_deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
+.PHONY : _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/rule
+
+# Convenience name for target.
+aeron_client: _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/rule
+.PHONY : aeron_client
+
+# clean rule for target.
+_deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/build.make _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/clean
+.PHONY : _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/clean
+
+#=============================================================================
+# Target rules for target _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir
+
+# All Build rule for target.
+_deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir/all:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir/build.make _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir/build.make _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles --progress-num=29,30,31 "Built target aeron_client_shared"
+.PHONY : _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir/all
+
+# Build rule for subdir invocation for target.
+_deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
+.PHONY : _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir/rule
+
+# Convenience name for target.
+aeron_client_shared: _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir/rule
+.PHONY : aeron_client_shared
+
+# clean rule for target.
+_deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir/build.make _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir/clean
+.PHONY : _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir/clean
+
+#=============================================================================
+# Target rules for target _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir
+
+# All Build rule for target.
+_deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/all:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/build.make _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/build.make _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target aeron"
+.PHONY : _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/all
+
+# Build rule for subdir invocation for target.
+_deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 15
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
+.PHONY : _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/rule
+
+# Convenience name for target.
+aeron: _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/rule
+.PHONY : aeron
+
+# clean rule for target.
+_deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/build.make _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/clean
+.PHONY : _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/clean
+
+#=============================================================================
+# Target rules for target _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir
+
+# All Build rule for target.
+_deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/all:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/build.make _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/build.make _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles --progress-num=82,83,84,85,86,87,88,89,90,91,92,93,94,95,96 "Built target aeron_static"
+.PHONY : _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/all
+
+# Build rule for subdir invocation for target.
+_deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 15
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
+.PHONY : _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/rule
+
+# Convenience name for target.
+aeron_static: _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/rule
+.PHONY : aeron_static
+
+# clean rule for target.
+_deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/build.make _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/clean
+.PHONY : _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/clean
+
+#=============================================================================
+# Target rules for target _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir
+
+# All Build rule for target.
+_deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/all:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/build.make _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/build.make _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles --progress-num=32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56 "Built target aeron_driver"
+.PHONY : _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/all
+
+# Build rule for subdir invocation for target.
+_deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 25
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
+.PHONY : _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/rule
+
+# Convenience name for target.
+aeron_driver: _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/rule
+.PHONY : aeron_driver
+
+# clean rule for target.
+_deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/build.make _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/clean
+.PHONY : _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/clean
+
+#=============================================================================
+# Target rules for target _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir
+
+# All Build rule for target.
+_deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/all:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/build.make _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/build.make _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles --progress-num=57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81 "Built target aeron_driver_static"
+.PHONY : _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/all
+
+# Build rule for subdir invocation for target.
+_deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 25
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
+.PHONY : _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/rule
+
+# Convenience name for target.
+aeron_driver_static: _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/rule
+.PHONY : aeron_driver_static
+
+# clean rule for target.
+_deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/build.make _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/clean
+.PHONY : _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/clean
+
+#=============================================================================
+# Target rules for target _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir
+
+# All Build rule for target.
+_deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir/all: _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/all
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir/build.make _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir/build.make _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles --progress-num=97 "Built target aeronmd"
+.PHONY : _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir/all
+
+# Build rule for subdir invocation for target.
+_deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 26
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
+.PHONY : _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir/rule
+
+# Convenience name for target.
+aeronmd: _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir/rule
+.PHONY : aeronmd
+
+# clean rule for target.
+_deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir/build.make _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir/clean
+.PHONY : _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir/clean
+
+#=============================================================================
+# Target rules for target _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir
+
+# All Build rule for target.
+_deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir/all: _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/all
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir/build.make _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir/build.make _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles --progress-num= "Built target aeronmd_s"
+.PHONY : _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir/all
+
+# Build rule for subdir invocation for target.
+_deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 25
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
+.PHONY : _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir/rule
+
+# Convenience name for target.
+aeronmd_s: _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir/rule
+.PHONY : aeronmd_s
+
+# clean rule for target.
+_deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir/build.make _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir/clean
+.PHONY : _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir/clean
+
+#=============================================================================
+# Target rules for target _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir
+
+# All Build rule for target.
+_deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir/all: _deps/aeron-build/CMakeFiles/aeron-all-jar.dir/all
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir/build.make _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir/build.make _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles --progress-num=100 "Built target codecs"
+.PHONY : _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir/all
+
+# Build rule for subdir invocation for target.
+_deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
+.PHONY : _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir/rule
+
+# Convenience name for target.
+codecs: _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir/rule
+.PHONY : codecs
+
+# clean rule for target.
+_deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir/build.make _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir/clean
+.PHONY : _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir/clean
+
+#=============================================================================
+# Target rules for target _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir
+
+# All Build rule for target.
+_deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/all: _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/all
+_deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/all: _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir/all
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/build.make _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/build.make _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles --progress-num=23,24,25 "Built target aeron_archive_client"
+.PHONY : _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/all
+
+# Build rule for subdir invocation for target.
+_deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
+.PHONY : _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/rule
+
+# Convenience name for target.
+aeron_archive_client: _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/rule
+.PHONY : aeron_archive_client
+
+# clean rule for target.
+_deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/build.make _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/clean
+.PHONY : _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/clean
+
+#=============================================================================
+# Target rules for target _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir
+
+# All Build rule for target.
+_deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/all: _deps/aeron-build/CMakeFiles/aeron-all-jar.dir/all
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/build.make _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/build.make _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles --progress-num= "Built target c_codecs"
+.PHONY : _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/all
+
+# Build rule for subdir invocation for target.
+_deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
+.PHONY : _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/rule
+
+# Convenience name for target.
+c_codecs: _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/rule
+.PHONY : c_codecs
+
+# clean rule for target.
+_deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/build.make _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/clean
+.PHONY : _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/clean
+
+#=============================================================================
+# Target rules for target _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir
+
+# All Build rule for target.
+_deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/all: _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/all
+_deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/all: _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/all
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/build.make _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/build.make _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles --progress-num=16,17,18,19 "Built target aeron_archive_c_client"
+.PHONY : _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/all
+
+# Build rule for subdir invocation for target.
+_deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 19
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
+.PHONY : _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/rule
+
+# Convenience name for target.
+aeron_archive_c_client: _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/rule
+.PHONY : aeron_archive_c_client
+
+# clean rule for target.
+_deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/build.make _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/clean
+.PHONY : _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/clean
+
+#=============================================================================
+# Target rules for target _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir
+
+# All Build rule for target.
+_deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/all: _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/all
+_deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/all: _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/all
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/build.make _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/build.make _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles --progress-num=20,21,22 "Built target aeron_archive_c_client_static"
+.PHONY : _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/all
+
+# Build rule for subdir invocation for target.
+_deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 18
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles 0
+.PHONY : _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/rule
+
+# Convenience name for target.
+aeron_archive_c_client_static: _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/rule
+.PHONY : aeron_archive_c_client_static
+
+# clean rule for target.
+_deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/build.make _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/clean
+.PHONY : _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

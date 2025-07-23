@@ -65,6 +65,26 @@ CMAKE_BINARY_DIR = /home/it-admin/Desktop/Api_Gateway/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
+	/usr/local/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+.PHONY : package/fast
+
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
+	/usr/local/bin/cpack --config ./CPackSourceConfig.cmake /home/it-admin/Desktop/Api_Gateway/build/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+.PHONY : package_source/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
@@ -128,6 +148,188 @@ api_gateway: cmake_check_build_system
 api_gateway/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/api_gateway.dir/build.make CMakeFiles/api_gateway.dir/build
 .PHONY : api_gateway/fast
+
+#=============================================================================
+# Target rules for targets named aeron-all-jar
+
+# Build rule for target.
+aeron-all-jar: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 aeron-all-jar
+.PHONY : aeron-all-jar
+
+# fast build rule for target.
+aeron-all-jar/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/CMakeFiles/aeron-all-jar.dir/build.make _deps/aeron-build/CMakeFiles/aeron-all-jar.dir/build
+.PHONY : aeron-all-jar/fast
+
+#=============================================================================
+# Target rules for targets named aeron_client
+
+# Build rule for target.
+aeron_client: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 aeron_client
+.PHONY : aeron_client
+
+# fast build rule for target.
+aeron_client/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/build.make _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client.dir/build
+.PHONY : aeron_client/fast
+
+#=============================================================================
+# Target rules for targets named aeron_client_shared
+
+# Build rule for target.
+aeron_client_shared: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 aeron_client_shared
+.PHONY : aeron_client_shared
+
+# fast build rule for target.
+aeron_client_shared/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir/build.make _deps/aeron-build/aeron-client/src/main/cpp/CMakeFiles/aeron_client_shared.dir/build
+.PHONY : aeron_client_shared/fast
+
+#=============================================================================
+# Target rules for targets named aeron
+
+# Build rule for target.
+aeron: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 aeron
+.PHONY : aeron
+
+# fast build rule for target.
+aeron/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/build.make _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron.dir/build
+.PHONY : aeron/fast
+
+#=============================================================================
+# Target rules for targets named aeron_static
+
+# Build rule for target.
+aeron_static: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 aeron_static
+.PHONY : aeron_static
+
+# fast build rule for target.
+aeron_static/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/build.make _deps/aeron-build/aeron-client/src/main/c/CMakeFiles/aeron_static.dir/build
+.PHONY : aeron_static/fast
+
+#=============================================================================
+# Target rules for targets named aeron_driver
+
+# Build rule for target.
+aeron_driver: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 aeron_driver
+.PHONY : aeron_driver
+
+# fast build rule for target.
+aeron_driver/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/build.make _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver.dir/build
+.PHONY : aeron_driver/fast
+
+#=============================================================================
+# Target rules for targets named aeron_driver_static
+
+# Build rule for target.
+aeron_driver_static: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 aeron_driver_static
+.PHONY : aeron_driver_static
+
+# fast build rule for target.
+aeron_driver_static/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/build.make _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeron_driver_static.dir/build
+.PHONY : aeron_driver_static/fast
+
+#=============================================================================
+# Target rules for targets named aeronmd
+
+# Build rule for target.
+aeronmd: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 aeronmd
+.PHONY : aeronmd
+
+# fast build rule for target.
+aeronmd/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir/build.make _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd.dir/build
+.PHONY : aeronmd/fast
+
+#=============================================================================
+# Target rules for targets named aeronmd_s
+
+# Build rule for target.
+aeronmd_s: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 aeronmd_s
+.PHONY : aeronmd_s
+
+# fast build rule for target.
+aeronmd_s/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir/build.make _deps/aeron-build/aeron-driver/src/main/c/CMakeFiles/aeronmd_s.dir/build
+.PHONY : aeronmd_s/fast
+
+#=============================================================================
+# Target rules for targets named codecs
+
+# Build rule for target.
+codecs: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 codecs
+.PHONY : codecs
+
+# fast build rule for target.
+codecs/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir/build.make _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs.dir/build
+.PHONY : codecs/fast
+
+#=============================================================================
+# Target rules for targets named aeron_archive_client
+
+# Build rule for target.
+aeron_archive_client: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 aeron_archive_client
+.PHONY : aeron_archive_client
+
+# fast build rule for target.
+aeron_archive_client/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/build.make _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/aeron_archive_client.dir/build
+.PHONY : aeron_archive_client/fast
+
+#=============================================================================
+# Target rules for targets named c_codecs
+
+# Build rule for target.
+c_codecs: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_codecs
+.PHONY : c_codecs
+
+# fast build rule for target.
+c_codecs/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/build.make _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs.dir/build
+.PHONY : c_codecs/fast
+
+#=============================================================================
+# Target rules for targets named aeron_archive_c_client
+
+# Build rule for target.
+aeron_archive_c_client: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 aeron_archive_c_client
+.PHONY : aeron_archive_c_client
+
+# fast build rule for target.
+aeron_archive_c_client/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/build.make _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client.dir/build
+.PHONY : aeron_archive_c_client/fast
+
+#=============================================================================
+# Target rules for targets named aeron_archive_c_client_static
+
+# Build rule for target.
+aeron_archive_c_client_static: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 aeron_archive_c_client_static
+.PHONY : aeron_archive_c_client_static
+
+# fast build rule for target.
+aeron_archive_c_client_static/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/build.make _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/aeron_archive_c_client_static.dir/build
+.PHONY : aeron_archive_c_client_static/fast
 
 src/AeronReceiver.o: src/AeronReceiver.cpp.o
 .PHONY : src/AeronReceiver.o
@@ -304,7 +506,23 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... package"
+	@echo "... package_source"
 	@echo "... rebuild_cache"
+	@echo "... aeron-all-jar"
+	@echo "... c_codecs"
+	@echo "... codecs"
+	@echo "... aeron"
+	@echo "... aeron_archive_c_client"
+	@echo "... aeron_archive_c_client_static"
+	@echo "... aeron_archive_client"
+	@echo "... aeron_client"
+	@echo "... aeron_client_shared"
+	@echo "... aeron_driver"
+	@echo "... aeron_driver_static"
+	@echo "... aeron_static"
+	@echo "... aeronmd"
+	@echo "... aeronmd_s"
 	@echo "... api_gateway"
 	@echo "... src/AeronReceiver.o"
 	@echo "... src/AeronReceiver.i"

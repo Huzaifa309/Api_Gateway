@@ -696,3 +696,512 @@ events:
       stderr: |
       exitCode: 0
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "build/_deps/aeron-src/aeron-client/src/main/c/CMakeLists.txt:49 (check_include_file)"
+    checks:
+      - "Looking for bsd/stdlib.h"
+    directories:
+      source: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-PKZeeP"
+      binary: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-PKZeeP"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/local/lib/cmake/Drogon;/usr/local/lib/cmake/Trantor"
+    buildResult:
+      variable: "BSDSTDLIB_H_EXISTS"
+      cached: true
+      stdout: |
+        Change Dir: '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-PKZeeP'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_efb7d/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_efb7d.dir/build.make CMakeFiles/cmTC_efb7d.dir/build
+        gmake[1]: Entering directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-PKZeeP'
+        Building C object CMakeFiles/cmTC_efb7d.dir/CheckIncludeFile.c.o
+        /usr/bin/cc -D_GNU_SOURCE  -std=c11 -o CMakeFiles/cmTC_efb7d.dir/CheckIncludeFile.c.o -c /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-PKZeeP/CheckIncludeFile.c
+        /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-PKZeeP/CheckIncludeFile.c:1:10: fatal error: bsd/stdlib.h: No such file or directory
+            1 | #include <bsd/stdlib.h>
+              |          ^~~~~~~~~~~~~~
+        compilation terminated.
+        gmake[1]: *** [CMakeFiles/cmTC_efb7d.dir/build.make:78: CMakeFiles/cmTC_efb7d.dir/CheckIncludeFile.c.o] Error 1
+        gmake[1]: Leaving directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-PKZeeP'
+        gmake: *** [Makefile:127: cmTC_efb7d/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.30/Modules/CheckSymbolExists.cmake:154 (try_compile)"
+      - "/usr/local/share/cmake-3.30/Modules/CheckSymbolExists.cmake:66 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "build/_deps/aeron-src/aeron-client/src/main/c/CMakeLists.txt:57 (check_symbol_exists)"
+    checks:
+      - "Looking for arc4random"
+    directories:
+      source: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-1gvKyW"
+      binary: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-1gvKyW"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/local/lib/cmake/Drogon;/usr/local/lib/cmake/Trantor"
+    buildResult:
+      variable: "ARC4RANDOM_PROTOTYPE_EXISTS"
+      cached: true
+      stdout: |
+        Change Dir: '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-1gvKyW'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_904ab/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_904ab.dir/build.make CMakeFiles/cmTC_904ab.dir/build
+        gmake[1]: Entering directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-1gvKyW'
+        Building C object CMakeFiles/cmTC_904ab.dir/CheckSymbolExists.c.o
+        /usr/bin/cc -D_GNU_SOURCE  -std=c11 -o CMakeFiles/cmTC_904ab.dir/CheckSymbolExists.c.o -c /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-1gvKyW/CheckSymbolExists.c
+        /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-1gvKyW/CheckSymbolExists.c: In function ‘main’:
+        /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-1gvKyW/CheckSymbolExists.c:8:19: error: ‘arc4random’ undeclared (first use in this function); did you mean ‘srandom’?
+            8 |   return ((int*)(&arc4random))[argc];
+              |                   ^~~~~~~~~~
+              |                   srandom
+        /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-1gvKyW/CheckSymbolExists.c:8:19: note: each undeclared identifier is reported only once for each function it appears in
+        gmake[1]: *** [CMakeFiles/cmTC_904ab.dir/build.make:78: CMakeFiles/cmTC_904ab.dir/CheckSymbolExists.c.o] Error 1
+        gmake[1]: Leaving directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-1gvKyW'
+        gmake: *** [Makefile:127: cmTC_904ab/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.30/Modules/CheckSymbolExists.cmake:154 (try_compile)"
+      - "/usr/local/share/cmake-3.30/Modules/CheckSymbolExists.cmake:66 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "build/_deps/aeron-src/aeron-client/src/main/c/CMakeLists.txt:63 (check_symbol_exists)"
+    checks:
+      - "Looking for fallocate"
+    directories:
+      source: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-K8ByHa"
+      binary: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-K8ByHa"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/local/lib/cmake/Drogon;/usr/local/lib/cmake/Trantor"
+    buildResult:
+      variable: "FALLOCATE_PROTOTYPE_EXISTS"
+      cached: true
+      stdout: |
+        Change Dir: '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-K8ByHa'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_390da/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_390da.dir/build.make CMakeFiles/cmTC_390da.dir/build
+        gmake[1]: Entering directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-K8ByHa'
+        Building C object CMakeFiles/cmTC_390da.dir/CheckSymbolExists.c.o
+        /usr/bin/cc -D_GNU_SOURCE  -std=c11 -o CMakeFiles/cmTC_390da.dir/CheckSymbolExists.c.o -c /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-K8ByHa/CheckSymbolExists.c
+        Linking C executable cmTC_390da
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_390da.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_390da.dir/CheckSymbolExists.c.o -o cmTC_390da
+        gmake[1]: Leaving directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-K8ByHa'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.30/Modules/CheckSymbolExists.cmake:154 (try_compile)"
+      - "/usr/local/share/cmake-3.30/Modules/CheckSymbolExists.cmake:66 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "build/_deps/aeron-src/aeron-client/src/main/c/CMakeLists.txt:64 (check_symbol_exists)"
+    checks:
+      - "Looking for posix_fallocate"
+    directories:
+      source: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-yAD2DY"
+      binary: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-yAD2DY"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/local/lib/cmake/Drogon;/usr/local/lib/cmake/Trantor"
+    buildResult:
+      variable: "POSIX_FALLOCATE_PROTOTYPE_EXISTS"
+      cached: true
+      stdout: |
+        Change Dir: '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-yAD2DY'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_acb84/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_acb84.dir/build.make CMakeFiles/cmTC_acb84.dir/build
+        gmake[1]: Entering directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-yAD2DY'
+        Building C object CMakeFiles/cmTC_acb84.dir/CheckSymbolExists.c.o
+        /usr/bin/cc -D_GNU_SOURCE  -std=c11 -o CMakeFiles/cmTC_acb84.dir/CheckSymbolExists.c.o -c /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-yAD2DY/CheckSymbolExists.c
+        Linking C executable cmTC_acb84
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_acb84.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_acb84.dir/CheckSymbolExists.c.o -o cmTC_acb84
+        gmake[1]: Leaving directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-yAD2DY'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.30/Modules/CheckSymbolExists.cmake:154 (try_compile)"
+      - "/usr/local/share/cmake-3.30/Modules/CheckSymbolExists.cmake:66 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "build/_deps/aeron-src/aeron-client/src/main/c/CMakeLists.txt:65 (check_symbol_exists)"
+    checks:
+      - "Looking for F_PREALLOCATE"
+    directories:
+      source: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-s3jpRi"
+      binary: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-s3jpRi"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/local/lib/cmake/Drogon;/usr/local/lib/cmake/Trantor"
+    buildResult:
+      variable: "F_PREALLOCATE_PROTOTYPE_EXISTS"
+      cached: true
+      stdout: |
+        Change Dir: '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-s3jpRi'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c0ce8/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_c0ce8.dir/build.make CMakeFiles/cmTC_c0ce8.dir/build
+        gmake[1]: Entering directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-s3jpRi'
+        Building C object CMakeFiles/cmTC_c0ce8.dir/CheckSymbolExists.c.o
+        /usr/bin/cc -D_GNU_SOURCE  -std=c11 -o CMakeFiles/cmTC_c0ce8.dir/CheckSymbolExists.c.o -c /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-s3jpRi/CheckSymbolExists.c
+        /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-s3jpRi/CheckSymbolExists.c: In function ‘main’:
+        /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-s3jpRi/CheckSymbolExists.c:8:19: error: ‘F_PREALLOCATE’ undeclared (first use in this function)
+            8 |   return ((int*)(&F_PREALLOCATE))[argc];
+              |                   ^~~~~~~~~~~~~
+        /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-s3jpRi/CheckSymbolExists.c:8:19: note: each undeclared identifier is reported only once for each function it appears in
+        gmake[1]: *** [CMakeFiles/cmTC_c0ce8.dir/build.make:78: CMakeFiles/cmTC_c0ce8.dir/CheckSymbolExists.c.o] Error 1
+        gmake[1]: Leaving directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-s3jpRi'
+        gmake: *** [Makefile:127: cmTC_c0ce8/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "build/_deps/aeron-src/aeron-driver/src/main/c/CMakeLists.txt:39 (check_include_file)"
+    checks:
+      - "Looking for uuid/uuid.h"
+    directories:
+      source: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-B3AB0Y"
+      binary: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-B3AB0Y"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/local/lib/cmake/Drogon;/usr/local/lib/cmake/Trantor"
+    buildResult:
+      variable: "UUID_H_EXISTS"
+      cached: true
+      stdout: |
+        Change Dir: '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-B3AB0Y'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_5ec4b/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_5ec4b.dir/build.make CMakeFiles/cmTC_5ec4b.dir/build
+        gmake[1]: Entering directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-B3AB0Y'
+        Building C object CMakeFiles/cmTC_5ec4b.dir/CheckIncludeFile.c.o
+        /usr/bin/cc -D_GNU_SOURCE  -std=c11 -o CMakeFiles/cmTC_5ec4b.dir/CheckIncludeFile.c.o -c /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-B3AB0Y/CheckIncludeFile.c
+        Linking C executable cmTC_5ec4b
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5ec4b.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_5ec4b.dir/CheckIncludeFile.c.o -o cmTC_5ec4b
+        gmake[1]: Leaving directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-B3AB0Y'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.30/Modules/CheckSymbolExists.cmake:154 (try_compile)"
+      - "/usr/local/share/cmake-3.30/Modules/CheckSymbolExists.cmake:66 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "build/_deps/aeron-src/aeron-driver/src/main/c/CMakeLists.txt:67 (check_symbol_exists)"
+    checks:
+      - "Looking for uuid_generate"
+    directories:
+      source: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-BXFSko"
+      binary: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-BXFSko"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/local/lib/cmake/Drogon;/usr/local/lib/cmake/Trantor"
+    buildResult:
+      variable: "UUID_GENERATE_PROTOTYPE_EXISTS"
+      cached: true
+      stdout: |
+        Change Dir: '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-BXFSko'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_07e22/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_07e22.dir/build.make CMakeFiles/cmTC_07e22.dir/build
+        gmake[1]: Entering directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-BXFSko'
+        Building C object CMakeFiles/cmTC_07e22.dir/CheckSymbolExists.c.o
+        /usr/bin/cc -D_GNU_SOURCE  -std=c11 -o CMakeFiles/cmTC_07e22.dir/CheckSymbolExists.c.o -c /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-BXFSko/CheckSymbolExists.c
+        Linking C executable cmTC_07e22
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_07e22.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_07e22.dir/CheckSymbolExists.c.o -o cmTC_07e22  -luuid
+        gmake[1]: Leaving directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-BXFSko'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.30/Modules/CheckSymbolExists.cmake:154 (try_compile)"
+      - "/usr/local/share/cmake-3.30/Modules/CheckSymbolExists.cmake:66 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "build/_deps/aeron-src/aeron-driver/src/main/c/CMakeLists.txt:69 (check_symbol_exists)"
+    checks:
+      - "Looking for poll"
+    directories:
+      source: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-Ps6o74"
+      binary: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-Ps6o74"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/local/lib/cmake/Drogon;/usr/local/lib/cmake/Trantor"
+    buildResult:
+      variable: "POLL_PROTOTYPE_EXISTS"
+      cached: true
+      stdout: |
+        Change Dir: '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-Ps6o74'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_242ea/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_242ea.dir/build.make CMakeFiles/cmTC_242ea.dir/build
+        gmake[1]: Entering directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-Ps6o74'
+        Building C object CMakeFiles/cmTC_242ea.dir/CheckSymbolExists.c.o
+        /usr/bin/cc -D_GNU_SOURCE  -std=c11 -o CMakeFiles/cmTC_242ea.dir/CheckSymbolExists.c.o -c /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-Ps6o74/CheckSymbolExists.c
+        Linking C executable cmTC_242ea
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_242ea.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_242ea.dir/CheckSymbolExists.c.o -o cmTC_242ea  -luuid
+        gmake[1]: Leaving directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-Ps6o74'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.30/Modules/CheckSymbolExists.cmake:154 (try_compile)"
+      - "/usr/local/share/cmake-3.30/Modules/CheckSymbolExists.cmake:66 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "build/_deps/aeron-src/aeron-driver/src/main/c/CMakeLists.txt:70 (check_symbol_exists)"
+    checks:
+      - "Looking for epoll_create"
+    directories:
+      source: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-5VsUgr"
+      binary: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-5VsUgr"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/local/lib/cmake/Drogon;/usr/local/lib/cmake/Trantor"
+    buildResult:
+      variable: "EPOLL_PROTOTYPE_EXISTS"
+      cached: true
+      stdout: |
+        Change Dir: '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-5VsUgr'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_0c783/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_0c783.dir/build.make CMakeFiles/cmTC_0c783.dir/build
+        gmake[1]: Entering directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-5VsUgr'
+        Building C object CMakeFiles/cmTC_0c783.dir/CheckSymbolExists.c.o
+        /usr/bin/cc -D_GNU_SOURCE  -std=c11 -o CMakeFiles/cmTC_0c783.dir/CheckSymbolExists.c.o -c /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-5VsUgr/CheckSymbolExists.c
+        Linking C executable cmTC_0c783
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0c783.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_0c783.dir/CheckSymbolExists.c.o -o cmTC_0c783  -luuid
+        gmake[1]: Leaving directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-5VsUgr'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "/usr/local/share/cmake-3.30/Modules/CheckTypeSize.cmake:251 (check_include_file)"
+      - "build/_deps/aeron-src/aeron-driver/src/main/c/CMakeLists.txt:73 (check_type_size)"
+    checks:
+      - "Looking for sys/types.h"
+    directories:
+      source: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-L71YWK"
+      binary: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-L71YWK"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/local/lib/cmake/Drogon;/usr/local/lib/cmake/Trantor"
+    buildResult:
+      variable: "HAVE_SYS_TYPES_H"
+      cached: true
+      stdout: |
+        Change Dir: '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-L71YWK'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_bb00e/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_bb00e.dir/build.make CMakeFiles/cmTC_bb00e.dir/build
+        gmake[1]: Entering directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-L71YWK'
+        Building C object CMakeFiles/cmTC_bb00e.dir/CheckIncludeFile.c.o
+        /usr/bin/cc -D_GNU_SOURCE  -std=c11 -o CMakeFiles/cmTC_bb00e.dir/CheckIncludeFile.c.o -c /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-L71YWK/CheckIncludeFile.c
+        Linking C executable cmTC_bb00e
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bb00e.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_bb00e.dir/CheckIncludeFile.c.o -o cmTC_bb00e  -luuid
+        gmake[1]: Leaving directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-L71YWK'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "/usr/local/share/cmake-3.30/Modules/CheckTypeSize.cmake:252 (check_include_file)"
+      - "build/_deps/aeron-src/aeron-driver/src/main/c/CMakeLists.txt:73 (check_type_size)"
+    checks:
+      - "Looking for stdint.h"
+    directories:
+      source: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-aQkcbk"
+      binary: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-aQkcbk"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/local/lib/cmake/Drogon;/usr/local/lib/cmake/Trantor"
+    buildResult:
+      variable: "HAVE_STDINT_H"
+      cached: true
+      stdout: |
+        Change Dir: '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-aQkcbk'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_79c21/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_79c21.dir/build.make CMakeFiles/cmTC_79c21.dir/build
+        gmake[1]: Entering directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-aQkcbk'
+        Building C object CMakeFiles/cmTC_79c21.dir/CheckIncludeFile.c.o
+        /usr/bin/cc -D_GNU_SOURCE  -std=c11 -o CMakeFiles/cmTC_79c21.dir/CheckIncludeFile.c.o -c /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-aQkcbk/CheckIncludeFile.c
+        Linking C executable cmTC_79c21
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_79c21.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_79c21.dir/CheckIncludeFile.c.o -o cmTC_79c21  -luuid
+        gmake[1]: Leaving directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-aQkcbk'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "/usr/local/share/cmake-3.30/Modules/CheckTypeSize.cmake:253 (check_include_file)"
+      - "build/_deps/aeron-src/aeron-driver/src/main/c/CMakeLists.txt:73 (check_type_size)"
+    checks:
+      - "Looking for stddef.h"
+    directories:
+      source: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-v5o0w9"
+      binary: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-v5o0w9"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/local/lib/cmake/Drogon;/usr/local/lib/cmake/Trantor"
+    buildResult:
+      variable: "HAVE_STDDEF_H"
+      cached: true
+      stdout: |
+        Change Dir: '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-v5o0w9'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_8f9e5/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_8f9e5.dir/build.make CMakeFiles/cmTC_8f9e5.dir/build
+        gmake[1]: Entering directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-v5o0w9'
+        Building C object CMakeFiles/cmTC_8f9e5.dir/CheckIncludeFile.c.o
+        /usr/bin/cc -D_GNU_SOURCE  -std=c11 -o CMakeFiles/cmTC_8f9e5.dir/CheckIncludeFile.c.o -c /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-v5o0w9/CheckIncludeFile.c
+        Linking C executable cmTC_8f9e5
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8f9e5.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_8f9e5.dir/CheckIncludeFile.c.o -o cmTC_8f9e5  -luuid
+        gmake[1]: Leaving directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-v5o0w9'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.30/Modules/CheckTypeSize.cmake:147 (try_compile)"
+      - "/usr/local/share/cmake-3.30/Modules/CheckTypeSize.cmake:272 (__check_type_size_impl)"
+      - "build/_deps/aeron-src/aeron-driver/src/main/c/CMakeLists.txt:73 (check_type_size)"
+    checks:
+      - "Check size of struct mmsghdr"
+    directories:
+      source: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-gQ4lfU"
+      binary: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-gQ4lfU"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/local/lib/cmake/Drogon;/usr/local/lib/cmake/Trantor"
+    buildResult:
+      variable: "HAVE_STRUCT_MMSGHDR_TYPE_EXISTS"
+      cached: true
+      stdout: |
+        Change Dir: '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-gQ4lfU'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c2ee1/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_c2ee1.dir/build.make CMakeFiles/cmTC_c2ee1.dir/build
+        gmake[1]: Entering directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-gQ4lfU'
+        Building C object CMakeFiles/cmTC_c2ee1.dir/STRUCT_MMSGHDR_TYPE_EXISTS.c.o
+        /usr/bin/cc -D_GNU_SOURCE  -std=c11 -o CMakeFiles/cmTC_c2ee1.dir/STRUCT_MMSGHDR_TYPE_EXISTS.c.o -c /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-gQ4lfU/STRUCT_MMSGHDR_TYPE_EXISTS.c
+        Linking C executable cmTC_c2ee1
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c2ee1.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_c2ee1.dir/STRUCT_MMSGHDR_TYPE_EXISTS.c.o -o cmTC_c2ee1  -luuid
+        gmake[1]: Leaving directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-gQ4lfU'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.30/Modules/CheckSymbolExists.cmake:154 (try_compile)"
+      - "/usr/local/share/cmake-3.30/Modules/CheckSymbolExists.cmake:66 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "build/_deps/aeron-src/aeron-driver/src/main/c/CMakeLists.txt:76 (check_symbol_exists)"
+    checks:
+      - "Looking for recvmmsg"
+    directories:
+      source: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-uuLYZQ"
+      binary: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-uuLYZQ"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/local/lib/cmake/Drogon;/usr/local/lib/cmake/Trantor"
+    buildResult:
+      variable: "RECVMMSG_PROTOTYPE_EXISTS"
+      cached: true
+      stdout: |
+        Change Dir: '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-uuLYZQ'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_40a2b/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_40a2b.dir/build.make CMakeFiles/cmTC_40a2b.dir/build
+        gmake[1]: Entering directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-uuLYZQ'
+        Building C object CMakeFiles/cmTC_40a2b.dir/CheckSymbolExists.c.o
+        /usr/bin/cc -D_GNU_SOURCE  -std=c11 -o CMakeFiles/cmTC_40a2b.dir/CheckSymbolExists.c.o -c /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-uuLYZQ/CheckSymbolExists.c
+        Linking C executable cmTC_40a2b
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_40a2b.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_40a2b.dir/CheckSymbolExists.c.o -o cmTC_40a2b  -luuid
+        gmake[1]: Leaving directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-uuLYZQ'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.30/Modules/CheckSymbolExists.cmake:154 (try_compile)"
+      - "/usr/local/share/cmake-3.30/Modules/CheckSymbolExists.cmake:66 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "build/_deps/aeron-src/aeron-driver/src/main/c/CMakeLists.txt:77 (check_symbol_exists)"
+    checks:
+      - "Looking for sendmmsg"
+    directories:
+      source: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-TfoafU"
+      binary: "/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-TfoafU"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/local/lib/cmake/Drogon;/usr/local/lib/cmake/Trantor"
+    buildResult:
+      variable: "SENDMMSG_PROTOTYPE_EXISTS"
+      cached: true
+      stdout: |
+        Change Dir: '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-TfoafU'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_ada2b/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_ada2b.dir/build.make CMakeFiles/cmTC_ada2b.dir/build
+        gmake[1]: Entering directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-TfoafU'
+        Building C object CMakeFiles/cmTC_ada2b.dir/CheckSymbolExists.c.o
+        /usr/bin/cc -D_GNU_SOURCE  -std=c11 -o CMakeFiles/cmTC_ada2b.dir/CheckSymbolExists.c.o -c /home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-TfoafU/CheckSymbolExists.c
+        Linking C executable cmTC_ada2b
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ada2b.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_ada2b.dir/CheckSymbolExists.c.o -o cmTC_ada2b  -luuid
+        gmake[1]: Leaving directory '/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/CMakeScratch/TryCompile-TfoafU'
+        
+      exitCode: 0
+...

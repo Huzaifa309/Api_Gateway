@@ -190,6 +190,7 @@ api_gateway: CMakeFiles/api_gateway.dir/src/main.cpp.o
 api_gateway: CMakeFiles/api_gateway.dir/build.make
 api_gateway: /usr/local/lib/libdrogon.a
 api_gateway: /home/it-admin/aeron-sbe-setup/aeron/build/lib/libaeron_client.a
+api_gateway: /home/it-admin/Desktop/Api_Gateway/lib/libaeronWrapper.a
 api_gateway: /usr/local/lib/libtrantor.a
 api_gateway: /usr/lib/x86_64-linux-gnu/libssl.so
 api_gateway: /usr/lib/x86_64-linux-gnu/libcrypto.so

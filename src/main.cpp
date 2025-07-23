@@ -13,6 +13,7 @@
 #include <thread>
 #include <atomic>
 #include <chrono>
+#include "aeron_wrapper.h"
 using namespace std;
 // Global flag for graceful shutdown
 std::atomic<bool> running{true};
@@ -59,7 +60,7 @@ int main() {
             int attempts = 0;
             while (!publication && attempts++ < 100) {
                 Logger::getInstance().log("[Main] Waiting for publication, attempt " + std::to_string(attempts));
-                std::this_thread::sleep_for(std::chrono::milliseconds(10));
+                std::this_thread::sleep_for(std::chrono::milliseconds(1));
                 publication = aeronClient->findPublication(pubId);
             }
 
@@ -76,7 +77,7 @@ int main() {
             // Wait for subscription to be ready
             attempts = 0;
             while (!subscription && attempts++ < 100) {
-                std::this_thread::sleep_for(std::chrono::milliseconds(10));
+                std::this_thread::sleep_for(std::chrono::milliseconds(1));
                 subscription = aeronClient->findSubscription(subId);
             }
 
@@ -111,12 +112,6 @@ int main() {
         drogon::app()
             .addListener("0.0.0.0", 8080)
             .setThreadNum(1)
-            .registerHandler("/api/identity", 
-                [](const drogon::HttpRequestPtr &req,
-                   std::function<void(const drogon::HttpResponsePtr &)> &&callback) {
-                    RequestHandler handler;
-                    handler.DataPass(req, std::move(callback));
-                })
             .registerPostHandlingAdvice([](const drogon::HttpRequestPtr&, const drogon::HttpResponsePtr&) {
                 // Keep alive check
                 if (!running) {

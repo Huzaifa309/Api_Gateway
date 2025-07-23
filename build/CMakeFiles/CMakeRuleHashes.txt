@@ -1,0 +1,7 @@
+# Hashes of file build rules.
+197ccb084b8a68cb3afff6a84df81515 _deps/aeron-build/CMakeFiles/aeron-all-jar
+32aff1576c503eb2a4f2bd829c5fa699 _deps/aeron-build/aeron-archive/src/main/c/CMakeFiles/c_codecs
+f6dd3fe869f8fd1127e11cb1e8bd66fc _deps/aeron-build/aeron-archive/src/main/cpp/CMakeFiles/codecs
+ffbb58a120557f19d707152ea54ed115 _deps/aeron-build/generated/aeron_archive_client/BoundedReplayRequest.h
+7dc0ae0aee328100d0107457c490b597 _deps/aeron-build/generated/aeron_c_archive_client/archiveIdRequest.h
+f0fe17dfb372fe9f6489310f74709554 _deps/aeron-src/aeron-all/build/libs/aeron-all-1.49.0-SNAPSHOT.jar

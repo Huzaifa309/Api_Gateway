@@ -36,8 +36,36 @@ void aeronReceiverThread(std::shared_ptr<Subscription> subscription)
                 std::string dateOfExpiry = identity.dateOfExpiry().getCharValAsString();
                 std::string address = identity.address().getCharValAsString();
                 std::string verified = identity.verified().getCharValAsString();
+                
                 Logger::getInstance().log("[T3] SBE Decoded: msg=" + msg + ", type=" + type + ", id=" + id + ", name=" + name + ", dateOfIssue=" + dateOfIssue + ", dateOfExpiry=" + dateOfExpiry + ", address=" + address + ", verified=" + verified);
-                // You can now build a JSON response if you want, using these fields
+                
+                // 4. Convert to JSON and enqueue in ResponseQueue
+                json responseJson;
+                responseJson["msg"] = msg;
+                responseJson["type"] = type;
+                responseJson["id"] = id;
+                responseJson["name"] = name;
+                responseJson["dateOfIssue"] = dateOfIssue;
+                responseJson["dateOfExpiry"] = dateOfExpiry;
+                responseJson["address"] = address;
+                responseJson["verified"] = verified;
+                responseJson["source"] = "aeron_sbe";
+                responseJson["timestamp"] = std::chrono::duration_cast<std::chrono::milliseconds>(
+                    std::chrono::system_clock::now().time_since_epoch()
+                ).count();
+                
+                std::string jsonString = responseJson.dump();
+                Logger::getInstance().log("[T3] JSON created: " + jsonString);
+                
+                // Create GatewayTask and enqueue in ResponseQueue
+                GatewayTask responseTask;
+                responseTask.json = jsonString;
+                // responseTask.request = nullptr; // No HTTP request for Aeron responses
+                // responseTask.callback = nullptr; // No callback for Aeron responses
+                
+                ResponseQueue.enqueue(responseTask);
+                Logger::getInstance().log("[T3] Response enqueued in ResponseQueue");
+                
             } else {
                 Logger::getInstance().log("[T3] Unexpected template ID: " + std::to_string(msgHeader.templateId()));
             }
