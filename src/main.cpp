@@ -8,7 +8,7 @@
 #include "RequestHandler.h"
 #include "ResponseDispatcher.h"
 #include "Subscription.h"
-#include "aeron_wrapper.h"
+
 #include <atomic>
 #include <chrono>
 #include <drogon/drogon.h>

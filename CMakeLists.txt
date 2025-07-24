@@ -18,7 +18,6 @@ include_directories(
     ${DROGON_INCLUDE_DIRS}            # ✅ Drogon headers
     external/concurrentqueue          # ✅ If used in your project
     external/sbe/my_app_messages      # ✅ Your SBE-generated headers
-    external/wrapper                  # ✅ Your wrapper headers
 )
 
 # === Source files, excluding decoder.cpp ===
@@ -32,7 +31,6 @@ add_executable(api_gateway ${SRC_FILES})
 target_link_libraries(api_gateway
     Drogon::Drogon
     ${AERON_LIB_PATH}                                      # ✅ Direct path to Aeron .a file
-    ${CMAKE_CURRENT_SOURCE_DIR}/lib/libaeronWrapper.a      # ✅ Your custom wrapper static lib
     pthread
     nlohmann_json::nlohmann_json
 )

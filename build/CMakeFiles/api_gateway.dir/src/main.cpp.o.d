@@ -395,8 +395,6 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: \
  /usr/local/include/drogon/nosql/RedisSubscriber.h \
  /usr/local/include/trantor/net/Resolver.h \
  /home/huzaifa/Desktop/Api_Gateway/Api_Gateway/src/ResponseDispatcher.h \
- /home/huzaifa/Desktop/Api_Gateway/Api_Gateway/external/wrapper/aeron_wrapper.h \
- /usr/local/include/concurrent/AgentRunner.h \
  /usr/local/include/drogon/drogon.h \
  /usr/local/include/drogon/HttpClient.h \
  /usr/local/include/drogon/HttpSimpleController.h \

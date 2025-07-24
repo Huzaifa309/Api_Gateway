@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DHAS_YAML_CPP
 
-CXX_INCLUDES = -I/home/huzaifa/Desktop/Api_Gateway/Api_Gateway/src -I/home/huzaifa/aeron/cppbuild/Release/include -I/home/huzaifa/Desktop/Api_Gateway/Api_Gateway/external/concurrentqueue -I/home/huzaifa/Desktop/Api_Gateway/Api_Gateway/external/sbe/my_app_messages -I/home/huzaifa/Desktop/Api_Gateway/Api_Gateway/external/wrapper -isystem /usr/include/jsoncpp
+CXX_INCLUDES = -I/home/huzaifa/Desktop/Api_Gateway/Api_Gateway/src -I/home/huzaifa/aeron/cppbuild/Release/include -I/home/huzaifa/Desktop/Api_Gateway/Api_Gateway/external/concurrentqueue -I/home/huzaifa/Desktop/Api_Gateway/Api_Gateway/external/sbe/my_app_messages -isystem /usr/include/jsoncpp
 
 CXX_FLAGS = -std=gnu++17
 
