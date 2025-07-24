@@ -193,8 +193,8 @@ api_gateway: CMakeFiles/api_gateway.dir/src/main.cpp.o
 api_gateway: CMakeFiles/api_gateway.dir/build.make
 api_gateway: CMakeFiles/api_gateway.dir/compiler_depend.ts
 api_gateway: /usr/local/lib/libdrogon.a
-api_gateway: /home/huzaifa/aeron/cppbuild/Release/lib/libaeron_client.a
 api_gateway: /usr/local/lib/libaeronWrapper.a
+api_gateway: /home/huzaifa/aeron/cppbuild/Release/lib/libaeron_client.a
 api_gateway: /usr/local/lib/libtrantor.a
 api_gateway: /usr/lib/x86_64-linux-gnu/libssl.so
 api_gateway: /usr/lib/x86_64-linux-gnu/libcrypto.so

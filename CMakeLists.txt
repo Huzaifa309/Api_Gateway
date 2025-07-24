@@ -18,6 +18,7 @@ include_directories(
     ${DROGON_INCLUDE_DIRS}            # ✅ Drogon headers
     external/concurrentqueue          # ✅ If used in your project
     external/sbe/my_app_messages      # ✅ Your SBE-generated headers
+    /usr/local/include
 )
 
 # === Source files, excluding decoder.cpp ===
@@ -30,8 +31,8 @@ add_executable(api_gateway ${SRC_FILES})
 # === Link libraries ===
 target_link_libraries(api_gateway
     Drogon::Drogon
-    ${AERON_LIB_PATH}                                      # ✅ Direct path to Aeron .a file
     /usr/local/lib/libaeronWrapper.a                       # ✅ System aeron wrapper library
+    ${AERON_LIB_PATH}                                      # ✅ Direct path to Aeron .a file (after wrapper)
     pthread
     nlohmann_json::nlohmann_json
 )

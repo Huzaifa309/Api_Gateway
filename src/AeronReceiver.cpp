@@ -1,34 +1,36 @@
-#include "Aeron.h"
-#include "FragmentAssembler.h"
 #include "IdentityMessage.h"
 #include "Logger.h"
 #include "MessageHeader.h"
 #include "QueueManager.h"
-#include "Subscription.h"
+#include "aeron_wrapper.h"
 #include <chrono>
 #include <nlohmann/json.hpp>
 #include <thread>
-using namespace aeron;
 using json = nlohmann::json;
 
-void aeronReceiverThread(std::shared_ptr<Subscription> subscription) {
+void aeronReceiverThread(
+    std::shared_ptr<aeron_wrapper::Subscription> subscription) {
   Logger::getInstance().log("[T3] Aeron receiver thread started");
 
-  fragment_handler_t handler = [&](AtomicBuffer &buffer, std::int32_t offset,
-                                   std::int32_t length, const Header &header) {
+  aeron_wrapper::FragmentHandler handler = [&](const aeron_wrapper::FragmentData
+                                                   &fragment) {
     using namespace my::app::messages;
     try {
       // 1. Wrap the header at the correct offset
+      const uint8_t *data = fragment.buffer;
+      size_t length = fragment.length;
+
       MessageHeader msgHeader;
-      msgHeader.wrap(reinterpret_cast<char *>(buffer.buffer()), offset, 0,
-                     buffer.capacity());
-      offset += msgHeader.encodedLength();
+      msgHeader.wrap(const_cast<char *>(reinterpret_cast<const char *>(data)),
+                     0, 0, length);
+      size_t headerOffset = msgHeader.encodedLength();
+
       // 2. Check template ID and decode the message
       if (msgHeader.templateId() == IdentityMessage::sbeTemplateId()) {
         IdentityMessage identity;
-        identity.wrapForDecode(reinterpret_cast<char *>(buffer.buffer()),
-                               offset, msgHeader.blockLength(),
-                               msgHeader.version(), buffer.capacity());
+        identity.wrapForDecode(
+            const_cast<char *>(reinterpret_cast<const char *>(data)),
+            headerOffset, msgHeader.blockLength(), msgHeader.version(), length);
         // 3. Extract fields
         std::string msg = identity.msg().getCharValAsString();
         std::string type = identity.type().getCharValAsString();
@@ -86,17 +88,15 @@ void aeronReceiverThread(std::shared_ptr<Subscription> subscription) {
 
   while (true) {
     try {
-      int fragmentsRead = subscription->poll(
-          handler, 1000); // Increased from 10 to 1000 for better throughput
+      int fragmentsRead = subscription->poll(handler, 1000);
 
       // High-performance: only yield if no work was done
       if (fragmentsRead == 0) {
-        std::this_thread::yield(); // Much faster than sleep for high throughput
+        std::this_thread::yield();
       }
     } catch (const std::exception &e) {
       Logger::getInstance().log(std::string("[T3] Aeron poll error: ") +
                                 e.what());
     }
-    // Removed sleep - use yield instead for better performance
   }
 }

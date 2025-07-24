@@ -1,13 +1,9 @@
-#include "Aeron.h"
 #include "AeronReceiver.h"
-#include "Context.h"
 #include "JsonToSbeSender.h"
 #include "Logger.h"
-#include "Publication.h"
 #include "QueueManager.h"
 #include "RequestHandler.h"
 #include "ResponseDispatcher.h"
-#include "Subscription.h"
 #include "aeron_wrapper.h"
 #include <atomic>
 #include <chrono>
@@ -28,65 +24,30 @@ int main() {
     Logger::getInstance().log("[Main] Response dispatcher thread started");
 
     // Aeron resources (declared outside try block for proper lifetime)
-    std::shared_ptr<aeron::Aeron> aeronClient;
-    std::shared_ptr<aeron::Publication> publication;
-    std::shared_ptr<aeron::Subscription> subscription;
+    std::shared_ptr<aeron_wrapper::Aeron> aeronClient;
+    std::shared_ptr<aeron_wrapper::Publication> publication;
+    std::shared_ptr<aeron_wrapper::Subscription> subscription;
 
     // Try to initialize Aeron safely
     try {
       Logger::getInstance().log("[Main] Initializing Aeron...");
-      auto ctx = std::make_shared<aeron::Context>();
-      ctx->aeronDir("/dev/shm/aeron-huzaifa");
-
-      // High-performance settings (using valid Aeron Context methods)
-      //   ctx->useConductorAgentInvoker(true); // Reduce context switching
-
-      // Add error handler
-      ctx->errorHandler([](const std::exception &e) {
-        Logger::getInstance().log(std::string("[AeronError] ") + e.what());
-      });
-
-      aeronClient = aeron::Aeron::connect(*ctx);
+      aeronClient =
+          std::make_shared<aeron_wrapper::Aeron>("/dev/shm/aeron-huzaifa");
       if (!aeronClient) {
         throw std::runtime_error("Failed to connect Aeron client");
       }
 
       // Create Aeron publication
-      std::int64_t pubId = aeronClient->addPublication("aeron:ipc", 1001);
-
-      Logger::getInstance().log("[Main] Publication ID created: " +
-                                std::to_string(pubId));
-      publication = aeronClient->findPublication(pubId);
-
-      // Wait for publication to be ready
-      int attempts = 0;
-      while (!publication && attempts++ < 100) {
-        Logger::getInstance().log("[Main] Waiting for publication, attempt " +
-                                  std::to_string(attempts));
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
-        publication = aeronClient->findPublication(pubId);
-      }
-
+      publication = aeronClient->create_publication("aeron:ipc", 1001);
       if (!publication) {
-        throw std::runtime_error("Timeout waiting for publication");
+        throw std::runtime_error("Failed to create publication");
       }
-
-      Logger::getInstance().log("[Main] Publication ready after " +
-                                std::to_string(attempts) + " attempts");
+      Logger::getInstance().log("[Main] Publication created successfully");
 
       // Create Aeron subscription
-      std::int64_t subId = aeronClient->addSubscription("aeron:ipc", 2001);
-      subscription = aeronClient->findSubscription(subId);
-
-      // Wait for subscription to be ready
-      attempts = 0;
-      while (!subscription && attempts++ < 100) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
-        subscription = aeronClient->findSubscription(subId);
-      }
-
+      subscription = aeronClient->create_subscription("aeron:ipc", 2001);
       if (!subscription) {
-        throw std::runtime_error("Timeout waiting for subscription");
+        throw std::runtime_error("Failed to create subscription");
       }
       Logger::getInstance().log("[Main] Aeron subscription created");
 

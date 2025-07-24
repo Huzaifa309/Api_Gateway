@@ -1,10 +1,9 @@
 #include "JsonToSbeSender.h"
-#include "Aeron.h"
 #include "IdentityMessage.h"
 #include "Logger.h"
 #include "MessageHeader.h"
-#include "Publication.h"
 #include "QueueManager.h"
+#include "aeron_wrapper.h"
 #include <chrono>
 #include <memory>
 #include <nlohmann/json.hpp>
@@ -12,7 +11,8 @@
 
 using json = nlohmann::json;
 
-void jsonToSbeSenderThread(std::shared_ptr<aeron::Publication> publication) {
+void jsonToSbeSenderThread(
+    std::shared_ptr<aeron_wrapper::Publication> publication) {
   GatewayTask task;
   while (true) {
     if (ReceiverQueue.try_dequeue(task)) {
@@ -21,7 +21,7 @@ void jsonToSbeSenderThread(std::shared_ptr<aeron::Publication> publication) {
       // Removed 1ms sleep for better performance
 
       try {
-        if (publication->isClosed()) {
+        if (publication->is_closed()) {
           Logger::getInstance().log("[TestThread] Publication closed");
           break;
         }
@@ -36,9 +36,7 @@ void jsonToSbeSenderThread(std::shared_ptr<aeron::Publication> publication) {
             my::app::messages::IdentityMessage::sbeBlockLength();
         std::vector<uint8_t> rawBuffer(bufferSize);
 
-        // Create Aeron buffer
-        aeron::concurrent::AtomicBuffer atomicBuffer(rawBuffer.data(),
-                                                     rawBuffer.size());
+        // Use raw buffer directly for wrapper
 
         // Encode the message header
         my::app::messages::MessageHeader headerEncoder;
@@ -90,11 +88,11 @@ void jsonToSbeSenderThread(std::shared_ptr<aeron::Publication> publication) {
         // Send the encoded message
         const size_t totalLength =
             headerEncoder.encodedLength() + identityEncoder.encodedLength();
-        int64_t result = publication->offer(atomicBuffer, 0, totalLength);
+        aeron_wrapper::PublicationResult result =
+            publication->offer(rawBuffer.data(), totalLength);
 
-        if (result < 0) {
-          Logger::getInstance().log("[TestThread] Failed to send: " +
-                                    std::to_string(result));
+        if (result != aeron_wrapper::PublicationResult::SUCCESS) {
+          Logger::getInstance().log("[TestThread] Failed to send message");
         } else {
           Logger::getInstance().log(
               "[TestThread] SBE message sent successfully, total length: " +

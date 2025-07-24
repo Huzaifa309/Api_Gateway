@@ -423,7 +423,6 @@ CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o: /home/huzaifa/Desktop/Api_Ga
   /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h \
   /usr/local/include/Aeron.h \
   /usr/local/include/AeronVersion.h \
-  /usr/local/include/BufferBuilder.h \
   /usr/local/include/ClientConductor.h \
   /usr/local/include/CncFileDescriptor.h \
   /usr/local/include/Context.h \
@@ -431,12 +430,12 @@ CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o: /home/huzaifa/Desktop/Api_Ga
   /usr/local/include/DriverListenerAdapter.h \
   /usr/local/include/DriverProxy.h \
   /usr/local/include/ExclusivePublication.h \
-  /usr/local/include/FragmentAssembler.h \
   /usr/local/include/HeartbeatTimestamp.h \
   /usr/local/include/Image.h \
   /usr/local/include/LogBuffers.h \
   /usr/local/include/Publication.h \
   /usr/local/include/Subscription.h \
+  /usr/local/include/aeron_wrapper.h \
   /usr/local/include/command/ClientTimeoutFlyweight.h \
   /usr/local/include/command/ControlProtocolEvents.h \
   /usr/local/include/command/CorrelatedMessageFlyweight.h \
@@ -494,8 +493,6 @@ CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o: /home/huzaifa/Desktop/Api_Ga
   /usr/local/include/drogon/UploadFile.h \
   /usr/local/include/drogon/exports.h \
   /usr/local/include/drogon/utils/Utilities.h \
-  /usr/local/include/protocol/DataHeaderFlyweight.h \
-  /usr/local/include/protocol/HeaderFlyweight.h \
   /usr/local/include/trantor/exports.h \
   /usr/local/include/trantor/net/AsyncStream.h \
   /usr/local/include/trantor/net/Certificate.h \
@@ -958,6 +955,7 @@ CMakeFiles/api_gateway.dir/src/JsonToSbeSender.cpp.o: /home/huzaifa/Desktop/Api_
   /usr/local/include/LogBuffers.h \
   /usr/local/include/Publication.h \
   /usr/local/include/Subscription.h \
+  /usr/local/include/aeron_wrapper.h \
   /usr/local/include/command/ClientTimeoutFlyweight.h \
   /usr/local/include/command/ControlProtocolEvents.h \
   /usr/local/include/command/CorrelatedMessageFlyweight.h \
@@ -2716,6 +2714,7 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/huzaifa/Desktop/Api_Gateway/Api
   /usr/local/include/LogBuffers.h \
   /usr/local/include/Publication.h \
   /usr/local/include/Subscription.h \
+  /usr/local/include/aeron_wrapper.h \
   /usr/local/include/command/ClientTimeoutFlyweight.h \
   /usr/local/include/command/ControlProtocolEvents.h \
   /usr/local/include/command/CorrelatedMessageFlyweight.h \
@@ -2898,6 +2897,7 @@ api_gateway: /home/huzaifa/aeron/cppbuild/Release/lib/libaeron_client.a \
   /usr/lib/x86_64-linux-gnu/libssl.so \
   /usr/lib/x86_64-linux-gnu/libuuid.so \
   /usr/lib/x86_64-linux-gnu/libz.so \
+  /usr/local/lib/libaeronWrapper.a \
   /usr/local/lib/libdrogon.a \
   /usr/local/lib/libtrantor.a \
   CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o \
@@ -2924,6 +2924,8 @@ CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o:
 /usr/lib/x86_64-linux-gnu/libz.so:
 
 /usr/lib/x86_64-linux-gnu/libuuid.so:
+
+/usr/local/lib/libaeronWrapper.a:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/libstdc++.so:
 
@@ -2988,6 +2990,8 @@ CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o:
 /usr/include/c++/13/regex:
 
 /usr/include/c++/13/bitset:
+
+/usr/include/c++/13/bits/regex_scanner.tcc:
 
 /usr/include/c++/13/bits/regex_executor.h:
 
@@ -3087,10 +3091,6 @@ CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o:
 
 /usr/local/include/trantor/exports.h:
 
-/usr/include/c++/13/bits/regex_scanner.tcc:
-
-/usr/local/include/protocol/HeaderFlyweight.h:
-
 /usr/local/include/drogon/UploadFile.h:
 
 /usr/local/include/drogon/Session.h:
@@ -3131,8 +3131,6 @@ CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o:
 
 /usr/local/include/concurrent/Atomic64.h:
 
-/usr/local/include/protocol/DataHeaderFlyweight.h:
-
 /usr/local/include/concurrent/AgentInvoker.h:
 
 /usr/local/include/command/TerminateDriverFlyweight.h:
@@ -3164,8 +3162,6 @@ CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o:
 /usr/local/include/command/CounterMessageFlyweight.h:
 
 /usr/local/include/Image.h:
-
-/usr/local/include/FragmentAssembler.h:
 
 /usr/local/include/DriverListenerAdapter.h:
 
@@ -3280,6 +3276,8 @@ CMakeFiles/api_gateway.dir/src/QueueManager.cpp.o:
 /usr/include/x86_64-linux-gnu/bits/time.h:
 
 /lib/x86_64-linux-gnu/libp11-kit.so.0:
+
+/usr/local/include/aeron_wrapper.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
@@ -3816,8 +3814,6 @@ CMakeFiles/api_gateway.dir/src/QueueManager.cpp.o:
 /usr/include/c++/13/bits/mask_array.h:
 
 /usr/include/c++/13/ext/atomicity.h:
-
-/usr/local/include/BufferBuilder.h:
 
 /usr/include/c++/13/bits/stl_iterator_base_types.h:
 
