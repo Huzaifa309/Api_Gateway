@@ -1,3 +1,0 @@
-/home/it-admin/Desktop/Api_Gateway/build/_deps/aeron-subbuild/CMakeFiles/aeron-populate.dir
-/home/it-admin/Desktop/Api_Gateway/build/_deps/aeron-subbuild/CMakeFiles/edit_cache.dir
-/home/it-admin/Desktop/Api_Gateway/build/_deps/aeron-subbuild/CMakeFiles/rebuild_cache.dir

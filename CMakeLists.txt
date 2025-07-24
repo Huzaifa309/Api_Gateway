@@ -3,60 +3,41 @@ project(api_gateway)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Drogon dependencies
+# Drogon and JSON dependencies
 find_package(Drogon REQUIRED CONFIG)
 find_package(nlohmann_json REQUIRED)
 
-include(FetchContent)
-FetchContent_Declare(
-    aeron
-    GIT_REPOSITORY https://github.com/aeron-io/aeron.git
-    GIT_TAG        master  # or specify a specific version tag like "1.45.0"
-)
+# === Aeron system paths ===
+set(AERON_INCLUDE_DIR /home/huzaifa/aeron/cppbuild/Release/include)
+set(AERON_LIB_PATH /home/huzaifa/aeron/cppbuild/Release/lib/libaeron_client.a)
 
-
-
-
-
-set(BUILD_AERON_DRIVER ON CACHE BOOL "Build Aeron driver")
-set(BUILD_AERON_ARCHIVE_API ON CACHE BOOL "Build Aeron archive API")
-set(C_WARNINGS_AS_ERRORS OFF CACHE BOOL "Disable warnings as errors")
-set(CXX_WARNINGS_AS_ERRORS OFF CACHE BOOL "Disable warnings as errors")
-# Aeron paths - Updated to point to the actual Aeron installation
-set(AERON_SOURCE_DIR /home/it-admin/aeron-sbe-setup/aeron/aeron-client/src/main/cpp)
-set(AERON_BUILD_DIR /home/it-admin/aeron-sbe-setup/aeron/build)
-
-
-FetchContent_MakeAvailable(aeron)
-
-# Includes
+# === Include directories ===
 include_directories(
     src
-    ${AERON_SOURCE_DIR}             # Aeron C++ headers
-    ${DROGON_INCLUDE_DIRS}
-    external/concurrentqueue
-    external/sbe/my_app_messages
-    external/wrapper
-    aeron/aeron-client/src/main/cpp
+    ${AERON_INCLUDE_DIR}              # ✅ Aeron headers from system
+    ${DROGON_INCLUDE_DIRS}            # ✅ Drogon headers
+    external/concurrentqueue          # ✅ If used in your project
+    external/sbe/my_app_messages      # ✅ Your SBE-generated headers
+    external/wrapper                  # ✅ Your wrapper headers
 )
 
-# All source files except decoder.cpp (which is a separate standalone program)
+# === Source files, excluding decoder.cpp ===
 file(GLOB SRC_FILES src/*.cpp)
 list(REMOVE_ITEM SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/decoder.cpp)
 
-# Create executable
+# === Executable ===
 add_executable(api_gateway ${SRC_FILES})
 
-# Link Aeron statically (preferred)
+# === Link libraries ===
 target_link_libraries(api_gateway
     Drogon::Drogon
-    ${AERON_BUILD_DIR}/lib/libaeron_client.a  # ✅ Use correct path to the .a file
-    ${CMAKE_CURRENT_SOURCE_DIR}/lib/libaeronWrapper.a
+    ${AERON_LIB_PATH}                                      # ✅ Direct path to Aeron .a file
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/libaeronWrapper.a      # ✅ Your custom wrapper static lib
     pthread
     nlohmann_json::nlohmann_json
 )
 
-# Optional: set runtime path for shared libs if you ever use .so
+# === Optional: RPATH if you switch to shared libs ===
 # set_target_properties(api_gateway PROPERTIES
-#     BUILD_RPATH ${AERON_BUILD_DIR}/lib
+#     BUILD_RPATH /home/huzaifa/aeron/cppbuild/Release/lib
 # )
