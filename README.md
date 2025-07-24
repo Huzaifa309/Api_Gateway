@@ -84,14 +84,14 @@ make && sudo make install
 ### 3. Build the Gateway
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/SaadSaeed94/Api_Gateway
 cd Api_Gateway
 
 # IMPORTANT: Configure CMakeLists.txt and src/main.cpp first (see Configuration Notes above)
 
 mkdir build && cd build
 cmake ..
-make
+make -j$(nproc)
 ```
 
 ## Configuration
