@@ -86,6 +86,9 @@ make && sudo make install
 ```bash
 git clone <repository-url>
 cd Api_Gateway
+
+# IMPORTANT: Configure CMakeLists.txt and src/main.cpp first (see Configuration Notes above)
+
 mkdir build && cd build
 cmake ..
 make
@@ -117,7 +120,32 @@ Edit `config.json` to configure PostgreSQL connection:
 The gateway uses IPC channels:
 - **Publication Channel**: `aeron:ipc` on stream ID `1001`
 - **Subscription Channel**: `aeron:ipc` on stream ID `2001`
-- **Media Driver Directory**: `/dev/shm/aeron-huzaifa`
+- **Media Driver Directory**: `/dev/shm/aeron-<system-name>` (must match your system's aeron directory)
+
+### Important Configuration Notes
+
+**Before building, you must configure the project for your system:**
+
+1. **Update CMakeLists.txt** - Set the correct Aeron library path:
+   ```cmake
+   # Update this path to match your Aeron installation
+   set(AERON_LIB_PATH /home/yourusername/aeron/cppbuild/Release/lib/libaeron_client.a)
+   ```
+
+2. **Set Aeron Directory Name** - The `/dev/shm/aeron-` directory name must match your system:
+   ```bash
+   # Check your system's aeron directory name
+   ls -la /dev/shm/aeron-*
+   
+   # Update src/main.cpp with your directory name
+   aeronClient = std::make_shared<aeron_wrapper::Aeron>("/dev/shm/aeron-yourusername");
+   ```
+
+3. **Backend Synchronization** - Your backend decoder must use the **same directory name**:
+   ```cpp
+   // In your backend code
+   ctx->aeronDir("/dev/shm/aeron-yourusername");  // Must match API Gateway
+   ```
 
 ## Usage
 
@@ -303,7 +331,8 @@ The gateway provides comprehensive logging for:
 **Aeron Connection Failed:**
 ```
 Check media driver is running
-Verify /dev/shm/aeron-huzaifa permissions
+Verify /dev/shm/aeron-<system-name> permissions
+Ensure aeron directory name matches between API Gateway and backend
 Ensure no port conflicts
 ```
 
