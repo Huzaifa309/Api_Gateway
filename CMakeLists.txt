@@ -31,6 +31,7 @@ add_executable(api_gateway ${SRC_FILES})
 target_link_libraries(api_gateway
     Drogon::Drogon
     ${AERON_LIB_PATH}                                      # ✅ Direct path to Aeron .a file
+    /usr/local/lib/libaeronWrapper.a                       # ✅ System aeron wrapper library
     pthread
     nlohmann_json::nlohmann_json
 )

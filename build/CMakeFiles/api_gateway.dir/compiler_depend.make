@@ -2350,7 +2350,6 @@ CMakeFiles/api_gateway.dir/src/ResponseDispatcher.cpp.o: /home/huzaifa/Desktop/A
 
 CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/huzaifa/Desktop/Api_Gateway/Api_Gateway/src/main.cpp \
   /home/huzaifa/Desktop/Api_Gateway/Api_Gateway/external/concurrentqueue/concurrentqueue.h \
-  /home/huzaifa/Desktop/Api_Gateway/Api_Gateway/external/wrapper/aeron_wrapper.h \
   /home/huzaifa/Desktop/Api_Gateway/Api_Gateway/src/AeronReceiver.h \
   /home/huzaifa/Desktop/Api_Gateway/Api_Gateway/src/JsonToSbeSender.h \
   /home/huzaifa/Desktop/Api_Gateway/Api_Gateway/src/Logger.h \
@@ -2853,8 +2852,7 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o: /home/huzaifa/Desktop/Api_Gateway/Api
   /usr/local/include/util/ScopeUtils.h \
   /usr/local/include/util/StringUtil.h
 
-api_gateway: /home/huzaifa/Desktop/Api_Gateway/Api_Gateway/lib/libaeronWrapper.a \
-  /home/huzaifa/aeron/cppbuild/Release/lib/libaeron_client.a \
+api_gateway: /home/huzaifa/aeron/cppbuild/Release/lib/libaeron_client.a \
   /lib/x86_64-linux-gnu/libc.so.6 \
   /lib/x86_64-linux-gnu/libcom_err.so.2 \
   /lib/x86_64-linux-gnu/libffi.so.8 \
@@ -2998,8 +2996,6 @@ CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o:
 /usr/include/c++/13/bits/regex_automaton.tcc:
 
 /usr/include/c++/13/bits/regex.h:
-
-/home/huzaifa/Desktop/Api_Gateway/Api_Gateway/external/wrapper/aeron_wrapper.h:
 
 /home/huzaifa/Desktop/Api_Gateway/Api_Gateway/src/ResponseDispatcher.cpp:
 
@@ -3482,8 +3478,6 @@ CMakeFiles/api_gateway.dir/src/QueueManager.cpp.o:
 /usr/local/include/drogon/Cookie.h:
 
 /usr/include/c++/13/bits/stl_algobase.h:
-
-/home/huzaifa/Desktop/Api_Gateway/Api_Gateway/lib/libaeronWrapper.a:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:
 

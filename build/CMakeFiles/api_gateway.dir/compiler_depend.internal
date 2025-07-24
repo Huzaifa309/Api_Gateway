@@ -2357,7 +2357,6 @@ CMakeFiles/api_gateway.dir/src/ResponseDispatcher.cpp.o
 CMakeFiles/api_gateway.dir/src/main.cpp.o
  /home/huzaifa/Desktop/Api_Gateway/Api_Gateway/src/main.cpp
  /home/huzaifa/Desktop/Api_Gateway/Api_Gateway/external/concurrentqueue/concurrentqueue.h
- /home/huzaifa/Desktop/Api_Gateway/Api_Gateway/external/wrapper/aeron_wrapper.h
  /home/huzaifa/Desktop/Api_Gateway/Api_Gateway/src/AeronReceiver.h
  /home/huzaifa/Desktop/Api_Gateway/Api_Gateway/src/JsonToSbeSender.h
  /home/huzaifa/Desktop/Api_Gateway/Api_Gateway/src/Logger.h
@@ -2861,7 +2860,6 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o
  /usr/local/include/util/StringUtil.h
 
 api_gateway
- /home/huzaifa/Desktop/Api_Gateway/Api_Gateway/lib/libaeronWrapper.a
  /home/huzaifa/aeron/cppbuild/Release/lib/libaeron_client.a
  /lib/x86_64-linux-gnu/libc.so.6
  /lib/x86_64-linux-gnu/libcom_err.so.2

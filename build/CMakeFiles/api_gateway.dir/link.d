@@ -11,6 +11,7 @@ api_gateway: \
   CMakeFiles/api_gateway.dir/src/main.cpp.o \
   /usr/local/lib/libdrogon.a \
   /home/huzaifa/aeron/cppbuild/Release/lib/libaeron_client.a \
+  /usr/local/lib/libaeronWrapper.a \
   /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libpthread.a \
   /usr/local/lib/libtrantor.a \
   /usr/lib/x86_64-linux-gnu/libssl.so \
@@ -94,6 +95,8 @@ CMakeFiles/api_gateway.dir/src/main.cpp.o:
 /usr/local/lib/libdrogon.a:
 
 /home/huzaifa/aeron/cppbuild/Release/lib/libaeron_client.a:
+
+/usr/local/lib/libaeronWrapper.a:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libpthread.a:
 
