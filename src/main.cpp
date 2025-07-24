@@ -38,6 +38,9 @@ int main() {
       auto ctx = std::make_shared<aeron::Context>();
       ctx->aeronDir("/dev/shm/aeron-huzaifa");
 
+      // High-performance settings (using valid Aeron Context methods)
+      //   ctx->useConductorAgentInvoker(true); // Reduce context switching
+
       // Add error handler
       ctx->errorHandler([](const std::exception &e) {
         Logger::getInstance().log(std::string("[AeronError] ") + e.what());
