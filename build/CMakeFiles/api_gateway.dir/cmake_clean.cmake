@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/api_gateway.dir/link.d"
   "CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o"
   "CMakeFiles/api_gateway.dir/src/AeronReceiver.cpp.o.d"
   "CMakeFiles/api_gateway.dir/src/JsonToSbeSender.cpp.o"

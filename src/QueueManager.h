@@ -13,3 +13,4 @@ struct GatewayTask {
 
 extern moodycamel::ConcurrentQueue<GatewayTask> ReceiverQueue;
 extern moodycamel::ConcurrentQueue<GatewayTask> ResponseQueue;
+extern moodycamel::ConcurrentQueue<GatewayTask> CallBackQueue;

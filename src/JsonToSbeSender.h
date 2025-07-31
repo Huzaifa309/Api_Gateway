@@ -1,5 +1,6 @@
 #pragma once
+#include "aeron_wrapper.h"
 #include <memory>
-#include "Publication.h"
 
-void jsonToSbeSenderThread(std::shared_ptr<aeron::Publication> publication);
+void jsonToSbeSenderThread(
+    std::shared_ptr<aeron_wrapper::Publication> publication);

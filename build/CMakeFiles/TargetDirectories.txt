@@ -1,3 +1,3 @@
-/home/saad-saeed/Gateway/build/CMakeFiles/api_gateway.dir
-/home/saad-saeed/Gateway/build/CMakeFiles/edit_cache.dir
-/home/saad-saeed/Gateway/build/CMakeFiles/rebuild_cache.dir
+/home/huzaifa/Desktop/Api_Gateway/Api_Gateway/build/CMakeFiles/api_gateway.dir
+/home/huzaifa/Desktop/Api_Gateway/Api_Gateway/build/CMakeFiles/edit_cache.dir
+/home/huzaifa/Desktop/Api_Gateway/Api_Gateway/build/CMakeFiles/rebuild_cache.dir
