@@ -45,7 +45,7 @@ int main() {
       Logger::getInstance().log("[Main] Publication created successfully");
 
       // Create Aeron subscription
-      subscription = aeronClient->create_subscription("aeron:ipc", 2001);
+      subscription = aeronClient->create_subscription("aeron:ipc", 1001);
       if (!subscription) {
         throw std::runtime_error("Failed to create subscription");
       }
