@@ -13,9 +13,10 @@ using json = nlohmann::json;
 
 void jsonToSbeSenderThread(
     std::shared_ptr<aeron_wrapper::Publication> publication) {
-  GatewayTask task;
   while (true) {
-    if (ReceiverQueue.try_dequeue(task)) {
+    auto result = ReceiverQueue.dequeue();
+    if (result.has_value()) {
+      auto task = std::get<GatewayTask>(result.value());
       Logger::getInstance().log("[T2] Dequeued task for processing");
       CallBackQueue.enqueue(task);
       // Removed 1ms sleep for better performance

@@ -32,7 +32,7 @@ int main() {
     try {
       Logger::getInstance().log("[Main] Initializing Aeron...");
       aeronClient =
-          std::make_shared<aeron_wrapper::Aeron>("/dev/shm/aeron-huzaifa");
+          std::make_shared<aeron_wrapper::Aeron>("/dev/shm/aeron-it-admin");
       if (!aeronClient) {
         throw std::runtime_error("Failed to connect Aeron client");
       }

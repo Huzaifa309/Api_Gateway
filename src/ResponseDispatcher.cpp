@@ -8,16 +8,19 @@ using namespace std;
 void responseDispatcherThread() {
   Logger::getInstance().log("[T4] Response dispatcher thread started");
 
-  GatewayTask task;
   while (true) {
-    if (ResponseQueue.try_dequeue(task)) {
+    auto result = ResponseQueue.dequeue();
+    if (result.has_value()) {
+      auto task = std::get<GatewayTask>(result.value());
       Logger::getInstance().log("[T4] Dequeued response task for dispatch");
 
       try {
         // Check if this is an Aeron response (no callback) or HTTP response
         // (with callback)
         GatewayTask callbackTask;
-        if (CallBackQueue.try_dequeue(callbackTask)) {
+        auto callbackResult = CallBackQueue.dequeue();
+        if (callbackResult.has_value()) {
+          callbackTask = std::get<GatewayTask>(callbackResult.value());
           Logger::getInstance().log("[T4] Dequeued callback task for dispatch");
         } else {
           Logger::getInstance().log("[T4] No callback task dequeued");
