@@ -1,16 +1,15 @@
 #pragma once
+#include "../external/eloan-main/include/eloan/sharded_queue.h"  // Include your custom queue
 #include <drogon/HttpRequest.h>
 #include <drogon/HttpResponse.h>
-#include <concurrentqueue.h>
 #include <functional>
 #include <string>
+#include <variant>
+#include <optional>
 
-struct GatewayTask {
-    std::string json;
-    drogon::HttpRequestPtr request;
-    std::function<void(const drogon::HttpResponsePtr &)> callback;
-};
+// GatewayTask is now defined in sharded_queue.h
 
-extern moodycamel::ConcurrentQueue<GatewayTask> ReceiverQueue;
-extern moodycamel::ConcurrentQueue<GatewayTask> ResponseQueue;
-extern moodycamel::ConcurrentQueue<GatewayTask> CallBackQueue;
+// You can wrap GatewayTask as a variant
+extern ShardedQueue ReceiverQueue;
+extern ShardedQueue ResponseQueue;
+extern ShardedQueue CallBackQueue;
