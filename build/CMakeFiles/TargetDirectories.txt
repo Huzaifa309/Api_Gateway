@@ -1,3 +1,0 @@
-/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/api_gateway.dir
-/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/edit_cache.dir
-/home/it-admin/Desktop/Api_Gateway/build/CMakeFiles/rebuild_cache.dir
