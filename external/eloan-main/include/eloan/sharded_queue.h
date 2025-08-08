@@ -6,12 +6,16 @@
 #define SHARDED_QUEUE_H
 #include <queue>
 #include <concurrent/ringbuffer/OneToOneRingBuffer.h>
-#include<variant>
-#include<optional>
+#include <variant>
+#include <optional>
 #include <string>
 #include <functional>
 #include <drogon/HttpRequest.h>
 #include <drogon/HttpResponse.h>
+#include <mutex>
+#include <condition_variable>
+#include <array>
+#include <utility>
 
 #include "utils/params.h"
 #include "data_types.h"
@@ -31,6 +35,7 @@ class ShardedQueue {
     ~ShardedQueue();
     void enqueue(aeron::concurrent::AtomicBuffer, int32_t, int32_t);
     void enqueue(const GatewayTask& task);
+    void enqueue(GatewayTask&& task);
     std::optional<std::variant<Order, TradeExecution, GatewayTask>> dequeue();
     int size();
     private:
@@ -38,4 +43,9 @@ class ShardedQueue {
     std::array<uint8_t, BUFFER_SIZE> buffer;
     aeron::concurrent::AtomicBuffer _buffer;
     aeron::concurrent::ringbuffer::OneToOneRingBuffer _ring_buffer;
+    
+    // Separate queue for GatewayTask objects
+    std::queue<GatewayTask> _gateway_task_queue;
+    mutable std::mutex _gateway_queue_mutex;
+    std::condition_variable _gateway_queue_cv;
 };

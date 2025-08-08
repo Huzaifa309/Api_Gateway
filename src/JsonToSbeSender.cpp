@@ -13,12 +13,20 @@ using json = nlohmann::json;
 
 void jsonToSbeSenderThread(
     std::shared_ptr<aeron_wrapper::Publication> publication) {
+  // Reuse SBE buffer per thread to avoid frequent allocations
+  thread_local std::vector<uint8_t> rawBuffer;
+
   while (true) {
     auto result = ReceiverQueue.dequeue();
     if (result.has_value()) {
       auto task = std::get<GatewayTask>(result.value());
       Logger::getInstance().log("[T2] Dequeued task for processing");
-      CallBackQueue.enqueue(task);
+
+      // Move JSON payload out to avoid extra copy while allowing task to be moved later
+      std::string jsonPayload = std::move(task.json);
+
+      // Keep callback available to T3 as originally, by enqueuing right away
+      CallBackQueue.enqueue(std::move(task));
       // Removed 1ms sleep for better performance
 
       try {
@@ -28,16 +36,17 @@ void jsonToSbeSenderThread(
         }
 
         // Parse JSON and convert to SBE
-        auto parsed = json::parse(task.json);
+        auto parsed = json::parse(jsonPayload);
         Logger::getInstance().log("[T2] JSON parsed successfully");
 
         // Create SBE buffer with proper size
         const size_t bufferSize =
             my::app::messages::MessageHeader::encodedLength() +
             my::app::messages::IdentityMessage::sbeBlockLength();
-        std::vector<uint8_t> rawBuffer(bufferSize);
 
-        // Use raw buffer directly for wrapper
+        if (rawBuffer.size() < bufferSize) {
+          rawBuffer.resize(bufferSize);
+        }
 
         // Encode the message header
         my::app::messages::MessageHeader headerEncoder;
@@ -106,54 +115,6 @@ void jsonToSbeSenderThread(
       }
       // Removed 20ms sleep - major performance killer!
 
-      // try {
-      //     auto parsed = json::parse(task.json);
-      //     Logger::getInstance().log("[T2] JSON parsed successfully");
-
-      //     // TODO: integrate SBE encoding of parsed JSON into buffer here in
-      //     future
-      //     // For now, create a simple echo response
-      //     json response;
-      //     response["echo"] = parsed;
-      //     response["processed"] = true;
-      //     response["status"] = "success";
-      //     response["timestamp"] =
-      //     std::chrono::duration_cast<std::chrono::milliseconds>(
-      //         std::chrono::system_clock::now().time_since_epoch()).count();
-
-      //     std::string responseJson = response.dump();
-      //     Logger::getInstance().log("[T2] Created response: " +
-      //     responseJson);
-
-      //     // Create response task and push to ResponseQueue
-      //     GatewayTask responseTask;
-      //     responseTask.json = responseJson;
-      //     responseTask.request = task.request;  // Keep original request for
-      //     context responseTask.callback = task.callback;  // Keep the
-      //     callback to send response
-
-      //     ResponseQueue.enqueue(responseTask);
-      //     Logger::getInstance().log("[T2] Response enqueued for dispatch");
-
-      // } catch (const std::exception &e) {
-      //     Logger::getInstance().log(std::string("[T2] JSON parse error: ") +
-      //     e.what());
-
-      //     // Create error response
-      //     json errorResponse;
-      //     errorResponse["error"] = "Invalid JSON";
-      //     errorResponse["message"] = e.what();
-      //     errorResponse["status"] = "error";
-
-      //     GatewayTask errorTask;
-      //     errorTask.json = errorResponse.dump();
-      //     errorTask.request = task.request;
-      //     errorTask.callback = task.callback;
-
-      //     ResponseQueue.enqueue(errorTask);
-      //     Logger::getInstance().log("[T2] Error response enqueued for
-      //     dispatch");
-      // }
     } else {
       // High-performance: yield instead of sleep
       std::this_thread::yield();

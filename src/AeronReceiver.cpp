@@ -6,6 +6,7 @@
 #include <chrono>
 #include <nlohmann/json.hpp>
 #include <thread>
+#include <drogon/HttpResponse.h>
 using json = nlohmann::json;
 
 void aeronReceiverThread(
@@ -47,7 +48,7 @@ void aeronReceiverThread(
             ", dateOfExpiry=" + dateOfExpiry + ", address=" + address +
             ", verified=" + verified);
 
-        // 4. Convert to JSON and enqueue in ResponseQueue
+        // 4. Convert to JSON
         json responseJson;
         responseJson["msg"] = msg;
         responseJson["type"] = type;
@@ -66,15 +67,24 @@ void aeronReceiverThread(
         std::string jsonString = responseJson.dump();
         Logger::getInstance().log("[T3] JSON created: " + jsonString);
 
-        // Create GatewayTask and enqueue in ResponseQueue
-        GatewayTask responseTask;
-        responseTask.json = jsonString;
-        // responseTask.request = nullptr; // No HTTP request for Aeron
-        // responses responseTask.callback = nullptr; // No callback for Aeron
-        // responses
+        // Direct HTTP response dispatch (no ResponseQueue, no T4)
+        GatewayTask callbackTask;
+        auto callbackResult = CallBackQueue.dequeue();
+        if (callbackResult.has_value()) {
+          callbackTask = std::get<GatewayTask>(callbackResult.value());
+          Logger::getInstance().log("[T3] Dequeued callback task for dispatch");
 
-        ResponseQueue.enqueue(responseTask);
-        Logger::getInstance().log("[T3] Response enqueued in ResponseQueue");
+          auto resp = drogon::HttpResponse::newHttpResponse();
+          resp->setBody(jsonString);
+          resp->setStatusCode(drogon::k200OK);
+          resp->setContentTypeCode(drogon::CT_APPLICATION_JSON);
+
+          callbackTask.callback(resp);
+          Logger::getInstance().log("[T3] HTTP response sent successfully");
+          Logger::getInstance().log("[T3] Aeron SBE response handled directly");
+        } else {
+          Logger::getInstance().log("[T3] No callback task available; dropping response");
+        }
 
       } else {
         Logger::getInstance().log("[T3] Unexpected template ID: " +

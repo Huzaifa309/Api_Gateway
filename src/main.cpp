@@ -10,6 +10,7 @@
 #include <drogon/drogon.h>
 #include <memory>
 #include <thread>
+#include <algorithm>
 using namespace std;
 // Global flag for graceful shutdown
 std::atomic<bool> running{true};
@@ -18,10 +19,10 @@ int main() {
   Logger::getInstance().log("[Main] Starting API Gateway");
 
   try {
-    // Start T4: Response dispatcher (doesn't depend on Aeron)
-    std::thread t4(responseDispatcherThread);
-    t4.detach();
-    Logger::getInstance().log("[Main] Response dispatcher thread started");
+    // Start T4: Response dispatcher (disabled; T3 responds directly)
+    // std::thread t4(responseDispatcherThread);
+    // t4.detach();
+    // Logger::getInstance().log("[Main] Response dispatcher thread started");
 
     // Aeron resources (declared outside try block for proper lifetime)
     std::shared_ptr<aeron_wrapper::Aeron> aeronClient;
@@ -38,14 +39,15 @@ int main() {
       }
 
       // Create Aeron publication
-      publication = aeronClient->create_publication("aeron:ipc", 1001);
+      publication = aeronClient->create_publication("aeron:udp?endpoint=172.17.10.58:50000", 1001);
       if (!publication) {
         throw std::runtime_error("Failed to create publication");
       }
       Logger::getInstance().log("[Main] Publication created successfully");
 
       // Create Aeron subscription
-      subscription = aeronClient->create_subscription("aeron:ipc", 2001);
+      subscription = aeronClient->create_subscription("aeron:udp?endpoint=0.0.0.0:10001", 1001);
+>>>>>>> Stashed changes
       if (!subscription) {
         throw std::runtime_error("Failed to create subscription");
       }
@@ -71,9 +73,10 @@ int main() {
 
     // Configure and start Drogon HTTP server
     Logger::getInstance().log("[Main] Starting Drogon server on port 8080");
+    const unsigned int serverThreads = std::max(2u, std::thread::hardware_concurrency());
     drogon::app()
         .addListener("0.0.0.0", 8080)
-        .setThreadNum(1)
+        .setThreadNum(serverThreads)
         .registerPostHandlingAdvice([](const drogon::HttpRequestPtr &,
                                        const drogon::HttpResponsePtr &) {
           // Keep alive check

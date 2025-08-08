@@ -7,6 +7,7 @@
 #include <iostream>
 #include <vector>
 #include <cstring>
+#include <utility>
 
 ShardedQueue::ShardedQueue() : _buffer(buffer, BUFFER_SIZE), _ring_buffer(_buffer) {}
 
@@ -31,41 +32,29 @@ void ShardedQueue::enqueue(aeron::concurrent::AtomicBuffer buffer, int32_t offse
 }
 
 void ShardedQueue::enqueue(const GatewayTask& task) {
-    aeron::concurrent::BackoffIdleStrategy idleStrategy(100,1000);
-    bool isWritten = false;
-    auto start = std::chrono::high_resolution_clock::now();
-    
-    // Serialize GatewayTask to buffer
-    // For simplicity, we'll just serialize the JSON string
-    std::string jsonStr = task.json;
-    int32_t length = jsonStr.length();
-    
-    // Create a temporary buffer for the serialized data
-    std::vector<uint8_t> tempBuffer(length + sizeof(int32_t));
-    
-    // Write the length first
-    *reinterpret_cast<int32_t*>(tempBuffer.data()) = length;
-    
-    // Copy the JSON string
-    std::memcpy(tempBuffer.data() + sizeof(int32_t), jsonStr.data(), length);
-    
-    // Create AtomicBuffer from the temporary buffer
-    aeron::concurrent::AtomicBuffer atomicBuffer(tempBuffer.data(), tempBuffer.size());
-    
-    while(!isWritten) {
-        isWritten = _ring_buffer.write(3, atomicBuffer, 0, tempBuffer.size()); // Use msgType 3 for GatewayTask
-        if (isWritten) {
-            return;
-        }
-        if (std::chrono::high_resolution_clock::now() - start >= std::chrono::microseconds(50)) {
-            std::cerr << "retry timeout" << std::endl;
-            return;
-        }
-        idleStrategy.idle();
-    }
+    std::lock_guard<std::mutex> lock(_gateway_queue_mutex);
+    _gateway_task_queue.emplace(task);
+    _gateway_queue_cv.notify_one();
+}
+
+void ShardedQueue::enqueue(GatewayTask&& task) {
+    std::lock_guard<std::mutex> lock(_gateway_queue_mutex);
+    _gateway_task_queue.emplace(std::move(task));
+    _gateway_queue_cv.notify_one();
 }
 
 std::optional<std::variant<Order, TradeExecution, GatewayTask>> ShardedQueue::dequeue() {
+    // First, try to dequeue from the GatewayTask queue
+    {
+        std::unique_lock<std::mutex> lock(_gateway_queue_mutex);
+        if (!_gateway_task_queue.empty()) {
+            GatewayTask task = std::move(_gateway_task_queue.front());
+            _gateway_task_queue.pop();
+            return std::make_optional<std::variant<Order, TradeExecution, GatewayTask>>(std::move(task));
+        }
+    }
+    
+    // If no GatewayTask, try the ring buffer for Order/TradeExecution
     std::optional<std::variant<Order, TradeExecution, GatewayTask>> result;
     _ring_buffer.read([&](int8_t msgType, aeron::concurrent::AtomicBuffer& buffer, int32_t offset, int32_t length)
     {
@@ -100,19 +89,6 @@ std::optional<std::variant<Order, TradeExecution, GatewayTask>> ShardedQueue::de
             }
             result.emplace(trade);
         }
-        else if (msgType == 3) {
-            // Handle GatewayTask message
-            if (length >= sizeof(int32_t)) {
-                int32_t jsonLength = *reinterpret_cast<const int32_t*>(buffer.buffer() + offset);
-                if (length >= sizeof(int32_t) + jsonLength) {
-                    GatewayTask task;
-                    task.json = std::string(reinterpret_cast<const char*>(buffer.buffer() + offset + sizeof(int32_t)), jsonLength);
-                    // Note: We're not serializing request and callback as they're not easily serializable
-                    // In a real implementation, you might want to handle these differently
-                    result.emplace(task);
-                }
-            }
-        }
         else {
             std::cerr << "Unexpected msgType: " << static_cast<int>(msgType) << std::endl;
         }
@@ -121,6 +97,7 @@ std::optional<std::variant<Order, TradeExecution, GatewayTask>> ShardedQueue::de
 }
 
 int ShardedQueue::size(){
-    return _ring_buffer.size();
+    std::lock_guard<std::mutex> lock(_gateway_queue_mutex);
+    return _ring_buffer.size() + _gateway_task_queue.size();
 }
 
