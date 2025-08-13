@@ -46,12 +46,13 @@ int main() {
       Logger::getInstance().log("[Main] Publication created successfully");
 
       // Create Aeron subscription
-      subscription = aeronClient->create_subscription("aeron:udp?endpoint=0.0.0.0:10001", 1001);
->>>>>>> Stashed changes
-      if (!subscription) {
-        throw std::runtime_error("Failed to create subscription");
-      }
-      Logger::getInstance().log("[Main] Aeron subscription created");
+// Create Aeron subscription
+subscription = aeronClient->create_subscription("aeron:udp?endpoint=0.0.0.0:10001", 1001);
+if (!subscription) {
+    throw std::runtime_error("Failed to create subscription");
+}
+Logger::getInstance().log("[Main] Aeron subscription created");
+
 
       // Start threads with proper resource capturing
       std::thread t2(
