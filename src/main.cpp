@@ -39,19 +39,20 @@ int main() {
       }
 
       // Create Aeron publication
-      publication = aeronClient->create_publication("aeron:udp?endpoint=172.17.10.58:50000", 1001);
+      // publication = aeronClient->create_publication("aeron:udp?endpoint=172.17.10.58:50000", 1001);
+      publication = aeronClient->create_publication("aeron:ipc", 1001);
       if (!publication) {
         throw std::runtime_error("Failed to create publication");
       }
       Logger::getInstance().log("[Main] Publication created successfully");
 
       // Create Aeron subscription
-// Create Aeron subscription
-subscription = aeronClient->create_subscription("aeron:udp?endpoint=0.0.0.0:10001", 1001);
-if (!subscription) {
-    throw std::runtime_error("Failed to create subscription");
-}
-Logger::getInstance().log("[Main] Aeron subscription created");
+      subscription = aeronClient->create_subscription("aeron:ipc", 1001);
+      // subscription = aeronClient->create_subscription("aeron:udp?endpoint=0.0.0.0:10001", 1001);
+      if (!subscription) {
+          throw std::runtime_error("Failed to create subscription");
+      }
+      Logger::getInstance().log("[Main] Aeron subscription created");
 
 
       // Start threads with proper resource capturing
