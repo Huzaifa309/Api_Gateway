@@ -19,7 +19,8 @@ void decodeSbeAndSendResponse(const aeron_wrapper::FragmentData& fragment) {
     using namespace my::app::messages;
     try {
         // 1. Wrap the header at the correct offset
-        const uint8_t *data = fragment.buffer;
+        const uint8_t *data = reinterpret_cast<const uint8_t*>(fragment.atomicBuffer.buffer())
+    + fragment.offset;
         size_t length = fragment.length;
 
         MessageHeader msgHeader;
