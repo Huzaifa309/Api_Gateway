@@ -1,0 +1,10 @@
+{
+    "msg": "Identity Verification Request",
+    "type": "Passport",
+    "id": "P123456789",
+    "name": "John Doe",
+    "dateOfIssue": "2020-01-15",
+    "dateOfExpiry": "2030-01-15",
+    "address": "123 Main Street, City, Country",
+    "verified": "true"
+} 

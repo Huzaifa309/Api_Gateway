@@ -1,0 +1,28 @@
+{
+  "messageHeader": {
+    "blockLength": 420,
+    "templateId": 102,
+    "schemaId": 1,
+    "version": 1
+  },
+  "RegistrationResponse": {
+    "hdr": {
+      "version": 1,
+      "transactionCode": "102911",
+      "transactionId": "121",
+      "messageType": "REG_REQ",
+      "sequence": 42,
+      "timestamp": 1725421234567890000,
+      "statusCode": 0,
+      "deviceId": "KIOSK-0092",
+      "deviceName": "OnePlus Nord",
+      "deviceIp": "2001:db8::1",
+      "location": "Lahore Office - Lobby"
+    },
+    "message": "Registration successful",
+    "token": "abcd1234efgh5678ijkl9012mnop3456",
+    "expiresIn": 3600,
+    "refreshToken": "qrst7890uvwx1234yzab5678cdef9012"
+  }
+}
+

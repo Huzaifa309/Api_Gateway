@@ -1,0 +1,18 @@
+{
+  "RegistrationRequest": {
+    "hdr": {
+      "version": 1,
+      "messageType": "REG_REQ",
+      "messageId": "121",
+      "messageCode": "102911",
+      "sequence": 42,
+      "timestamp": 1725421234567890000,
+      "statusCode": 0,
+      "deviceId": "KIOSK-0092",
+      "deviceName": "OnePlus Nord",
+      "deviceIp": "2001:db8::1",
+      "location": "Lahore Office - Lobby"
+    },
+    "phoneNumber": "+923001234567"
+  }
+}
