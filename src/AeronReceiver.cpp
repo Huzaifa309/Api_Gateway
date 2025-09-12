@@ -54,7 +54,8 @@ void decodeSbeAndSendResponse(const aeron_wrapper::FragmentData& fragment) {
             headerJson["messageCode"] = appHeader.getMessageCodeAsString();
             headerJson["sequence"]    = appHeader.sequence();
             headerJson["timestamp"]   = appHeader.timestamp();
-            headerJson["statusCode"]  = appHeader.statusCode();
+            headerJson["responseCode"]  = appHeader.responseCode();
+            headerJson["responseDescription"]  = appHeader.responseDescription();
             headerJson["deviceId"]    = appHeader.getDeviceIdAsString();
             headerJson["deviceName"]  = appHeader.getDeviceNameAsString();
             headerJson["deviceIp"]    = appHeader.getDeviceIpAsString();

@@ -48,7 +48,7 @@
 
   <message name="RegistrationRequest"  id="101" description="Registration Request">
     <field name="header"               id="1" type="AppHeader"/>
-    <field name="phoneNumber"          id="2" type="Char16str"/>
+    <field name="phoneNumber" id="2" type="Char16str"/>
   </message>
 
   <message name="RegistrationResponse" id="102" description="Registration Response">
@@ -59,7 +59,7 @@
 
   <message name="OtpRequest"           id="103" description="OTP Request">
     <field name="header"               id="1" type="AppHeader"/>
-    <field name="phoneNumber"          id="2" type="Char16str"/>
+    <field name="phoneNumber" id="2" type="Char16str"/>
     <field name="otpCode"              id="3" type="char" length="6"/>
   </message>
 
@@ -70,7 +70,7 @@
 
   <message name="OtpResendRequest"     id="105" description="OTP Resend Request">
     <field name="header"               id="1" type="AppHeader"/>
-    <field name="phoneNumber"          id="2" type="Char16str"/>
+    <field name="phoneNumber" id="2" type="Char16str"/>
   </message>
 
   <message name="OtpResendResponse"    id="106" description="OTP Resend Response">
@@ -82,13 +82,13 @@
 
   <message name="PasscodeSetupRequest" id="107" description="Passcode Setup Request">
     <field name="header"               id="1" type="AppHeader"/>
-    <field name="phoneNumber"          id="2" type="Char16str"/>
+    <field name="phoneNumber" id="2" type="Char16str"/>
     <field name="passCode"             id="3" type="Char16str"/>
   </message>
 
   <message name="PasscodeSetupResponse" id="108" description="Passcode Setup Response">
     <field name="header"               id="1" type="AppHeader"/>
-    <field name="phoneNumber"          id="2" type="Char16str"/>
+    <field name="phoneNumber" id="2" type="Char16str"/>
     <field name="passCode"             id="3" type="Char16str"/>
   </message>
 

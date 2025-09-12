@@ -43,7 +43,8 @@ void encodeJsonToSbe(const std::string& jsonPayload,
         if (hdr.contains("messageCode"))  h.putMessageCode(hdr["messageCode"].get<std::string>());
         if (hdr.contains("sequence"))     h.sequence(hdr["sequence"].get<uint32_t>());
         if (hdr.contains("timestamp"))    h.timestamp(hdr["timestamp"].get<uint64_t>());
-        if (hdr.contains("statusCode"))   h.statusCode(hdr["statusCode"].get<uint16_t>());
+        if (hdr.contains("responseCode"))          h.responseCode(hdr["responseCode"].get<uint16_t>());
+        if (hdr.contains("responseDescription"))   h.putResponseDescription(hdr["responseDescription"].get<std::string>());
         if (hdr.contains("deviceId"))     h.putDeviceId(hdr["deviceId"].get<std::string>());
         if (hdr.contains("deviceName"))   h.putDeviceName(hdr["deviceName"].get<std::string>());
         if (hdr.contains("deviceIp"))     h.putDeviceIp(hdr["deviceIp"].get<std::string>());
