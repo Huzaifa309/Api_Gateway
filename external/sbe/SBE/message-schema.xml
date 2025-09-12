@@ -21,7 +21,7 @@
       <type name="v" primitiveType="char" length="64"/>
     </composite>
 
-    <composite name="MessageHeader" description="SBE Standard Message Header">
+    <composite name="messageHeader" description="SBE Standard Message Header">
       <type name="blockLength"  primitiveType="uint16"/>
       <type name="templateId"   primitiveType="uint16"/>
       <type name="schemaId"     primitiveType="uint16"/>
@@ -29,32 +29,67 @@
     </composite>
 
     <composite name="AppHeader" description="Business header carried inside each message">
-      <type name="version"      primitiveType="uint16"/>
-      <type name="messageType"  primitiveType="char" length="16"/>
-      <type name="messageId"    primitiveType="char" length="32"/>
-      <type name="messageCode"  primitiveType="char" length="16"/>
-      <type name="sequence"     primitiveType="uint32"/>
-      <type name="timestamp"    primitiveType="uint64" semanticType="UTCTimestampNanos"/>
-      <type name="statusCode"   primitiveType="uint16"/>
-      <type name="deviceId"     primitiveType="char" length="32"/>
-      <type name="deviceName"   primitiveType="char" length="64"/>
-      <type name="deviceIp"     primitiveType="char" length="48"/>
-      <type name="location"     primitiveType="char" length="64"/>
+      <type name="version"              primitiveType="uint16"/>
+      <type name="messageType"          primitiveType="char" length="16"/>
+      <type name="messageId"            primitiveType="char" length="32"/>
+      <type name="messageCode"          primitiveType="char" length="16"/>
+      <type name="sequence"             primitiveType="uint32"/>
+      <type name="timestamp"            primitiveType="uint64" semanticType="UTCTimestampNanos"/>
+      <type name="responseCode"         primitiveType="uint16"/>
+      <type name="responseDescription"  primitiveType="char" length="64"/>
+      <type name="deviceId"             primitiveType="char" length="32"/>
+      <type name="deviceName"           primitiveType="char" length="64"/>
+      <type name="deviceIp"             primitiveType="char" length="48"/>
+      <type name="deviceMACaddr"        primitiveType="char" length="24"/>
+      <type name="location"             primitiveType="char" length="64"/>
     </composite>
     
   </types>
 
-  <message name="RegistrationRequest" id="101" description="Registration Request">
-    <field name="header"        id="1" type="AppHeader"/>
-    <field name="phoneNumber"   id="2" type="Char16str"/>
+  <message name="RegistrationRequest"  id="101" description="Registration Request">
+    <field name="header"               id="1" type="AppHeader"/>
+    <field name="phoneNumber"          id="2" type="Char16str"/>
   </message>
 
   <message name="RegistrationResponse" id="102" description="Registration Response">
-    <field name="header"        id="1" type="AppHeader"/>
-    <field name="message"       id="2" type="Char64str"/>
-    <field name="token"         id="3" type="Char32str"/>
-    <field name="expiresIn"     id="4" type="uint32" semanticType="Duration"/>
-    <field name="refreshToken"  id="5" type="Char32str"/>
+    <field name="header"               id="1" type="AppHeader"/>
+    <field name="otpExpiresIn"         id="2" type="uint32" semanticType="Duration"/>
+    <field name="remainingRetries"     id="3" type="uint8"/>
+  </message>
+
+  <message name="OtpRequest"           id="103" description="OTP Request">
+    <field name="header"               id="1" type="AppHeader"/>
+    <field name="phoneNumber"          id="2" type="Char16str"/>
+    <field name="otpCode"              id="3" type="char" length="6"/>
+  </message>
+
+  <message name="OtpResponse"          id="104" description="OTP Response">
+    <field name="header"               id="1" type="AppHeader"/>
+    <field name="verifiedStatus"       id="2" type="uint8"/>
+  </message>
+
+  <message name="OtpResendRequest"     id="105" description="OTP Resend Request">
+    <field name="header"               id="1" type="AppHeader"/>
+    <field name="phoneNumber"          id="2" type="Char16str"/>
+  </message>
+
+  <message name="OtpResendResponse"    id="106" description="OTP Resend Response">
+    <field name="header"               id="1" type="AppHeader"/> 
+    <field name="otpExpiresIn"         id="2" type="uint32" semanticType="Duration"/>
+    <!-- remainingRetries will be decremented by 1 and also updated in OTP table-->
+    <field name="remainingRetries"     id="3" type="uint8"/>
+  </message>
+
+  <message name="PasscodeSetupRequest" id="107" description="Passcode Setup Request">
+    <field name="header"               id="1" type="AppHeader"/>
+    <field name="phoneNumber"          id="2" type="Char16str"/>
+    <field name="passCode"             id="3" type="Char16str"/>
+  </message>
+
+  <message name="PasscodeSetupResponse" id="108" description="Passcode Setup Response">
+    <field name="header"               id="1" type="AppHeader"/>
+    <field name="phoneNumber"          id="2" type="Char16str"/>
+    <field name="passCode"             id="3" type="Char16str"/>
   </message>
 
 </sbe:messageSchema>

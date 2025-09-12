@@ -1,6 +1,6 @@
 /* Generated SBE (Simple Binary Encoding) message codec */
-#ifndef _SBE_REGISTRATIONRESPONSE_CXX_H_
-#define _SBE_REGISTRATIONRESPONSE_CXX_H_
+#ifndef _SBE_OTPREQUEST_CXX_H_
+#define _SBE_OTPREQUEST_CXX_H_
 
 #if __cplusplus >= 201103L
 #  define SBE_CONSTEXPR constexpr
@@ -96,7 +96,7 @@
 
 namespace SBE {
 
-class RegistrationResponse
+class OtpRequest
 {
 private:
     char *m_buffer = nullptr;
@@ -112,8 +112,8 @@ private:
     }
 
 public:
-    static constexpr std::uint16_t SBE_BLOCK_LENGTH = static_cast<std::uint16_t>(381);
-    static constexpr std::uint16_t SBE_TEMPLATE_ID = static_cast<std::uint16_t>(102);
+    static constexpr std::uint16_t SBE_BLOCK_LENGTH = static_cast<std::uint16_t>(393);
+    static constexpr std::uint16_t SBE_TEMPLATE_ID = static_cast<std::uint16_t>(103);
     static constexpr std::uint16_t SBE_SCHEMA_ID = static_cast<std::uint16_t>(1);
     static constexpr std::uint16_t SBE_SCHEMA_VERSION = static_cast<std::uint16_t>(1);
     static constexpr const char* SBE_SEMANTIC_VERSION = "1.0.0";
@@ -137,9 +137,9 @@ public:
 
     using messageHeader = MessageHeader;
 
-    RegistrationResponse() = default;
+    OtpRequest() = default;
 
-    RegistrationResponse(
+    OtpRequest(
         char *buffer,
         const std::uint64_t offset,
         const std::uint64_t bufferLength,
@@ -154,23 +154,23 @@ public:
     {
     }
 
-    RegistrationResponse(char *buffer, const std::uint64_t bufferLength) :
-        RegistrationResponse(buffer, 0, bufferLength, sbeBlockLength(), sbeSchemaVersion())
+    OtpRequest(char *buffer, const std::uint64_t bufferLength) :
+        OtpRequest(buffer, 0, bufferLength, sbeBlockLength(), sbeSchemaVersion())
     {
     }
 
-    RegistrationResponse(
+    OtpRequest(
         char *buffer,
         const std::uint64_t bufferLength,
         const std::uint64_t actingBlockLength,
         const std::uint64_t actingVersion) :
-        RegistrationResponse(buffer, 0, bufferLength, actingBlockLength, actingVersion)
+        OtpRequest(buffer, 0, bufferLength, actingBlockLength, actingVersion)
     {
     }
 
     SBE_NODISCARD static SBE_CONSTEXPR std::uint16_t sbeBlockLength() SBE_NOEXCEPT
     {
-        return static_cast<std::uint16_t>(381);
+        return static_cast<std::uint16_t>(393);
     }
 
     SBE_NODISCARD static SBE_CONSTEXPR std::uint64_t sbeBlockAndHeaderLength() SBE_NOEXCEPT
@@ -180,7 +180,7 @@ public:
 
     SBE_NODISCARD static SBE_CONSTEXPR std::uint16_t sbeTemplateId() SBE_NOEXCEPT
     {
-        return static_cast<std::uint16_t>(102);
+        return static_cast<std::uint16_t>(103);
     }
 
     SBE_NODISCARD static SBE_CONSTEXPR std::uint16_t sbeSchemaId() SBE_NOEXCEPT
@@ -208,7 +208,7 @@ public:
         return m_offset;
     }
 
-    RegistrationResponse &wrapForEncode(char *buffer, const std::uint64_t offset, const std::uint64_t bufferLength)
+    OtpRequest &wrapForEncode(char *buffer, const std::uint64_t offset, const std::uint64_t bufferLength)
     {
         m_buffer = buffer;
         m_bufferLength = bufferLength;
@@ -219,7 +219,7 @@ public:
         return *this;
     }
 
-    RegistrationResponse &wrapAndApplyHeader(char *buffer, const std::uint64_t offset, const std::uint64_t bufferLength)
+    OtpRequest &wrapAndApplyHeader(char *buffer, const std::uint64_t offset, const std::uint64_t bufferLength)
     {
         messageHeader hdr(buffer, offset, bufferLength, sbeSchemaVersion());
 
@@ -238,7 +238,7 @@ public:
         return *this;
     }
 
-    RegistrationResponse &wrapForDecode(
+    OtpRequest &wrapForDecode(
         char *buffer,
         const std::uint64_t offset,
         const std::uint64_t actingBlockLength,
@@ -254,7 +254,7 @@ public:
         return *this;
     }
 
-    RegistrationResponse &sbeRewind()
+    OtpRequest &sbeRewind()
     {
         return wrapForDecode(m_buffer, m_offset, m_actingBlockLength, m_actingVersion, m_bufferLength);
     }
@@ -286,7 +286,7 @@ public:
 
     SBE_NODISCARD std::uint64_t decodeLength() const
     {
-        RegistrationResponse skipper(m_buffer, m_offset, m_bufferLength, m_actingBlockLength, m_actingVersion);
+        OtpRequest skipper(m_buffer, m_offset, m_bufferLength, m_actingBlockLength, m_actingVersion);
         skipper.skip();
         return skipper.encodedLength();
     }
@@ -350,71 +350,46 @@ public:
         return m_header;
     }
 
-    SBE_NODISCARD static const char *otpExpiresInMetaAttribute(const MetaAttribute metaAttribute) SBE_NOEXCEPT
+    SBE_NODISCARD static const char *phoneNumberMetaAttribute(const MetaAttribute metaAttribute) SBE_NOEXCEPT
     {
         switch (metaAttribute)
         {
-            case MetaAttribute::SEMANTIC_TYPE: return "Duration";
             case MetaAttribute::PRESENCE: return "required";
             default: return "";
         }
     }
 
-    static SBE_CONSTEXPR std::uint16_t otpExpiresInId() SBE_NOEXCEPT
+    static SBE_CONSTEXPR std::uint16_t phoneNumberId() SBE_NOEXCEPT
     {
         return 2;
     }
 
-    SBE_NODISCARD static SBE_CONSTEXPR std::uint64_t otpExpiresInSinceVersion() SBE_NOEXCEPT
+    SBE_NODISCARD static SBE_CONSTEXPR std::uint64_t phoneNumberSinceVersion() SBE_NOEXCEPT
     {
         return 0;
     }
 
-    SBE_NODISCARD bool otpExpiresInInActingVersion() SBE_NOEXCEPT
+    SBE_NODISCARD bool phoneNumberInActingVersion() SBE_NOEXCEPT
     {
         return true;
     }
 
-    SBE_NODISCARD static SBE_CONSTEXPR std::size_t otpExpiresInEncodingOffset() SBE_NOEXCEPT
+    SBE_NODISCARD static SBE_CONSTEXPR std::size_t phoneNumberEncodingOffset() SBE_NOEXCEPT
     {
         return 376;
     }
 
-    static SBE_CONSTEXPR std::uint32_t otpExpiresInNullValue() SBE_NOEXCEPT
+private:
+    Char16str m_phoneNumber;
+
+public:
+    SBE_NODISCARD Char16str &phoneNumber()
     {
-        return SBE_NULLVALUE_UINT32;
+        m_phoneNumber.wrap(m_buffer, m_offset + 376, m_actingVersion, m_bufferLength);
+        return m_phoneNumber;
     }
 
-    static SBE_CONSTEXPR std::uint32_t otpExpiresInMinValue() SBE_NOEXCEPT
-    {
-        return UINT32_C(0x0);
-    }
-
-    static SBE_CONSTEXPR std::uint32_t otpExpiresInMaxValue() SBE_NOEXCEPT
-    {
-        return UINT32_C(0xfffffffe);
-    }
-
-    static SBE_CONSTEXPR std::size_t otpExpiresInEncodingLength() SBE_NOEXCEPT
-    {
-        return 4;
-    }
-
-    SBE_NODISCARD std::uint32_t otpExpiresIn() const SBE_NOEXCEPT
-    {
-        std::uint32_t val;
-        std::memcpy(&val, m_buffer + m_offset + 376, sizeof(std::uint32_t));
-        return SBE_LITTLE_ENDIAN_ENCODE_32(val);
-    }
-
-    RegistrationResponse &otpExpiresIn(const std::uint32_t value) SBE_NOEXCEPT
-    {
-        std::uint32_t val = SBE_LITTLE_ENDIAN_ENCODE_32(value);
-        std::memcpy(m_buffer + m_offset + 376, &val, sizeof(std::uint32_t));
-        return *this;
-    }
-
-    SBE_NODISCARD static const char *remainingRetriesMetaAttribute(const MetaAttribute metaAttribute) SBE_NOEXCEPT
+    SBE_NODISCARD static const char *otpCodeMetaAttribute(const MetaAttribute metaAttribute) SBE_NOEXCEPT
     {
         switch (metaAttribute)
         {
@@ -423,65 +398,65 @@ public:
         }
     }
 
-    static SBE_CONSTEXPR std::uint16_t remainingRetriesId() SBE_NOEXCEPT
+    static SBE_CONSTEXPR std::uint16_t otpCodeId() SBE_NOEXCEPT
     {
         return 3;
     }
 
-    SBE_NODISCARD static SBE_CONSTEXPR std::uint64_t remainingRetriesSinceVersion() SBE_NOEXCEPT
+    SBE_NODISCARD static SBE_CONSTEXPR std::uint64_t otpCodeSinceVersion() SBE_NOEXCEPT
     {
         return 0;
     }
 
-    SBE_NODISCARD bool remainingRetriesInActingVersion() SBE_NOEXCEPT
+    SBE_NODISCARD bool otpCodeInActingVersion() SBE_NOEXCEPT
     {
         return true;
     }
 
-    SBE_NODISCARD static SBE_CONSTEXPR std::size_t remainingRetriesEncodingOffset() SBE_NOEXCEPT
+    SBE_NODISCARD static SBE_CONSTEXPR std::size_t otpCodeEncodingOffset() SBE_NOEXCEPT
     {
-        return 380;
+        return 392;
     }
 
-    static SBE_CONSTEXPR std::uint8_t remainingRetriesNullValue() SBE_NOEXCEPT
+    static SBE_CONSTEXPR char otpCodeNullValue() SBE_NOEXCEPT
     {
-        return SBE_NULLVALUE_UINT8;
+        return static_cast<char>(0);
     }
 
-    static SBE_CONSTEXPR std::uint8_t remainingRetriesMinValue() SBE_NOEXCEPT
+    static SBE_CONSTEXPR char otpCodeMinValue() SBE_NOEXCEPT
     {
-        return static_cast<std::uint8_t>(0);
+        return static_cast<char>(32);
     }
 
-    static SBE_CONSTEXPR std::uint8_t remainingRetriesMaxValue() SBE_NOEXCEPT
+    static SBE_CONSTEXPR char otpCodeMaxValue() SBE_NOEXCEPT
     {
-        return static_cast<std::uint8_t>(254);
+        return static_cast<char>(126);
     }
 
-    static SBE_CONSTEXPR std::size_t remainingRetriesEncodingLength() SBE_NOEXCEPT
+    static SBE_CONSTEXPR std::size_t otpCodeEncodingLength() SBE_NOEXCEPT
     {
         return 1;
     }
 
-    SBE_NODISCARD std::uint8_t remainingRetries() const SBE_NOEXCEPT
+    SBE_NODISCARD char otpCode() const SBE_NOEXCEPT
     {
-        std::uint8_t val;
-        std::memcpy(&val, m_buffer + m_offset + 380, sizeof(std::uint8_t));
+        char val;
+        std::memcpy(&val, m_buffer + m_offset + 392, sizeof(char));
         return (val);
     }
 
-    RegistrationResponse &remainingRetries(const std::uint8_t value) SBE_NOEXCEPT
+    OtpRequest &otpCode(const char value) SBE_NOEXCEPT
     {
-        std::uint8_t val = (value);
-        std::memcpy(m_buffer + m_offset + 380, &val, sizeof(std::uint8_t));
+        char val = (value);
+        std::memcpy(m_buffer + m_offset + 392, &val, sizeof(char));
         return *this;
     }
 
 template<typename CharT, typename Traits>
 friend std::basic_ostream<CharT, Traits> & operator << (
-    std::basic_ostream<CharT, Traits> &builder, const RegistrationResponse &_writer)
+    std::basic_ostream<CharT, Traits> &builder, const OtpRequest &_writer)
 {
-    RegistrationResponse writer(
+    OtpRequest writer(
         _writer.m_buffer,
         _writer.m_offset,
         _writer.m_bufferLength,
@@ -489,7 +464,7 @@ friend std::basic_ostream<CharT, Traits> & operator << (
         _writer.m_actingVersion);
 
     builder << '{';
-    builder << R"("Name": "RegistrationResponse", )";
+    builder << R"("Name": "OtpRequest", )";
     builder << R"("sbeTemplateId": )";
     builder << writer.sbeTemplateId();
     builder << ", ";
@@ -498,12 +473,19 @@ friend std::basic_ostream<CharT, Traits> & operator << (
     builder << writer.header();
 
     builder << ", ";
-    builder << R"("otpExpiresIn": )";
-    builder << +writer.otpExpiresIn();
+    builder << R"("phoneNumber": )";
+    builder << writer.phoneNumber();
 
     builder << ", ";
-    builder << R"("remainingRetries": )";
-    builder << +writer.remainingRetries();
+    builder << R"("otpCode": )";
+    if (std::isprint(writer.otpCode()))
+    {
+        builder << '"' << (char)writer.otpCode() << '"';
+    }
+    else
+    {
+        builder << (int)writer.otpCode();
+    }
 
     builder << '}';
 

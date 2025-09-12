@@ -1,6 +1,6 @@
 /* Generated SBE (Simple Binary Encoding) message codec */
-#ifndef _SBE_REGISTRATIONRESPONSE_CXX_H_
-#define _SBE_REGISTRATIONRESPONSE_CXX_H_
+#ifndef _SBE_OTPRESENDRESPONSE_CXX_H_
+#define _SBE_OTPRESENDRESPONSE_CXX_H_
 
 #if __cplusplus >= 201103L
 #  define SBE_CONSTEXPR constexpr
@@ -96,7 +96,7 @@
 
 namespace SBE {
 
-class RegistrationResponse
+class OtpResendResponse
 {
 private:
     char *m_buffer = nullptr;
@@ -113,7 +113,7 @@ private:
 
 public:
     static constexpr std::uint16_t SBE_BLOCK_LENGTH = static_cast<std::uint16_t>(381);
-    static constexpr std::uint16_t SBE_TEMPLATE_ID = static_cast<std::uint16_t>(102);
+    static constexpr std::uint16_t SBE_TEMPLATE_ID = static_cast<std::uint16_t>(106);
     static constexpr std::uint16_t SBE_SCHEMA_ID = static_cast<std::uint16_t>(1);
     static constexpr std::uint16_t SBE_SCHEMA_VERSION = static_cast<std::uint16_t>(1);
     static constexpr const char* SBE_SEMANTIC_VERSION = "1.0.0";
@@ -137,9 +137,9 @@ public:
 
     using messageHeader = MessageHeader;
 
-    RegistrationResponse() = default;
+    OtpResendResponse() = default;
 
-    RegistrationResponse(
+    OtpResendResponse(
         char *buffer,
         const std::uint64_t offset,
         const std::uint64_t bufferLength,
@@ -154,17 +154,17 @@ public:
     {
     }
 
-    RegistrationResponse(char *buffer, const std::uint64_t bufferLength) :
-        RegistrationResponse(buffer, 0, bufferLength, sbeBlockLength(), sbeSchemaVersion())
+    OtpResendResponse(char *buffer, const std::uint64_t bufferLength) :
+        OtpResendResponse(buffer, 0, bufferLength, sbeBlockLength(), sbeSchemaVersion())
     {
     }
 
-    RegistrationResponse(
+    OtpResendResponse(
         char *buffer,
         const std::uint64_t bufferLength,
         const std::uint64_t actingBlockLength,
         const std::uint64_t actingVersion) :
-        RegistrationResponse(buffer, 0, bufferLength, actingBlockLength, actingVersion)
+        OtpResendResponse(buffer, 0, bufferLength, actingBlockLength, actingVersion)
     {
     }
 
@@ -180,7 +180,7 @@ public:
 
     SBE_NODISCARD static SBE_CONSTEXPR std::uint16_t sbeTemplateId() SBE_NOEXCEPT
     {
-        return static_cast<std::uint16_t>(102);
+        return static_cast<std::uint16_t>(106);
     }
 
     SBE_NODISCARD static SBE_CONSTEXPR std::uint16_t sbeSchemaId() SBE_NOEXCEPT
@@ -208,7 +208,7 @@ public:
         return m_offset;
     }
 
-    RegistrationResponse &wrapForEncode(char *buffer, const std::uint64_t offset, const std::uint64_t bufferLength)
+    OtpResendResponse &wrapForEncode(char *buffer, const std::uint64_t offset, const std::uint64_t bufferLength)
     {
         m_buffer = buffer;
         m_bufferLength = bufferLength;
@@ -219,7 +219,7 @@ public:
         return *this;
     }
 
-    RegistrationResponse &wrapAndApplyHeader(char *buffer, const std::uint64_t offset, const std::uint64_t bufferLength)
+    OtpResendResponse &wrapAndApplyHeader(char *buffer, const std::uint64_t offset, const std::uint64_t bufferLength)
     {
         messageHeader hdr(buffer, offset, bufferLength, sbeSchemaVersion());
 
@@ -238,7 +238,7 @@ public:
         return *this;
     }
 
-    RegistrationResponse &wrapForDecode(
+    OtpResendResponse &wrapForDecode(
         char *buffer,
         const std::uint64_t offset,
         const std::uint64_t actingBlockLength,
@@ -254,7 +254,7 @@ public:
         return *this;
     }
 
-    RegistrationResponse &sbeRewind()
+    OtpResendResponse &sbeRewind()
     {
         return wrapForDecode(m_buffer, m_offset, m_actingBlockLength, m_actingVersion, m_bufferLength);
     }
@@ -286,7 +286,7 @@ public:
 
     SBE_NODISCARD std::uint64_t decodeLength() const
     {
-        RegistrationResponse skipper(m_buffer, m_offset, m_bufferLength, m_actingBlockLength, m_actingVersion);
+        OtpResendResponse skipper(m_buffer, m_offset, m_bufferLength, m_actingBlockLength, m_actingVersion);
         skipper.skip();
         return skipper.encodedLength();
     }
@@ -407,7 +407,7 @@ public:
         return SBE_LITTLE_ENDIAN_ENCODE_32(val);
     }
 
-    RegistrationResponse &otpExpiresIn(const std::uint32_t value) SBE_NOEXCEPT
+    OtpResendResponse &otpExpiresIn(const std::uint32_t value) SBE_NOEXCEPT
     {
         std::uint32_t val = SBE_LITTLE_ENDIAN_ENCODE_32(value);
         std::memcpy(m_buffer + m_offset + 376, &val, sizeof(std::uint32_t));
@@ -470,7 +470,7 @@ public:
         return (val);
     }
 
-    RegistrationResponse &remainingRetries(const std::uint8_t value) SBE_NOEXCEPT
+    OtpResendResponse &remainingRetries(const std::uint8_t value) SBE_NOEXCEPT
     {
         std::uint8_t val = (value);
         std::memcpy(m_buffer + m_offset + 380, &val, sizeof(std::uint8_t));
@@ -479,9 +479,9 @@ public:
 
 template<typename CharT, typename Traits>
 friend std::basic_ostream<CharT, Traits> & operator << (
-    std::basic_ostream<CharT, Traits> &builder, const RegistrationResponse &_writer)
+    std::basic_ostream<CharT, Traits> &builder, const OtpResendResponse &_writer)
 {
-    RegistrationResponse writer(
+    OtpResendResponse writer(
         _writer.m_buffer,
         _writer.m_offset,
         _writer.m_bufferLength,
@@ -489,7 +489,7 @@ friend std::basic_ostream<CharT, Traits> & operator << (
         _writer.m_actingVersion);
 
     builder << '{';
-    builder << R"("Name": "RegistrationResponse", )";
+    builder << R"("Name": "OtpResendResponse", )";
     builder << R"("sbeTemplateId": )";
     builder << writer.sbeTemplateId();
     builder << ", ";

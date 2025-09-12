@@ -32,15 +32,15 @@
 #endif
 
 #include <cstdint>
+#include <limits>
 #include <cstring>
 #include <iomanip>
-#include <limits>
 #include <ostream>
-#include <sstream>
 #include <stdexcept>
+#include <sstream>
 #include <string>
-#include <tuple>
 #include <vector>
+#include <tuple>
 
 #if defined(WIN32) || defined(_WIN32)
 #  define SBE_BIG_ENDIAN_ENCODE_16(v) _byteswap_ushort(v)
@@ -64,8 +64,7 @@
 #  define SBE_BIG_ENDIAN_ENCODE_32(v) (v)
 #  define SBE_BIG_ENDIAN_ENCODE_64(v) (v)
 #else
-#  error \
-      "Byte Ordering of platform not determined. Set __BYTE_ORDER__ manually before including this file."
+#  error "Byte Ordering of platform not determined. Set __BYTE_ORDER__ manually before including this file."
 #endif
 
 #if !defined(SBE_BOUNDS_CHECK_EXPECT)
@@ -73,7 +72,7 @@
 #    define SBE_BOUNDS_CHECK_EXPECT(exp, c) (false)
 #  elif defined(_MSC_VER)
 #    define SBE_BOUNDS_CHECK_EXPECT(exp, c) (exp)
-#  else
+#  else 
 #    define SBE_BOUNDS_CHECK_EXPECT(exp, c) (__builtin_expect(exp, c))
 #  endif
 
@@ -90,16 +89,16 @@
 #define SBE_NULLVALUE_UINT32 (std::numeric_limits<std::uint32_t>::max)()
 #define SBE_NULLVALUE_UINT64 (std::numeric_limits<std::uint64_t>::max)()
 
-#include "AppHeader.h"
+
 #include "Char16str.h"
-#include "Char32str.h"
-#include "Char64str.h"
 #include "MessageHeader.h"
+#include "AppHeader.h"
 
 namespace SBE {
 
-class RegistrationRequest {
-   private:
+class RegistrationRequest
+{
+private:
     char *m_buffer = nullptr;
     std::uint64_t m_bufferLength = 0;
     std::uint64_t m_offset = 0;
@@ -107,27 +106,31 @@ class RegistrationRequest {
     std::uint64_t m_actingBlockLength = 0;
     std::uint64_t m_actingVersion = 0;
 
-    inline std::uint64_t *sbePositionPtr() SBE_NOEXCEPT { return &m_position; }
+    inline std::uint64_t *sbePositionPtr() SBE_NOEXCEPT
+    {
+        return &m_position;
+    }
 
-   public:
-    static constexpr std::uint16_t SBE_BLOCK_LENGTH =
-        static_cast<std::uint16_t>(304);
-    static constexpr std::uint16_t SBE_TEMPLATE_ID =
-        static_cast<std::uint16_t>(101);
-    static constexpr std::uint16_t SBE_SCHEMA_ID =
-        static_cast<std::uint16_t>(1);
-    static constexpr std::uint16_t SBE_SCHEMA_VERSION =
-        static_cast<std::uint16_t>(1);
-    static constexpr const char *SBE_SEMANTIC_VERSION = "1.0.0";
+public:
+    static constexpr std::uint16_t SBE_BLOCK_LENGTH = static_cast<std::uint16_t>(392);
+    static constexpr std::uint16_t SBE_TEMPLATE_ID = static_cast<std::uint16_t>(101);
+    static constexpr std::uint16_t SBE_SCHEMA_ID = static_cast<std::uint16_t>(1);
+    static constexpr std::uint16_t SBE_SCHEMA_VERSION = static_cast<std::uint16_t>(1);
+    static constexpr const char* SBE_SEMANTIC_VERSION = "1.0.0";
 
-    enum MetaAttribute { EPOCH, TIME_UNIT, SEMANTIC_TYPE, PRESENCE };
+    enum MetaAttribute
+    {
+        EPOCH, TIME_UNIT, SEMANTIC_TYPE, PRESENCE
+    };
 
-    union sbe_float_as_uint_u {
+    union sbe_float_as_uint_u
+    {
         float fp_value;
         std::uint32_t uint_value;
     };
 
-    union sbe_double_as_uint_u {
+    union sbe_double_as_uint_u
+    {
         double fp_value;
         std::uint64_t uint_value;
     };
@@ -136,65 +139,77 @@ class RegistrationRequest {
 
     RegistrationRequest() = default;
 
-    RegistrationRequest(char *buffer, const std::uint64_t offset,
-                        const std::uint64_t bufferLength,
-                        const std::uint64_t actingBlockLength,
-                        const std::uint64_t actingVersion)
-        : m_buffer(buffer),
-          m_bufferLength(bufferLength),
-          m_offset(offset),
-          m_position(sbeCheckPosition(offset + actingBlockLength)),
-          m_actingBlockLength(actingBlockLength),
-          m_actingVersion(actingVersion) {}
-
-    RegistrationRequest(char *buffer, const std::uint64_t bufferLength)
-        : RegistrationRequest(buffer, 0, bufferLength, sbeBlockLength(),
-                              sbeSchemaVersion()) {}
-
-    RegistrationRequest(char *buffer, const std::uint64_t bufferLength,
-                        const std::uint64_t actingBlockLength,
-                        const std::uint64_t actingVersion)
-        : RegistrationRequest(buffer, 0, bufferLength, actingBlockLength,
-                              actingVersion) {}
-
-    SBE_NODISCARD static SBE_CONSTEXPR std::uint16_t sbeBlockLength()
-        SBE_NOEXCEPT {
-        return static_cast<std::uint16_t>(304);
+    RegistrationRequest(
+        char *buffer,
+        const std::uint64_t offset,
+        const std::uint64_t bufferLength,
+        const std::uint64_t actingBlockLength,
+        const std::uint64_t actingVersion) :
+        m_buffer(buffer),
+        m_bufferLength(bufferLength),
+        m_offset(offset),
+        m_position(sbeCheckPosition(offset + actingBlockLength)),
+        m_actingBlockLength(actingBlockLength),
+        m_actingVersion(actingVersion)
+    {
     }
 
-    SBE_NODISCARD static SBE_CONSTEXPR std::uint64_t sbeBlockAndHeaderLength()
-        SBE_NOEXCEPT {
+    RegistrationRequest(char *buffer, const std::uint64_t bufferLength) :
+        RegistrationRequest(buffer, 0, bufferLength, sbeBlockLength(), sbeSchemaVersion())
+    {
+    }
+
+    RegistrationRequest(
+        char *buffer,
+        const std::uint64_t bufferLength,
+        const std::uint64_t actingBlockLength,
+        const std::uint64_t actingVersion) :
+        RegistrationRequest(buffer, 0, bufferLength, actingBlockLength, actingVersion)
+    {
+    }
+
+    SBE_NODISCARD static SBE_CONSTEXPR std::uint16_t sbeBlockLength() SBE_NOEXCEPT
+    {
+        return static_cast<std::uint16_t>(392);
+    }
+
+    SBE_NODISCARD static SBE_CONSTEXPR std::uint64_t sbeBlockAndHeaderLength() SBE_NOEXCEPT
+    {
         return messageHeader::encodedLength() + sbeBlockLength();
     }
 
-    SBE_NODISCARD static SBE_CONSTEXPR std::uint16_t sbeTemplateId()
-        SBE_NOEXCEPT {
+    SBE_NODISCARD static SBE_CONSTEXPR std::uint16_t sbeTemplateId() SBE_NOEXCEPT
+    {
         return static_cast<std::uint16_t>(101);
     }
 
-    SBE_NODISCARD static SBE_CONSTEXPR std::uint16_t sbeSchemaId()
-        SBE_NOEXCEPT {
+    SBE_NODISCARD static SBE_CONSTEXPR std::uint16_t sbeSchemaId() SBE_NOEXCEPT
+    {
         return static_cast<std::uint16_t>(1);
     }
 
-    SBE_NODISCARD static SBE_CONSTEXPR std::uint16_t sbeSchemaVersion()
-        SBE_NOEXCEPT {
+    SBE_NODISCARD static SBE_CONSTEXPR std::uint16_t sbeSchemaVersion() SBE_NOEXCEPT
+    {
         return static_cast<std::uint16_t>(1);
     }
 
-    SBE_NODISCARD static const char *sbeSemanticVersion() SBE_NOEXCEPT {
+    SBE_NODISCARD static const char *sbeSemanticVersion() SBE_NOEXCEPT
+    {
         return "1.0.0";
     }
 
-    SBE_NODISCARD static SBE_CONSTEXPR const char *sbeSemanticType()
-        SBE_NOEXCEPT {
+    SBE_NODISCARD static SBE_CONSTEXPR const char *sbeSemanticType() SBE_NOEXCEPT
+    {
         return "";
     }
 
-    SBE_NODISCARD std::uint64_t offset() const SBE_NOEXCEPT { return m_offset; }
+    SBE_NODISCARD std::uint64_t offset() const SBE_NOEXCEPT
+    {
+        return m_offset;
+    }
 
-    RegistrationRequest &wrapForEncode(char *buffer, const std::uint64_t offset,
-                                       const std::uint64_t bufferLength) {
+    RegistrationRequest &wrapForEncode(char *buffer, const std::uint64_t offset, const std::uint64_t bufferLength)
+    {
         m_buffer = buffer;
         m_bufferLength = bufferLength;
         m_offset = offset;
@@ -204,12 +219,12 @@ class RegistrationRequest {
         return *this;
     }
 
-    RegistrationRequest &wrapAndApplyHeader(char *buffer,
-                                            const std::uint64_t offset,
-                                            const std::uint64_t bufferLength) {
+    RegistrationRequest &wrapAndApplyHeader(char *buffer, const std::uint64_t offset, const std::uint64_t bufferLength)
+    {
         messageHeader hdr(buffer, offset, bufferLength, sbeSchemaVersion());
 
-        hdr.blockLength(sbeBlockLength())
+        hdr
+            .blockLength(sbeBlockLength())
             .templateId(sbeTemplateId())
             .schemaId(sbeSchemaId())
             .version(sbeSchemaVersion());
@@ -223,10 +238,13 @@ class RegistrationRequest {
         return *this;
     }
 
-    RegistrationRequest &wrapForDecode(char *buffer, const std::uint64_t offset,
-                                       const std::uint64_t actingBlockLength,
-                                       const std::uint64_t actingVersion,
-                                       const std::uint64_t bufferLength) {
+    RegistrationRequest &wrapForDecode(
+        char *buffer,
+        const std::uint64_t offset,
+        const std::uint64_t actingBlockLength,
+        const std::uint64_t actingVersion,
+        const std::uint64_t bufferLength)
+    {
         m_buffer = buffer;
         m_bufferLength = bufferLength;
         m_offset = offset;
@@ -236,165 +254,192 @@ class RegistrationRequest {
         return *this;
     }
 
-    RegistrationRequest &sbeRewind() {
-        return wrapForDecode(m_buffer, m_offset, m_actingBlockLength,
-                             m_actingVersion, m_bufferLength);
+    RegistrationRequest &sbeRewind()
+    {
+        return wrapForDecode(m_buffer, m_offset, m_actingBlockLength, m_actingVersion, m_bufferLength);
     }
 
-    SBE_NODISCARD std::uint64_t sbePosition() const SBE_NOEXCEPT {
+    SBE_NODISCARD std::uint64_t sbePosition() const SBE_NOEXCEPT
+    {
         return m_position;
     }
 
     // NOLINTNEXTLINE(readability-convert-member-functions-to-static)
-    std::uint64_t sbeCheckPosition(const std::uint64_t position) {
-        if (SBE_BOUNDS_CHECK_EXPECT((position > m_bufferLength), false)) {
+    std::uint64_t sbeCheckPosition(const std::uint64_t position)
+    {
+        if (SBE_BOUNDS_CHECK_EXPECT((position > m_bufferLength), false))
+        {
             throw std::runtime_error("buffer too short [E100]");
         }
         return position;
     }
 
-    void sbePosition(const std::uint64_t position) {
+    void sbePosition(const std::uint64_t position)
+    {
         m_position = sbeCheckPosition(position);
     }
 
-    SBE_NODISCARD std::uint64_t encodedLength() const SBE_NOEXCEPT {
+    SBE_NODISCARD std::uint64_t encodedLength() const SBE_NOEXCEPT
+    {
         return sbePosition() - m_offset;
     }
 
-    SBE_NODISCARD std::uint64_t decodeLength() const {
-        RegistrationRequest skipper(m_buffer, m_offset, m_bufferLength,
-                                    m_actingBlockLength, m_actingVersion);
+    SBE_NODISCARD std::uint64_t decodeLength() const
+    {
+        RegistrationRequest skipper(m_buffer, m_offset, m_bufferLength, m_actingBlockLength, m_actingVersion);
         skipper.skip();
         return skipper.encodedLength();
     }
 
-    SBE_NODISCARD const char *buffer() const SBE_NOEXCEPT { return m_buffer; }
+    SBE_NODISCARD const char *buffer() const SBE_NOEXCEPT
+    {
+        return m_buffer;
+    }
 
-    SBE_NODISCARD char *buffer() SBE_NOEXCEPT { return m_buffer; }
+    SBE_NODISCARD char *buffer() SBE_NOEXCEPT
+    {
+        return m_buffer;
+    }
 
-    SBE_NODISCARD std::uint64_t bufferLength() const SBE_NOEXCEPT {
+    SBE_NODISCARD std::uint64_t bufferLength() const SBE_NOEXCEPT
+    {
         return m_bufferLength;
     }
 
-    SBE_NODISCARD std::uint64_t actingVersion() const SBE_NOEXCEPT {
+    SBE_NODISCARD std::uint64_t actingVersion() const SBE_NOEXCEPT
+    {
         return m_actingVersion;
     }
 
-    SBE_NODISCARD static const char *headerMetaAttribute(
-        const MetaAttribute metaAttribute) SBE_NOEXCEPT {
-        switch (metaAttribute) {
-            case MetaAttribute::PRESENCE:
-                return "required";
-            default:
-                return "";
+    SBE_NODISCARD static const char *headerMetaAttribute(const MetaAttribute metaAttribute) SBE_NOEXCEPT
+    {
+        switch (metaAttribute)
+        {
+            case MetaAttribute::PRESENCE: return "required";
+            default: return "";
         }
     }
 
-    static SBE_CONSTEXPR std::uint16_t headerId() SBE_NOEXCEPT { return 1; }
+    static SBE_CONSTEXPR std::uint16_t headerId() SBE_NOEXCEPT
+    {
+        return 1;
+    }
 
-    SBE_NODISCARD static SBE_CONSTEXPR std::uint64_t headerSinceVersion()
-        SBE_NOEXCEPT {
+    SBE_NODISCARD static SBE_CONSTEXPR std::uint64_t headerSinceVersion() SBE_NOEXCEPT
+    {
         return 0;
     }
 
-    SBE_NODISCARD bool headerInActingVersion() SBE_NOEXCEPT { return true; }
+    SBE_NODISCARD bool headerInActingVersion() SBE_NOEXCEPT
+    {
+        return true;
+    }
 
-    SBE_NODISCARD static SBE_CONSTEXPR std::size_t headerEncodingOffset()
-        SBE_NOEXCEPT {
+    SBE_NODISCARD static SBE_CONSTEXPR std::size_t headerEncodingOffset() SBE_NOEXCEPT
+    {
         return 0;
     }
 
-   private:
+private:
     AppHeader m_header;
 
-   public:
-    SBE_NODISCARD AppHeader &header() {
+public:
+    SBE_NODISCARD AppHeader &header()
+    {
         m_header.wrap(m_buffer, m_offset + 0, m_actingVersion, m_bufferLength);
         return m_header;
     }
 
-    SBE_NODISCARD static const char *phoneNumberMetaAttribute(
-        const MetaAttribute metaAttribute) SBE_NOEXCEPT {
-        switch (metaAttribute) {
-            case MetaAttribute::PRESENCE:
-                return "required";
-            default:
-                return "";
+    SBE_NODISCARD static const char *phoneNumberMetaAttribute(const MetaAttribute metaAttribute) SBE_NOEXCEPT
+    {
+        switch (metaAttribute)
+        {
+            case MetaAttribute::PRESENCE: return "required";
+            default: return "";
         }
     }
 
-    static SBE_CONSTEXPR std::uint16_t phoneNumberId() SBE_NOEXCEPT {
+    static SBE_CONSTEXPR std::uint16_t phoneNumberId() SBE_NOEXCEPT
+    {
         return 2;
     }
 
-    SBE_NODISCARD static SBE_CONSTEXPR std::uint64_t phoneNumberSinceVersion()
-        SBE_NOEXCEPT {
+    SBE_NODISCARD static SBE_CONSTEXPR std::uint64_t phoneNumberSinceVersion() SBE_NOEXCEPT
+    {
         return 0;
     }
 
-    SBE_NODISCARD bool phoneNumberInActingVersion() SBE_NOEXCEPT {
+    SBE_NODISCARD bool phoneNumberInActingVersion() SBE_NOEXCEPT
+    {
         return true;
     }
 
-    SBE_NODISCARD static SBE_CONSTEXPR std::size_t phoneNumberEncodingOffset()
-        SBE_NOEXCEPT {
-        return 288;
+    SBE_NODISCARD static SBE_CONSTEXPR std::size_t phoneNumberEncodingOffset() SBE_NOEXCEPT
+    {
+        return 376;
     }
 
-   private:
+private:
     Char16str m_phoneNumber;
 
-   public:
-    SBE_NODISCARD Char16str &phoneNumber() {
-        m_phoneNumber.wrap(m_buffer, m_offset + 288, m_actingVersion,
-                           m_bufferLength);
+public:
+    SBE_NODISCARD Char16str &phoneNumber()
+    {
+        m_phoneNumber.wrap(m_buffer, m_offset + 376, m_actingVersion, m_bufferLength);
         return m_phoneNumber;
     }
 
-    template <typename CharT, typename Traits>
-    friend std::basic_ostream<CharT, Traits> &operator<<(
-        std::basic_ostream<CharT, Traits> &builder,
-        const RegistrationRequest &_writer) {
-        RegistrationRequest writer(
-            _writer.m_buffer, _writer.m_offset, _writer.m_bufferLength,
-            _writer.m_actingBlockLength, _writer.m_actingVersion);
+template<typename CharT, typename Traits>
+friend std::basic_ostream<CharT, Traits> & operator << (
+    std::basic_ostream<CharT, Traits> &builder, const RegistrationRequest &_writer)
+{
+    RegistrationRequest writer(
+        _writer.m_buffer,
+        _writer.m_offset,
+        _writer.m_bufferLength,
+        _writer.m_actingBlockLength,
+        _writer.m_actingVersion);
 
-        builder << '{';
-        builder << R"("Name": "RegistrationRequest", )";
-        builder << R"("sbeTemplateId": )";
-        builder << writer.sbeTemplateId();
-        builder << ", ";
+    builder << '{';
+    builder << R"("Name": "RegistrationRequest", )";
+    builder << R"("sbeTemplateId": )";
+    builder << writer.sbeTemplateId();
+    builder << ", ";
 
-        builder << R"("header": )";
-        builder << writer.header();
+    builder << R"("header": )";
+    builder << writer.header();
 
-        builder << ", ";
-        builder << R"("phoneNumber": )";
-        builder << writer.phoneNumber();
+    builder << ", ";
+    builder << R"("phoneNumber": )";
+    builder << writer.phoneNumber();
 
-        builder << '}';
+    builder << '}';
 
-        return builder;
-    }
+    return builder;
+}
 
-    void skip() {}
+void skip()
+{
+}
 
-    SBE_NODISCARD static SBE_CONSTEXPR bool isConstLength() SBE_NOEXCEPT {
-        return true;
-    }
+SBE_NODISCARD static SBE_CONSTEXPR bool isConstLength() SBE_NOEXCEPT
+{
+    return true;
+}
 
-    SBE_NODISCARD static std::size_t computeLength() {
+SBE_NODISCARD static std::size_t computeLength()
+{
 #if defined(__GNUG__) && !defined(__clang__)
-#  pragma GCC diagnostic push
-#  pragma GCC diagnostic ignored "-Wtype-limits"
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wtype-limits"
 #endif
-        std::size_t length = sbeBlockLength();
+    std::size_t length = sbeBlockLength();
 
-        return length;
+    return length;
 #if defined(__GNUG__) && !defined(__clang__)
-#  pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
 #endif
-    }
+}
 };
-}  // namespace SBE
+}
 #endif

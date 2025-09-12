@@ -32,15 +32,15 @@
 #endif
 
 #include <cstdint>
+#include <limits>
 #include <cstring>
 #include <iomanip>
-#include <limits>
 #include <ostream>
-#include <sstream>
 #include <stdexcept>
+#include <sstream>
 #include <string>
-#include <tuple>
 #include <vector>
+#include <tuple>
 
 #if defined(WIN32) || defined(_WIN32)
 #  define SBE_BIG_ENDIAN_ENCODE_16(v) _byteswap_ushort(v)
@@ -64,8 +64,7 @@
 #  define SBE_BIG_ENDIAN_ENCODE_32(v) (v)
 #  define SBE_BIG_ENDIAN_ENCODE_64(v) (v)
 #else
-#  error \
-      "Byte Ordering of platform not determined. Set __BYTE_ORDER__ manually before including this file."
+#  error "Byte Ordering of platform not determined. Set __BYTE_ORDER__ manually before including this file."
 #endif
 
 #if !defined(SBE_BOUNDS_CHECK_EXPECT)
@@ -73,7 +72,7 @@
 #    define SBE_BOUNDS_CHECK_EXPECT(exp, c) (false)
 #  elif defined(_MSC_VER)
 #    define SBE_BOUNDS_CHECK_EXPECT(exp, c) (exp)
-#  else
+#  else 
 #    define SBE_BOUNDS_CHECK_EXPECT(exp, c) (__builtin_expect(exp, c))
 #  endif
 
@@ -90,145 +89,195 @@
 #define SBE_NULLVALUE_UINT32 (std::numeric_limits<std::uint32_t>::max)()
 #define SBE_NULLVALUE_UINT64 (std::numeric_limits<std::uint64_t>::max)()
 
+
 namespace SBE {
 
-class Char16str {
-   private:
+class Char16str
+{
+private:
     char *m_buffer = nullptr;
     std::uint64_t m_bufferLength = 0;
     std::uint64_t m_offset = 0;
     std::uint64_t m_actingVersion = 0;
 
-   public:
-    enum MetaAttribute { EPOCH, TIME_UNIT, SEMANTIC_TYPE, PRESENCE };
+public:
+    enum MetaAttribute
+    {
+        EPOCH, TIME_UNIT, SEMANTIC_TYPE, PRESENCE
+    };
 
-    union sbe_float_as_uint_u {
+    union sbe_float_as_uint_u
+    {
         float fp_value;
         std::uint32_t uint_value;
     };
 
-    union sbe_double_as_uint_u {
+    union sbe_double_as_uint_u
+    {
         double fp_value;
         std::uint64_t uint_value;
     };
 
     Char16str() = default;
 
-    Char16str(char *buffer, const std::uint64_t offset,
-              const std::uint64_t bufferLength,
-              const std::uint64_t actingVersion)
-        : m_buffer(buffer),
-          m_bufferLength(bufferLength),
-          m_offset(offset),
-          m_actingVersion(actingVersion) {
-        if (SBE_BOUNDS_CHECK_EXPECT(((m_offset + 16) > m_bufferLength),
-                                    false)) {
+    Char16str(
+        char *buffer,
+        const std::uint64_t offset,
+        const std::uint64_t bufferLength,
+        const std::uint64_t actingVersion) :
+        m_buffer(buffer),
+        m_bufferLength(bufferLength),
+        m_offset(offset),
+        m_actingVersion(actingVersion)
+    {
+        if (SBE_BOUNDS_CHECK_EXPECT(((m_offset + 16) > m_bufferLength), false))
+        {
             throw std::runtime_error("buffer too short for flyweight [E107]");
         }
     }
 
-    Char16str(char *buffer, const std::uint64_t bufferLength,
-              const std::uint64_t actingVersion)
-        : Char16str(buffer, 0, bufferLength, actingVersion) {}
+    Char16str(
+        char *buffer,
+        const std::uint64_t bufferLength,
+        const std::uint64_t actingVersion) :
+        Char16str(buffer, 0, bufferLength, actingVersion)
+    {
+    }
 
-    Char16str(char *buffer, const std::uint64_t bufferLength)
-        : Char16str(buffer, 0, bufferLength, sbeSchemaVersion()) {}
+    Char16str(
+        char *buffer,
+        const std::uint64_t bufferLength) :
+        Char16str(buffer, 0, bufferLength, sbeSchemaVersion())
+    {
+    }
 
-    Char16str &wrap(char *buffer, const std::uint64_t offset,
-                    const std::uint64_t actingVersion,
-                    const std::uint64_t bufferLength) {
+    Char16str &wrap(
+        char *buffer,
+        const std::uint64_t offset,
+        const std::uint64_t actingVersion,
+        const std::uint64_t bufferLength)
+    {
         m_buffer = buffer;
         m_bufferLength = bufferLength;
         m_offset = offset;
         m_actingVersion = actingVersion;
 
-        if (SBE_BOUNDS_CHECK_EXPECT(((m_offset + 16) > m_bufferLength),
-                                    false)) {
+        if (SBE_BOUNDS_CHECK_EXPECT(((m_offset + 16) > m_bufferLength), false))
+        {
             throw std::runtime_error("buffer too short for flyweight [E107]");
         }
 
         return *this;
     }
 
-    SBE_NODISCARD static SBE_CONSTEXPR std::uint64_t encodedLength()
-        SBE_NOEXCEPT {
+    SBE_NODISCARD static SBE_CONSTEXPR std::uint64_t encodedLength() SBE_NOEXCEPT
+    {
         return 16;
     }
 
-    SBE_NODISCARD std::uint64_t offset() const SBE_NOEXCEPT { return m_offset; }
+    SBE_NODISCARD std::uint64_t offset() const SBE_NOEXCEPT
+    {
+        return m_offset;
+    }
 
-    SBE_NODISCARD const char *buffer() const SBE_NOEXCEPT { return m_buffer; }
+    SBE_NODISCARD const char *buffer() const SBE_NOEXCEPT
+    {
+        return m_buffer;
+    }
 
-    SBE_NODISCARD char *buffer() SBE_NOEXCEPT { return m_buffer; }
+    SBE_NODISCARD char *buffer() SBE_NOEXCEPT
+    {
+        return m_buffer;
+    }
 
-    SBE_NODISCARD std::uint64_t bufferLength() const SBE_NOEXCEPT {
+    SBE_NODISCARD std::uint64_t bufferLength() const SBE_NOEXCEPT
+    {
         return m_bufferLength;
     }
 
-    SBE_NODISCARD std::uint64_t actingVersion() const SBE_NOEXCEPT {
+    SBE_NODISCARD std::uint64_t actingVersion() const SBE_NOEXCEPT
+    {
         return m_actingVersion;
     }
 
-    SBE_NODISCARD static SBE_CONSTEXPR std::uint16_t sbeSchemaId()
-        SBE_NOEXCEPT {
+    SBE_NODISCARD static SBE_CONSTEXPR std::uint16_t sbeSchemaId() SBE_NOEXCEPT
+    {
         return static_cast<std::uint16_t>(1);
     }
 
-    SBE_NODISCARD static SBE_CONSTEXPR std::uint16_t sbeSchemaVersion()
-        SBE_NOEXCEPT {
+    SBE_NODISCARD static SBE_CONSTEXPR std::uint16_t sbeSchemaVersion() SBE_NOEXCEPT
+    {
         return static_cast<std::uint16_t>(1);
     }
 
-    SBE_NODISCARD static const char *vMetaAttribute(
-        const MetaAttribute metaAttribute) SBE_NOEXCEPT {
-        switch (metaAttribute) {
-            case MetaAttribute::PRESENCE:
-                return "required";
-            default:
-                return "";
+    SBE_NODISCARD static const char *vMetaAttribute(const MetaAttribute metaAttribute) SBE_NOEXCEPT
+    {
+        switch (metaAttribute)
+        {
+            case MetaAttribute::PRESENCE: return "required";
+            default: return "";
         }
     }
 
-    static SBE_CONSTEXPR std::uint16_t vId() SBE_NOEXCEPT { return -1; }
+    static SBE_CONSTEXPR std::uint16_t vId() SBE_NOEXCEPT
+    {
+        return -1;
+    }
 
-    SBE_NODISCARD static SBE_CONSTEXPR std::uint64_t vSinceVersion()
-        SBE_NOEXCEPT {
+    SBE_NODISCARD static SBE_CONSTEXPR std::uint64_t vSinceVersion() SBE_NOEXCEPT
+    {
         return 0;
     }
 
-    SBE_NODISCARD bool vInActingVersion() SBE_NOEXCEPT { return true; }
+    SBE_NODISCARD bool vInActingVersion() SBE_NOEXCEPT
+    {
+        return true;
+    }
 
-    SBE_NODISCARD static SBE_CONSTEXPR std::size_t vEncodingOffset()
-        SBE_NOEXCEPT {
+    SBE_NODISCARD static SBE_CONSTEXPR std::size_t vEncodingOffset() SBE_NOEXCEPT
+    {
         return 0;
     }
 
-    static SBE_CONSTEXPR char vNullValue() SBE_NOEXCEPT {
+    static SBE_CONSTEXPR char vNullValue() SBE_NOEXCEPT
+    {
         return static_cast<char>(0);
     }
 
-    static SBE_CONSTEXPR char vMinValue() SBE_NOEXCEPT {
+    static SBE_CONSTEXPR char vMinValue() SBE_NOEXCEPT
+    {
         return static_cast<char>(32);
     }
 
-    static SBE_CONSTEXPR char vMaxValue() SBE_NOEXCEPT {
+    static SBE_CONSTEXPR char vMaxValue() SBE_NOEXCEPT
+    {
         return static_cast<char>(126);
     }
 
-    static SBE_CONSTEXPR std::size_t vEncodingLength() SBE_NOEXCEPT {
+    static SBE_CONSTEXPR std::size_t vEncodingLength() SBE_NOEXCEPT
+    {
         return 16;
     }
 
-    static SBE_CONSTEXPR std::uint64_t vLength() SBE_NOEXCEPT { return 16; }
+    static SBE_CONSTEXPR std::uint64_t vLength() SBE_NOEXCEPT
+    {
+        return 16;
+    }
 
-    SBE_NODISCARD const char *v() const SBE_NOEXCEPT {
+    SBE_NODISCARD const char *v() const SBE_NOEXCEPT
+    {
         return m_buffer + m_offset + 0;
     }
 
-    SBE_NODISCARD char *v() SBE_NOEXCEPT { return m_buffer + m_offset + 0; }
+    SBE_NODISCARD char *v() SBE_NOEXCEPT
+    {
+        return m_buffer + m_offset + 0;
+    }
 
-    SBE_NODISCARD char v(const std::uint64_t index) const {
-        if (index >= 16) {
+    SBE_NODISCARD char v(const std::uint64_t index) const
+    {
+        if (index >= 16)
+        {
             throw std::runtime_error("index out of range for v [E104]");
         }
 
@@ -237,8 +286,10 @@ class Char16str {
         return (val);
     }
 
-    Char16str &v(const std::uint64_t index, const char value) {
-        if (index >= 16) {
+    Char16str &v(const std::uint64_t index, const char value)
+    {
+        if (index >= 16)
+        {
             throw std::runtime_error("index out of range for v [E105]");
         }
 
@@ -247,59 +298,64 @@ class Char16str {
         return *this;
     }
 
-    std::uint64_t getV(char *const dst, const std::uint64_t length) const {
-        if (length > 16) {
+    std::uint64_t getV(char *const dst, const std::uint64_t length) const
+    {
+        if (length > 16)
+        {
             throw std::runtime_error("length too large for getV [E106]");
         }
 
-        std::memcpy(dst, m_buffer + m_offset + 0,
-                    sizeof(char) * static_cast<std::size_t>(length));
+        std::memcpy(dst, m_buffer + m_offset + 0, sizeof(char) * static_cast<std::size_t>(length));
         return length;
     }
 
-#ifdef SBE_USE_SPAN
-    SBE_NODISCARD std::span<const char> getVAsSpan() const SBE_NOEXCEPT {
+    #ifdef SBE_USE_SPAN
+    SBE_NODISCARD std::span<const char> getVAsSpan() const SBE_NOEXCEPT
+    {
         const char *buffer = m_buffer + m_offset + 0;
-        return std::span<const char>(reinterpret_cast<const char *>(buffer),
-                                     16);
+        return std::span<const char>(reinterpret_cast<const char*>(buffer), 16);
     }
-#endif
+    #endif
 
-#ifdef SBE_USE_SPAN
+    #ifdef SBE_USE_SPAN
     template <std::size_t N>
-    Char16str &putV(std::span<const char, N> src) SBE_NOEXCEPT {
+    Char16str &putV(std::span<const char, N> src) SBE_NOEXCEPT
+    {
         static_assert(N <= 16, "array too large for putV");
 
         std::memcpy(m_buffer + m_offset + 0, src.data(), sizeof(char) * N);
-        for (std::size_t start = N; start < 16; ++start) {
+        for (std::size_t start = N; start < 16; ++start)
+        {
             m_buffer[m_offset + 0 + start] = 0;
         }
 
         return *this;
     }
-#endif
+    #endif
 
-#ifdef SBE_USE_SPAN
+    #ifdef SBE_USE_SPAN
     template <typename T>
-    Char16str &putV(T &&src) SBE_NOEXCEPT
-        requires(std::is_pointer_v<std::remove_reference_t<T>> &&
-                 !std::is_array_v<std::remove_reference_t<T>>)
-#else
+    Char16str &putV(T&& src)  SBE_NOEXCEPT requires
+        (std::is_pointer_v<std::remove_reference_t<T>> &&
+         !std::is_array_v<std::remove_reference_t<T>>)
+    #else
     Char16str &putV(const char *const src) SBE_NOEXCEPT
-#endif
+    #endif
     {
         std::memcpy(m_buffer + m_offset + 0, src, sizeof(char) * 16);
         return *this;
     }
 
-#ifdef SBE_USE_SPAN
+    #ifdef SBE_USE_SPAN
     template <std::size_t N>
-    Char16str &putV(const char (&src)[N]) SBE_NOEXCEPT {
+    Char16str &putV(const char (&src)[N]) SBE_NOEXCEPT
+    {
         return putV(std::span<const char, N>(src));
     }
-#endif
+    #endif
 
-    SBE_NODISCARD std::string getVAsString() const {
+    SBE_NODISCARD std::string getVAsString() const
+    {
         const char *buffer = m_buffer + m_offset + 0;
         std::size_t length = 0;
 
@@ -309,39 +365,31 @@ class Char16str {
         return result;
     }
 
-    std::string getVAsJsonEscapedString() {
+    std::string getVAsJsonEscapedString()
+    {
         std::ostringstream oss;
         std::string s = getVAsString();
 
-        for (const auto c : s) {
-            switch (c) {
-                case '"':
-                    oss << "\\\"";
-                    break;
-                case '\\':
-                    oss << "\\\\";
-                    break;
-                case '\b':
-                    oss << "\\b";
-                    break;
-                case '\f':
-                    oss << "\\f";
-                    break;
-                case '\n':
-                    oss << "\\n";
-                    break;
-                case '\r':
-                    oss << "\\r";
-                    break;
-                case '\t':
-                    oss << "\\t";
-                    break;
+        for (const auto c : s)
+        {
+            switch (c)
+            {
+                case '"': oss << "\\\""; break;
+                case '\\': oss << "\\\\"; break;
+                case '\b': oss << "\\b"; break;
+                case '\f': oss << "\\f"; break;
+                case '\n': oss << "\\n"; break;
+                case '\r': oss << "\\r"; break;
+                case '\t': oss << "\\t"; break;
 
                 default:
-                    if ('\x00' <= c && c <= '\x1f') {
+                    if ('\x00' <= c && c <= '\x1f')
+                    {
                         oss << "\\u" << std::hex << std::setw(4)
                             << std::setfill('0') << (int)(c);
-                    } else {
+                    }
+                    else
+                    {
                         oss << c;
                     }
             }
@@ -350,8 +398,9 @@ class Char16str {
         return oss.str();
     }
 
-#ifdef SBE_USE_STRING_VIEW
-    SBE_NODISCARD std::string_view getVAsStringView() const SBE_NOEXCEPT {
+    #ifdef SBE_USE_STRING_VIEW
+    SBE_NODISCARD std::string_view getVAsStringView() const SBE_NOEXCEPT
+    {
         const char *buffer = m_buffer + m_offset + 0;
         std::size_t length = 0;
 
@@ -360,51 +409,60 @@ class Char16str {
 
         return result;
     }
-#endif
+    #endif
 
-#ifdef SBE_USE_STRING_VIEW
-    Char16str &putV(const std::string_view str) {
+    #ifdef SBE_USE_STRING_VIEW
+    Char16str &putV(const std::string_view str)
+    {
         const std::size_t srcLength = str.length();
-        if (srcLength > 16) {
+        if (srcLength > 16)
+        {
             throw std::runtime_error("string too large for putV [E106]");
         }
 
         std::memcpy(m_buffer + m_offset + 0, str.data(), srcLength);
-        for (std::size_t start = srcLength; start < 16; ++start) {
+        for (std::size_t start = srcLength; start < 16; ++start)
+        {
             m_buffer[m_offset + 0 + start] = 0;
         }
 
         return *this;
     }
-#else
-    Char16str &putV(const std::string &str) {
+    #else
+    Char16str &putV(const std::string &str)
+    {
         const std::size_t srcLength = str.length();
-        if (srcLength > 16) {
+        if (srcLength > 16)
+        {
             throw std::runtime_error("string too large for putV [E106]");
         }
 
         std::memcpy(m_buffer + m_offset + 0, str.c_str(), srcLength);
-        for (std::size_t start = srcLength; start < 16; ++start) {
+        for (std::size_t start = srcLength; start < 16; ++start)
+        {
             m_buffer[m_offset + 0 + start] = 0;
         }
 
         return *this;
     }
-#endif
+    #endif
 
-    template <typename CharT, typename Traits>
-    friend std::basic_ostream<CharT, Traits> &operator<<(
-        std::basic_ostream<CharT, Traits> &builder, Char16str &writer) {
-        builder << '{';
-        builder << R"("v": )";
-        builder << '"' << writer.getVAsJsonEscapedString().c_str() << '"';
+template<typename CharT, typename Traits>
+friend std::basic_ostream<CharT, Traits> & operator << (
+    std::basic_ostream<CharT, Traits> &builder, Char16str &writer)
+{
+    builder << '{';
+    builder << R"("v": )";
+    builder << '"' <<
+        writer.getVAsJsonEscapedString().c_str() << '"';
 
-        builder << '}';
+    builder << '}';
 
-        return builder;
-    }
+    return builder;
+}
+
 };
 
-}  // namespace SBE
+}
 
 #endif

@@ -68,10 +68,10 @@ void decodeSbeAndSendResponse(const aeron_wrapper::FragmentData& fragment) {
              json responseJson = {
                 {"sbeMessageHeader", sbeHeaderJson},
                 {"header",           headerJson},
-                {"phoneNumber",      phoneNumber},
-                {"source",           "aeron_sbe"},
-                {"timestamp",        std::chrono::duration_cast<std::chrono::milliseconds>(
-                                        std::chrono::system_clock::now().time_since_epoch()).count()}
+                {"phoneNumber",      phoneNumber}
+                // {"source",           "aeron_sbe"},
+                // {"timestamp",        std::chrono::duration_cast<std::chrono::milliseconds>(
+                //                         std::chrono::system_clock::now().time_since_epoch()).count()}
             };
             std::string jsonString = responseJson.dump();
             Logger::getInstance().log("[T3-Worker] JSON created: " + jsonString);
