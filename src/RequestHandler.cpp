@@ -21,7 +21,7 @@ void RequestHandler::DataPass(const drogon::HttpRequestPtr &req,
     
     // Log detailed request information
     Logger::getInstance().log("[T1] ========== Incoming Request ==========");
-    Logger::getInstance().log("[T1] Method: " + std::string(drogon::to_string(req->getMethod())));
+   Logger::getInstance().log(std::string("[T1] Method: ") + req->getMethodString());
     Logger::getInstance().log("[T1] Path: " + std::string(req->getPath()));
     Logger::getInstance().log("[T1] Content-Type: " + std::string(req->getHeader("content-type")));
     Logger::getInstance().log("[T1] Content-Length: " + std::string(req->getHeader("content-length")));
