@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  cpp-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cpp-dev-container
+    tty: true
+    stdin_open: true
+    shm_size: '512m'    # increase from default 64m to 512m or 1g
+
