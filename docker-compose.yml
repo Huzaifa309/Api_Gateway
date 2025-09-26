@@ -6,7 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: cpp-dev-container
+    volumes:
+      - .:/workspace   # mount current repo
+    shm_size: '512m'
     tty: true
     stdin_open: true
-    shm_size: '512m'    # increase from default 64m to 512m or 1g
-
